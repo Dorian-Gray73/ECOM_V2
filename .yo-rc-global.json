@@ -1,0 +1,8 @@
+{
+  "generator-jhipster:7.9.2": {
+    "promptValues": {
+      "packageName": "com.org.ecomv2",
+      "nativeLanguage": "en"
+    }
+  }
+}
