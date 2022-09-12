@@ -1,0 +1,27 @@
+{
+  "applications": "*",
+  "changelogDate": "20220912144126",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "modele",
+  "fields": [
+    {
+      "fieldName": "modele",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Modele",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "produit",
+      "otherEntityRelationshipName": "modele",
+      "relationshipName": "produit",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

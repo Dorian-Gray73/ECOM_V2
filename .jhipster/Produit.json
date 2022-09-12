@@ -1,0 +1,55 @@
+{
+  "applications": "*",
+  "changelogDate": "20220912144125",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "produit",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prix",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "lienImage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "marque",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "progressif",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Produit",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "caracteristique",
+      "otherEntityRelationshipName": "produit",
+      "relationshipName": "caracteristique",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "image",
+      "otherEntityRelationshipName": "produit",
+      "relationshipName": "image",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "modele",
+      "otherEntityRelationshipName": "produit",
+      "relationshipName": "modele",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}
