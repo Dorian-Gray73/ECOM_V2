@@ -1,0 +1,66 @@
+entity Utilisateur {
+	nom String,
+    prenom String,
+    courriel String,
+    adresse String,
+    type Type,
+}
+
+enum Type {
+    Admin, Acheteur
+}
+
+entity Produit {
+    nom String,
+    prix Float,
+    lienImage String,
+    marque String,
+    progressif Boolean,
+}
+
+entity Modele {
+	modele String
+}
+
+entity Caracteristique {
+    couleur String,
+    couleurHexa String,
+    quantite Integer,
+    lienImage String
+}
+
+entity Transaction {
+    etat EtatProduit,
+    date LocalDate,
+}
+
+enum EtatProduit {
+	Encours, Achete
+}
+
+entity LigneTransaction {
+    quantite Integer,
+    prixUnitaire Float
+}
+
+entity Image {
+	lienImage String
+}
+
+relationship OneToMany {
+	Utilisateur{transaction} to Transaction{utilisateur},
+
+	Transaction{ligneTransaction} to LigneTransaction{transaction},
+    
+    Produit{caracteristique} to Caracteristique{produit} ,
+    
+    Caracteristique{image} to Image{caracteristique},
+    
+    Produit{image} to Image{produit},
+    
+    Produit{modele} to Modele
+}
+
+relationship ManyToOne {
+	Caracteristique to LigneTransaction{caracteristique}
+}

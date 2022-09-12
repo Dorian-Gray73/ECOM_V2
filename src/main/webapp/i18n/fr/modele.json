@@ -1,0 +1,25 @@
+{
+  "ecomV2App": {
+    "modele": {
+      "home": {
+        "title": "Modeles",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Modele",
+        "createOrEditLabel": "Créer ou éditer un Modele",
+        "notFound": "Aucun Modele trouvé"
+      },
+      "created": "Un nouveau Modele a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Modele avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Modele avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Modele {{ id }} ?"
+      },
+      "detail": {
+        "title": "Modele"
+      },
+      "id": "ID",
+      "modele": "Modele",
+      "produit": "Produit"
+    }
+  }
+}

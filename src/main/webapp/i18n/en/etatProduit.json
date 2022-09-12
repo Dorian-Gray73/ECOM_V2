@@ -1,0 +1,9 @@
+{
+  "ecomV2App": {
+    "EtatProduit": {
+      "null": "",
+      "Encours": "Encours",
+      "Achete": "Achete"
+    }
+  }
+}

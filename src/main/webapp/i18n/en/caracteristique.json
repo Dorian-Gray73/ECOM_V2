@@ -1,0 +1,30 @@
+{
+  "ecomV2App": {
+    "caracteristique": {
+      "home": {
+        "title": "Caracteristiques",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Caracteristique",
+        "createOrEditLabel": "Create or edit a Caracteristique",
+        "notFound": "No Caracteristiques found"
+      },
+      "created": "A new Caracteristique is created with identifier {{ param }}",
+      "updated": "A Caracteristique is updated with identifier {{ param }}",
+      "deleted": "A Caracteristique is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Caracteristique {{ id }}?"
+      },
+      "detail": {
+        "title": "Caracteristique"
+      },
+      "id": "ID",
+      "couleur": "Couleur",
+      "couleurHexa": "Couleur Hexa",
+      "quantite": "Quantite",
+      "lienImage": "Lien Image",
+      "image": "Image",
+      "ligneTransaction": "Ligne Transaction",
+      "produit": "Produit"
+    }
+  }
+}

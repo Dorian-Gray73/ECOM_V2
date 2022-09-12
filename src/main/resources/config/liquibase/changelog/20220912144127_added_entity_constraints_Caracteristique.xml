@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Caracteristique.
+    -->
+    <changeSet id="20220912144127-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="ligne_transaction_id"
+                                 baseTableName="caracteristique"
+                                 constraintName="fk_caracteristique__ligne_transaction_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ligne_transaction"/>
+
+        <addForeignKeyConstraint baseColumnNames="produit_id"
+                                 baseTableName="caracteristique"
+                                 constraintName="fk_caracteristique__produit_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="produit"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,27 @@
+{
+  "ecomV2App": {
+    "ligneTransaction": {
+      "home": {
+        "title": "LigneTransactions",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Ligne Transaction",
+        "createOrEditLabel": "Créer ou éditer un Ligne Transaction",
+        "notFound": "Aucun Ligne Transaction trouvé"
+      },
+      "created": "Un nouveau Ligne Transaction a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Ligne Transaction avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Ligne Transaction avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Ligne Transaction {{ id }} ?"
+      },
+      "detail": {
+        "title": "Ligne Transaction"
+      },
+      "id": "ID",
+      "quantite": "Quantite",
+      "prixUnitaire": "Prix Unitaire",
+      "transaction": "Transaction",
+      "caracteristique": "Caracteristique"
+    }
+  }
+}
