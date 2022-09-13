@@ -32,9 +32,9 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/ECOM_V2
-    username: ECOM_V2
-    password:
+    url: jdbc:postgresql://ec2-54-228-32-29.eu-west-1.compute.amazonaws.com:5432/dasuqvm4r5lle9
+    username: tnnjbmfpwtwqtv
+    password: 1bdbb2df97756038b3820229b54ad97a96fcc09600a54d06140089cde7661450
     hikari:
       poolName: Hikari
       auto-commit: false
