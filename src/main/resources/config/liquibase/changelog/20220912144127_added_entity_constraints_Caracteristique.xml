@@ -8,16 +8,16 @@
     -->
     <changeSet id="20220912144127-2" author="jhipster">
 
-        <addForeignKeyConstraint baseColumnNames="ligne_transaction_id"
-                                 baseTableName="caracteristique"
-                                 constraintName="fk_caracteristique__ligne_transaction_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="ligne_transaction"/>
-
         <addForeignKeyConstraint baseColumnNames="produit_id"
                                  baseTableName="caracteristique"
                                  constraintName="fk_caracteristique__produit_id"
                                  referencedColumnNames="id"
                                  referencedTableName="produit"/>
+
+        <addForeignKeyConstraint baseColumnNames="ligne_transaction_id"
+                                 baseTableName="caracteristique"
+                                 constraintName="fk_caracteristique__ligne_transaction_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ligne_transaction"/>
     </changeSet>
 </databaseChangeLog>

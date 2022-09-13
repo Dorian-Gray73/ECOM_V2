@@ -27,13 +27,13 @@ public class LigneTransaction implements Serializable {
     @Column(name = "prix_unitaire")
     private Float prixUnitaire;
 
+    @OneToMany(mappedBy = "ligneTransaction")
+    @JsonIgnoreProperties(value = { "images", "produit", "ligneTransaction" }, allowSetters = true)
+    private Set<Caracteristique> caracteristiques = new HashSet<>();
+
     @ManyToOne
     @JsonIgnoreProperties(value = { "ligneTransactions", "utilisateur" }, allowSetters = true)
     private Transaction transaction;
-
-    @OneToMany(mappedBy = "ligneTransaction")
-    @JsonIgnoreProperties(value = { "images", "ligneTransaction", "produit" }, allowSetters = true)
-    private Set<Caracteristique> caracteristiques = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -76,19 +76,6 @@ public class LigneTransaction implements Serializable {
         this.prixUnitaire = prixUnitaire;
     }
 
-    public Transaction getTransaction() {
-        return this.transaction;
-    }
-
-    public void setTransaction(Transaction transaction) {
-        this.transaction = transaction;
-    }
-
-    public LigneTransaction transaction(Transaction transaction) {
-        this.setTransaction(transaction);
-        return this;
-    }
-
     public Set<Caracteristique> getCaracteristiques() {
         return this.caracteristiques;
     }
@@ -117,6 +104,19 @@ public class LigneTransaction implements Serializable {
     public LigneTransaction removeCaracteristique(Caracteristique caracteristique) {
         this.caracteristiques.remove(caracteristique);
         caracteristique.setLigneTransaction(null);
+        return this;
+    }
+
+    public Transaction getTransaction() {
+        return this.transaction;
+    }
+
+    public void setTransaction(Transaction transaction) {
+        this.transaction = transaction;
+    }
+
+    public LigneTransaction transaction(Transaction transaction) {
+        this.setTransaction(transaction);
         return this;
     }
 

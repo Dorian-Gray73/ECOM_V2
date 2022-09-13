@@ -21,16 +21,16 @@
   "readOnly": false,
   "relationships": [
     {
-      "otherEntityName": "transaction",
-      "otherEntityRelationshipName": "ligneTransaction",
-      "relationshipName": "transaction",
-      "relationshipType": "many-to-one"
-    },
-    {
       "otherEntityName": "caracteristique",
       "otherEntityRelationshipName": "ligneTransaction",
       "relationshipName": "caracteristique",
       "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "transaction",
+      "otherEntityRelationshipName": "ligneTransaction",
+      "relationshipName": "transaction",
+      "relationshipType": "many-to-one"
     }
   ],
   "service": "no"

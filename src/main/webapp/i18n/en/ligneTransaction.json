@@ -20,8 +20,8 @@
       "id": "ID",
       "quantite": "Quantite",
       "prixUnitaire": "Prix Unitaire",
-      "transaction": "Transaction",
-      "caracteristique": "Caracteristique"
+      "caracteristique": "Caracteristique",
+      "transaction": "Transaction"
     }
   }
 }

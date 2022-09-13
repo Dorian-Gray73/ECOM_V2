@@ -59,8 +59,7 @@ relationship OneToMany {
     Produit{image} to Image{produit},
     
     Produit{modele} to Modele
-}
 
-relationship ManyToOne {
-	Caracteristique to LigneTransaction{caracteristique}
+	LigneTransaction to Caracteristique{LigneTransaction} 
+
 }

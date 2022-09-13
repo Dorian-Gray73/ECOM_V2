@@ -31,22 +31,22 @@
             <span>{{ caracteristique.lienImage }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.caracteristique.ligneTransaction')">Ligne Transaction</span>
-          </dt>
-          <dd>
-            <div v-if="caracteristique.ligneTransaction">
-              <router-link :to="{ name: 'LigneTransactionView', params: { ligneTransactionId: caracteristique.ligneTransaction.id } }">{{
-                caracteristique.ligneTransaction.id
-              }}</router-link>
-            </div>
-          </dd>
-          <dt>
             <span v-text="$t('ecomV2App.caracteristique.produit')">Produit</span>
           </dt>
           <dd>
             <div v-if="caracteristique.produit">
               <router-link :to="{ name: 'ProduitView', params: { produitId: caracteristique.produit.id } }">{{
                 caracteristique.produit.id
+              }}</router-link>
+            </div>
+          </dd>
+          <dt>
+            <span v-text="$t('ecomV2App.caracteristique.ligneTransaction')">Ligne Transaction</span>
+          </dt>
+          <dd>
+            <div v-if="caracteristique.ligneTransaction">
+              <router-link :to="{ name: 'LigneTransactionView', params: { ligneTransactionId: caracteristique.ligneTransaction.id } }">{{
+                caracteristique.ligneTransaction.id
               }}</router-link>
             </div>
           </dd>

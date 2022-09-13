@@ -38,12 +38,12 @@ public class Caracteristique implements Serializable {
     private Set<Image> images = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "transaction", "caracteristiques" }, allowSetters = true)
-    private LigneTransaction ligneTransaction;
-
-    @ManyToOne
     @JsonIgnoreProperties(value = { "caracteristiques", "images", "modeles" }, allowSetters = true)
     private Produit produit;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "caracteristiques", "transaction" }, allowSetters = true)
+    private LigneTransaction ligneTransaction;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -143,19 +143,6 @@ public class Caracteristique implements Serializable {
         return this;
     }
 
-    public LigneTransaction getLigneTransaction() {
-        return this.ligneTransaction;
-    }
-
-    public void setLigneTransaction(LigneTransaction ligneTransaction) {
-        this.ligneTransaction = ligneTransaction;
-    }
-
-    public Caracteristique ligneTransaction(LigneTransaction ligneTransaction) {
-        this.setLigneTransaction(ligneTransaction);
-        return this;
-    }
-
     public Produit getProduit() {
         return this.produit;
     }
@@ -166,6 +153,19 @@ public class Caracteristique implements Serializable {
 
     public Caracteristique produit(Produit produit) {
         this.setProduit(produit);
+        return this;
+    }
+
+    public LigneTransaction getLigneTransaction() {
+        return this.ligneTransaction;
+    }
+
+    public void setLigneTransaction(LigneTransaction ligneTransaction) {
+        this.ligneTransaction = ligneTransaction;
+    }
+
+    public Caracteristique ligneTransaction(LigneTransaction ligneTransaction) {
+        this.setLigneTransaction(ligneTransaction);
         return this;
     }
 

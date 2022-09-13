@@ -1,6 +1,6 @@
 import { IImage } from '@/shared/model/image.model';
-import { ILigneTransaction } from '@/shared/model/ligne-transaction.model';
 import { IProduit } from '@/shared/model/produit.model';
+import { ILigneTransaction } from '@/shared/model/ligne-transaction.model';
 
 export interface ICaracteristique {
   id?: number;
@@ -9,8 +9,8 @@ export interface ICaracteristique {
   quantite?: number | null;
   lienImage?: string | null;
   images?: IImage[] | null;
-  ligneTransaction?: ILigneTransaction | null;
   produit?: IProduit | null;
+  ligneTransaction?: ILigneTransaction | null;
 }
 
 export class Caracteristique implements ICaracteristique {
@@ -21,7 +21,7 @@ export class Caracteristique implements ICaracteristique {
     public quantite?: number | null,
     public lienImage?: string | null,
     public images?: IImage[] | null,
-    public ligneTransaction?: ILigneTransaction | null,
-    public produit?: IProduit | null
+    public produit?: IProduit | null,
+    public ligneTransaction?: ILigneTransaction | null
   ) {}
 }
