@@ -27,20 +27,6 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.caracteristique.couleurHexa')" for="caracteristique-couleurHexa"
-              >Couleur Hexa</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              name="couleurHexa"
-              id="caracteristique-couleurHexa"
-              data-cy="couleurHexa"
-              :class="{ valid: !$v.caracteristique.couleurHexa.$invalid, invalid: $v.caracteristique.couleurHexa.$invalid }"
-              v-model="$v.caracteristique.couleurHexa.$model"
-            />
-          </div>
-          <div class="form-group">
             <label class="form-control-label" v-text="$t('ecomV2App.caracteristique.quantite')" for="caracteristique-quantite"
               >Quantite</label
             >
@@ -52,20 +38,6 @@
               data-cy="quantite"
               :class="{ valid: !$v.caracteristique.quantite.$invalid, invalid: $v.caracteristique.quantite.$invalid }"
               v-model.number="$v.caracteristique.quantite.$model"
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.caracteristique.lienImage')" for="caracteristique-lienImage"
-              >Lien Image</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              name="lienImage"
-              id="caracteristique-lienImage"
-              data-cy="lienImage"
-              :class="{ valid: !$v.caracteristique.lienImage.$invalid, invalid: $v.caracteristique.lienImage.$invalid }"
-              v-model="$v.caracteristique.lienImage.$model"
             />
           </div>
           <div class="form-group">

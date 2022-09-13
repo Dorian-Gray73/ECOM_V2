@@ -30,9 +30,7 @@
           <tr>
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
             <th scope="row"><span v-text="$t('ecomV2App.caracteristique.couleur')">Couleur</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.caracteristique.couleurHexa')">Couleur Hexa</span></th>
             <th scope="row"><span v-text="$t('ecomV2App.caracteristique.quantite')">Quantite</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.caracteristique.lienImage')">Lien Image</span></th>
             <th scope="row"><span v-text="$t('ecomV2App.caracteristique.produit')">Produit</span></th>
             <th scope="row"><span v-text="$t('ecomV2App.caracteristique.ligneTransaction')">Ligne Transaction</span></th>
             <th scope="row"></th>
@@ -46,9 +44,7 @@
               }}</router-link>
             </td>
             <td>{{ caracteristique.couleur }}</td>
-            <td>{{ caracteristique.couleurHexa }}</td>
             <td>{{ caracteristique.quantite }}</td>
-            <td>{{ caracteristique.lienImage }}</td>
             <td>
               <div v-if="caracteristique.produit">
                 <router-link :to="{ name: 'ProduitView', params: { produitId: caracteristique.produit.id } }">{{

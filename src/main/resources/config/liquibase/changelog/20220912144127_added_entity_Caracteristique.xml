@@ -17,13 +17,7 @@
             <column name="couleur" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="couleur_hexa" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="quantite" type="integer">
-                <constraints nullable="true" />
-            </column>
-            <column name="lien_image" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="produit_id" type="bigint">
@@ -54,9 +48,7 @@
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
             <column name="couleur" type="string"/>
-            <column name="couleur_hexa" type="string"/>
             <column name="quantite" type="numeric"/>
-            <column name="lien_image" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

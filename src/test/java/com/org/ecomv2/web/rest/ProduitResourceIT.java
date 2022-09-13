@@ -35,9 +35,6 @@ class ProduitResourceIT {
     private static final Float DEFAULT_PRIX = 1F;
     private static final Float UPDATED_PRIX = 2F;
 
-    private static final String DEFAULT_LIEN_IMAGE = "AAAAAAAAAA";
-    private static final String UPDATED_LIEN_IMAGE = "BBBBBBBBBB";
-
     private static final String DEFAULT_MARQUE = "AAAAAAAAAA";
     private static final String UPDATED_MARQUE = "BBBBBBBBBB";
 
@@ -68,12 +65,7 @@ class ProduitResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Produit createEntity(EntityManager em) {
-        Produit produit = new Produit()
-            .nom(DEFAULT_NOM)
-            .prix(DEFAULT_PRIX)
-            .lienImage(DEFAULT_LIEN_IMAGE)
-            .marque(DEFAULT_MARQUE)
-            .progressif(DEFAULT_PROGRESSIF);
+        Produit produit = new Produit().nom(DEFAULT_NOM).prix(DEFAULT_PRIX).marque(DEFAULT_MARQUE).progressif(DEFAULT_PROGRESSIF);
         return produit;
     }
 
@@ -84,12 +76,7 @@ class ProduitResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Produit createUpdatedEntity(EntityManager em) {
-        Produit produit = new Produit()
-            .nom(UPDATED_NOM)
-            .prix(UPDATED_PRIX)
-            .lienImage(UPDATED_LIEN_IMAGE)
-            .marque(UPDATED_MARQUE)
-            .progressif(UPDATED_PROGRESSIF);
+        Produit produit = new Produit().nom(UPDATED_NOM).prix(UPDATED_PRIX).marque(UPDATED_MARQUE).progressif(UPDATED_PROGRESSIF);
         return produit;
     }
 
@@ -113,7 +100,6 @@ class ProduitResourceIT {
         Produit testProduit = produitList.get(produitList.size() - 1);
         assertThat(testProduit.getNom()).isEqualTo(DEFAULT_NOM);
         assertThat(testProduit.getPrix()).isEqualTo(DEFAULT_PRIX);
-        assertThat(testProduit.getLienImage()).isEqualTo(DEFAULT_LIEN_IMAGE);
         assertThat(testProduit.getMarque()).isEqualTo(DEFAULT_MARQUE);
         assertThat(testProduit.getProgressif()).isEqualTo(DEFAULT_PROGRESSIF);
     }
@@ -150,7 +136,6 @@ class ProduitResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(produit.getId().intValue())))
             .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM)))
             .andExpect(jsonPath("$.[*].prix").value(hasItem(DEFAULT_PRIX.doubleValue())))
-            .andExpect(jsonPath("$.[*].lienImage").value(hasItem(DEFAULT_LIEN_IMAGE)))
             .andExpect(jsonPath("$.[*].marque").value(hasItem(DEFAULT_MARQUE)))
             .andExpect(jsonPath("$.[*].progressif").value(hasItem(DEFAULT_PROGRESSIF.booleanValue())));
     }
@@ -169,7 +154,6 @@ class ProduitResourceIT {
             .andExpect(jsonPath("$.id").value(produit.getId().intValue()))
             .andExpect(jsonPath("$.nom").value(DEFAULT_NOM))
             .andExpect(jsonPath("$.prix").value(DEFAULT_PRIX.doubleValue()))
-            .andExpect(jsonPath("$.lienImage").value(DEFAULT_LIEN_IMAGE))
             .andExpect(jsonPath("$.marque").value(DEFAULT_MARQUE))
             .andExpect(jsonPath("$.progressif").value(DEFAULT_PROGRESSIF.booleanValue()));
     }
@@ -193,12 +177,7 @@ class ProduitResourceIT {
         Produit updatedProduit = produitRepository.findById(produit.getId()).get();
         // Disconnect from session so that the updates on updatedProduit are not directly saved in db
         em.detach(updatedProduit);
-        updatedProduit
-            .nom(UPDATED_NOM)
-            .prix(UPDATED_PRIX)
-            .lienImage(UPDATED_LIEN_IMAGE)
-            .marque(UPDATED_MARQUE)
-            .progressif(UPDATED_PROGRESSIF);
+        updatedProduit.nom(UPDATED_NOM).prix(UPDATED_PRIX).marque(UPDATED_MARQUE).progressif(UPDATED_PROGRESSIF);
 
         restProduitMockMvc
             .perform(
@@ -214,7 +193,6 @@ class ProduitResourceIT {
         Produit testProduit = produitList.get(produitList.size() - 1);
         assertThat(testProduit.getNom()).isEqualTo(UPDATED_NOM);
         assertThat(testProduit.getPrix()).isEqualTo(UPDATED_PRIX);
-        assertThat(testProduit.getLienImage()).isEqualTo(UPDATED_LIEN_IMAGE);
         assertThat(testProduit.getMarque()).isEqualTo(UPDATED_MARQUE);
         assertThat(testProduit.getProgressif()).isEqualTo(UPDATED_PROGRESSIF);
     }
@@ -287,7 +265,7 @@ class ProduitResourceIT {
         Produit partialUpdatedProduit = new Produit();
         partialUpdatedProduit.setId(produit.getId());
 
-        partialUpdatedProduit.lienImage(UPDATED_LIEN_IMAGE).marque(UPDATED_MARQUE).progressif(UPDATED_PROGRESSIF);
+        partialUpdatedProduit.marque(UPDATED_MARQUE).progressif(UPDATED_PROGRESSIF);
 
         restProduitMockMvc
             .perform(
@@ -303,7 +281,6 @@ class ProduitResourceIT {
         Produit testProduit = produitList.get(produitList.size() - 1);
         assertThat(testProduit.getNom()).isEqualTo(DEFAULT_NOM);
         assertThat(testProduit.getPrix()).isEqualTo(DEFAULT_PRIX);
-        assertThat(testProduit.getLienImage()).isEqualTo(UPDATED_LIEN_IMAGE);
         assertThat(testProduit.getMarque()).isEqualTo(UPDATED_MARQUE);
         assertThat(testProduit.getProgressif()).isEqualTo(UPDATED_PROGRESSIF);
     }
@@ -320,12 +297,7 @@ class ProduitResourceIT {
         Produit partialUpdatedProduit = new Produit();
         partialUpdatedProduit.setId(produit.getId());
 
-        partialUpdatedProduit
-            .nom(UPDATED_NOM)
-            .prix(UPDATED_PRIX)
-            .lienImage(UPDATED_LIEN_IMAGE)
-            .marque(UPDATED_MARQUE)
-            .progressif(UPDATED_PROGRESSIF);
+        partialUpdatedProduit.nom(UPDATED_NOM).prix(UPDATED_PRIX).marque(UPDATED_MARQUE).progressif(UPDATED_PROGRESSIF);
 
         restProduitMockMvc
             .perform(
@@ -341,7 +313,6 @@ class ProduitResourceIT {
         Produit testProduit = produitList.get(produitList.size() - 1);
         assertThat(testProduit.getNom()).isEqualTo(UPDATED_NOM);
         assertThat(testProduit.getPrix()).isEqualTo(UPDATED_PRIX);
-        assertThat(testProduit.getLienImage()).isEqualTo(UPDATED_LIEN_IMAGE);
         assertThat(testProduit.getMarque()).isEqualTo(UPDATED_MARQUE);
         assertThat(testProduit.getProgressif()).isEqualTo(UPDATED_PROGRESSIF);
     }

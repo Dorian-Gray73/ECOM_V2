@@ -19,9 +19,7 @@
       },
       "id": "ID",
       "couleur": "Couleur",
-      "couleurHexa": "Couleur Hexa",
       "quantite": "Quantite",
-      "lienImage": "Lien Image",
       "image": "Image",
       "produit": "Produit",
       "ligneTransaction": "Ligne Transaction"

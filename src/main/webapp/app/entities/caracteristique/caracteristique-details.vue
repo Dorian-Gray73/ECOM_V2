@@ -13,22 +13,10 @@
             <span>{{ caracteristique.couleur }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.caracteristique.couleurHexa')">Couleur Hexa</span>
-          </dt>
-          <dd>
-            <span>{{ caracteristique.couleurHexa }}</span>
-          </dd>
-          <dt>
             <span v-text="$t('ecomV2App.caracteristique.quantite')">Quantite</span>
           </dt>
           <dd>
             <span>{{ caracteristique.quantite }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('ecomV2App.caracteristique.lienImage')">Lien Image</span>
-          </dt>
-          <dd>
-            <span>{{ caracteristique.lienImage }}</span>
           </dd>
           <dt>
             <span v-text="$t('ecomV2App.caracteristique.produit')">Produit</span>

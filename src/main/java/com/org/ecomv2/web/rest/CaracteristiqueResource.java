@@ -126,14 +126,8 @@ public class CaracteristiqueResource {
                 if (caracteristique.getCouleur() != null) {
                     existingCaracteristique.setCouleur(caracteristique.getCouleur());
                 }
-                if (caracteristique.getCouleurHexa() != null) {
-                    existingCaracteristique.setCouleurHexa(caracteristique.getCouleurHexa());
-                }
                 if (caracteristique.getQuantite() != null) {
                     existingCaracteristique.setQuantite(caracteristique.getQuantite());
-                }
-                if (caracteristique.getLienImage() != null) {
-                    existingCaracteristique.setLienImage(caracteristique.getLienImage());
                 }
 
                 return existingCaracteristique;

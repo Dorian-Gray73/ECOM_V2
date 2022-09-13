@@ -6,7 +6,6 @@ export interface IProduit {
   id?: number;
   nom?: string | null;
   prix?: number | null;
-  lienImage?: string | null;
   marque?: string | null;
   progressif?: boolean | null;
   caracteristiques?: ICaracteristique[] | null;
@@ -19,7 +18,6 @@ export class Produit implements IProduit {
     public id?: number,
     public nom?: string | null,
     public prix?: number | null,
-    public lienImage?: string | null,
     public marque?: string | null,
     public progressif?: boolean | null,
     public caracteristiques?: ICaracteristique[] | null,

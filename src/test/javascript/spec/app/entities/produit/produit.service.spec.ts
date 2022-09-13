@@ -29,7 +29,7 @@ describe('Service Tests', () => {
 
     beforeEach(() => {
       service = new ProduitService();
-      elemDefault = new Produit(123, 'AAAAAAA', 0, 'AAAAAAA', 'AAAAAAA', false);
+      elemDefault = new Produit(123, 'AAAAAAA', 0, 'AAAAAAA', false);
     });
 
     describe('Service methods', () => {
@@ -83,7 +83,6 @@ describe('Service Tests', () => {
           {
             nom: 'BBBBBB',
             prix: 1,
-            lienImage: 'BBBBBB',
             marque: 'BBBBBB',
             progressif: true,
           },
@@ -114,7 +113,6 @@ describe('Service Tests', () => {
           {
             nom: 'BBBBBB',
             prix: 1,
-            progressif: true,
           },
           new Produit()
         );
@@ -144,7 +142,6 @@ describe('Service Tests', () => {
           {
             nom: 'BBBBBB',
             prix: 1,
-            lienImage: 'BBBBBB',
             marque: 'BBBBBB',
             progressif: true,
           },

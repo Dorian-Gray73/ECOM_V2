@@ -18,7 +18,6 @@ const validations: any = {
   produit: {
     nom: {},
     prix: {},
-    lienImage: {},
     marque: {},
     progressif: {},
   },

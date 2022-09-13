@@ -10,16 +10,8 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "couleurHexa",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "quantite",
       "fieldType": "Integer"
-    },
-    {
-      "fieldName": "lienImage",
-      "fieldType": "String"
     }
   ],
   "fluentMethods": true,

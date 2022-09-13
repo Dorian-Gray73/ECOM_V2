@@ -31,7 +31,6 @@
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
             <th scope="row"><span v-text="$t('ecomV2App.produit.nom')">Nom</span></th>
             <th scope="row"><span v-text="$t('ecomV2App.produit.prix')">Prix</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.produit.lienImage')">Lien Image</span></th>
             <th scope="row"><span v-text="$t('ecomV2App.produit.marque')">Marque</span></th>
             <th scope="row"><span v-text="$t('ecomV2App.produit.progressif')">Progressif</span></th>
             <th scope="row"></th>
@@ -44,7 +43,6 @@
             </td>
             <td>{{ produit.nom }}</td>
             <td>{{ produit.prix }}</td>
-            <td>{{ produit.lienImage }}</td>
             <td>{{ produit.marque }}</td>
             <td>{{ produit.progressif }}</td>
             <td class="text-right">

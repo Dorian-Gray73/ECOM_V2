@@ -39,18 +39,6 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.produit.lienImage')" for="produit-lienImage">Lien Image</label>
-            <input
-              type="text"
-              class="form-control"
-              name="lienImage"
-              id="produit-lienImage"
-              data-cy="lienImage"
-              :class="{ valid: !$v.produit.lienImage.$invalid, invalid: $v.produit.lienImage.$invalid }"
-              v-model="$v.produit.lienImage.$model"
-            />
-          </div>
-          <div class="form-group">
             <label class="form-control-label" v-text="$t('ecomV2App.produit.marque')" for="produit-marque">Marque</label>
             <input
               type="text"
