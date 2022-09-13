@@ -12,6 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public interface ProduitRepository extends JpaRepository<Produit, Long> {
-    @Query("SELECT nom FROM Produit p WHERE p.marque='Rayban'")
+    @Query("SELECT nom FROM Produit p WHERE p.marque='Ray-ban'")
     String GetRayban();
 }
