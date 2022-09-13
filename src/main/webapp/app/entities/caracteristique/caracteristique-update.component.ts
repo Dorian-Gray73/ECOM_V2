@@ -17,9 +17,7 @@ import CaracteristiqueService from './caracteristique.service';
 const validations: any = {
   caracteristique: {
     couleur: {},
-    couleurHexa: {},
     quantite: {},
-    lienImage: {},
   },
 };
 

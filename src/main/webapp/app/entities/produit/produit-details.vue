@@ -19,12 +19,6 @@
             <span>{{ produit.prix }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.produit.lienImage')">Lien Image</span>
-          </dt>
-          <dd>
-            <span>{{ produit.lienImage }}</span>
-          </dd>
-          <dt>
             <span v-text="$t('ecomV2App.produit.marque')">Marque</span>
           </dt>
           <dd>

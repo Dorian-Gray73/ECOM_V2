@@ -14,10 +14,6 @@
       "fieldType": "Float"
     },
     {
-      "fieldName": "lienImage",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "marque",
       "fieldType": "String"
     },

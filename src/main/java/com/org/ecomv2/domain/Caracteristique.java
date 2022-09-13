@@ -24,14 +24,8 @@ public class Caracteristique implements Serializable {
     @Column(name = "couleur")
     private String couleur;
 
-    @Column(name = "couleur_hexa")
-    private String couleurHexa;
-
     @Column(name = "quantite")
     private Integer quantite;
-
-    @Column(name = "lien_image")
-    private String lienImage;
 
     @OneToMany(mappedBy = "caracteristique")
     @JsonIgnoreProperties(value = { "caracteristique", "produit" }, allowSetters = true)
@@ -73,19 +67,6 @@ public class Caracteristique implements Serializable {
         this.couleur = couleur;
     }
 
-    public String getCouleurHexa() {
-        return this.couleurHexa;
-    }
-
-    public Caracteristique couleurHexa(String couleurHexa) {
-        this.setCouleurHexa(couleurHexa);
-        return this;
-    }
-
-    public void setCouleurHexa(String couleurHexa) {
-        this.couleurHexa = couleurHexa;
-    }
-
     public Integer getQuantite() {
         return this.quantite;
     }
@@ -97,19 +78,6 @@ public class Caracteristique implements Serializable {
 
     public void setQuantite(Integer quantite) {
         this.quantite = quantite;
-    }
-
-    public String getLienImage() {
-        return this.lienImage;
-    }
-
-    public Caracteristique lienImage(String lienImage) {
-        this.setLienImage(lienImage);
-        return this;
-    }
-
-    public void setLienImage(String lienImage) {
-        this.lienImage = lienImage;
     }
 
     public Set<Image> getImages() {
@@ -194,9 +162,7 @@ public class Caracteristique implements Serializable {
         return "Caracteristique{" +
             "id=" + getId() +
             ", couleur='" + getCouleur() + "'" +
-            ", couleurHexa='" + getCouleurHexa() + "'" +
             ", quantite=" + getQuantite() +
-            ", lienImage='" + getLienImage() + "'" +
             "}";
     }
 }

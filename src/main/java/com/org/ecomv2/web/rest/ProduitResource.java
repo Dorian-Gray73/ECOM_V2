@@ -127,9 +127,6 @@ public class ProduitResource {
                 if (produit.getPrix() != null) {
                     existingProduit.setPrix(produit.getPrix());
                 }
-                if (produit.getLienImage() != null) {
-                    existingProduit.setLienImage(produit.getLienImage());
-                }
                 if (produit.getMarque() != null) {
                     existingProduit.setMarque(produit.getMarque());
                 }

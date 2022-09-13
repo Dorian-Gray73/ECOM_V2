@@ -27,9 +27,6 @@ public class Produit implements Serializable {
     @Column(name = "prix")
     private Float prix;
 
-    @Column(name = "lien_image")
-    private String lienImage;
-
     @Column(name = "marque")
     private String marque;
 
@@ -87,19 +84,6 @@ public class Produit implements Serializable {
 
     public void setPrix(Float prix) {
         this.prix = prix;
-    }
-
-    public String getLienImage() {
-        return this.lienImage;
-    }
-
-    public Produit lienImage(String lienImage) {
-        this.setLienImage(lienImage);
-        return this;
-    }
-
-    public void setLienImage(String lienImage) {
-        this.lienImage = lienImage;
     }
 
     public String getMarque() {
@@ -247,7 +231,6 @@ public class Produit implements Serializable {
             "id=" + getId() +
             ", nom='" + getNom() + "'" +
             ", prix=" + getPrix() +
-            ", lienImage='" + getLienImage() + "'" +
             ", marque='" + getMarque() + "'" +
             ", progressif='" + getProgressif() + "'" +
             "}";

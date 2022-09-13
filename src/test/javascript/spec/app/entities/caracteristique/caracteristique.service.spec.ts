@@ -29,7 +29,7 @@ describe('Service Tests', () => {
 
     beforeEach(() => {
       service = new CaracteristiqueService();
-      elemDefault = new Caracteristique(123, 'AAAAAAA', 'AAAAAAA', 0, 'AAAAAAA');
+      elemDefault = new Caracteristique(123, 'AAAAAAA', 0);
     });
 
     describe('Service methods', () => {
@@ -82,9 +82,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             couleur: 'BBBBBB',
-            couleurHexa: 'BBBBBB',
             quantite: 1,
-            lienImage: 'BBBBBB',
           },
           elemDefault
         );
@@ -111,7 +109,6 @@ describe('Service Tests', () => {
       it('should partial update a Caracteristique', async () => {
         const patchObject = Object.assign(
           {
-            couleurHexa: 'BBBBBB',
             quantite: 1,
           },
           new Caracteristique()
@@ -141,9 +138,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             couleur: 'BBBBBB',
-            couleurHexa: 'BBBBBB',
             quantite: 1,
-            lienImage: 'BBBBBB',
           },
           elemDefault
         );
