@@ -13,7 +13,6 @@ enum Type {
 entity Produit {
     nom String,
     prix Float,
-    lienImage String,
     marque String,
     progressif Boolean,
 }
@@ -24,9 +23,7 @@ entity Modele {
 
 entity Caracteristique {
     couleur String,
-    couleurHexa String,
     quantite Integer,
-    lienImage String
 }
 
 entity Transaction {
