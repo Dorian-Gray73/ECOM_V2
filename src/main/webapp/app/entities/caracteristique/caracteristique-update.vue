@@ -69,6 +69,21 @@
             />
           </div>
           <div class="form-group">
+            <label class="form-control-label" v-text="$t('ecomV2App.caracteristique.produit')" for="caracteristique-produit">Produit</label>
+            <select class="form-control" id="caracteristique-produit" data-cy="produit" name="produit" v-model="caracteristique.produit">
+              <option v-bind:value="null"></option>
+              <option
+                v-bind:value="
+                  caracteristique.produit && produitOption.id === caracteristique.produit.id ? caracteristique.produit : produitOption
+                "
+                v-for="produitOption in produits"
+                :key="produitOption.id"
+              >
+                {{ produitOption.id }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
             <label
               class="form-control-label"
               v-text="$t('ecomV2App.caracteristique.ligneTransaction')"
@@ -93,21 +108,6 @@
                 :key="ligneTransactionOption.id"
               >
                 {{ ligneTransactionOption.id }}
-              </option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.caracteristique.produit')" for="caracteristique-produit">Produit</label>
-            <select class="form-control" id="caracteristique-produit" data-cy="produit" name="produit" v-model="caracteristique.produit">
-              <option v-bind:value="null"></option>
-              <option
-                v-bind:value="
-                  caracteristique.produit && produitOption.id === caracteristique.produit.id ? caracteristique.produit : produitOption
-                "
-                v-for="produitOption in produits"
-                :key="produitOption.id"
-              >
-                {{ produitOption.id }}
               </option>
             </select>
           </div>

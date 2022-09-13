@@ -23,8 +23,8 @@
       "quantite": "Quantite",
       "lienImage": "Lien Image",
       "image": "Image",
-      "ligneTransaction": "Ligne Transaction",
-      "produit": "Produit"
+      "produit": "Produit",
+      "ligneTransaction": "Ligne Transaction"
     }
   }
 }

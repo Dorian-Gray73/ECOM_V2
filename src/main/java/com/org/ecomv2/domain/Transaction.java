@@ -31,7 +31,7 @@ public class Transaction implements Serializable {
     private LocalDate date;
 
     @OneToMany(mappedBy = "transaction")
-    @JsonIgnoreProperties(value = { "transaction", "caracteristiques" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "caracteristiques", "transaction" }, allowSetters = true)
     private Set<LigneTransaction> ligneTransactions = new HashSet<>();
 
     @ManyToOne

@@ -35,15 +35,15 @@
       "relationshipType": "one-to-many"
     },
     {
-      "otherEntityName": "ligneTransaction",
-      "otherEntityRelationshipName": "caracteristique",
-      "relationshipName": "ligneTransaction",
-      "relationshipType": "many-to-one"
-    },
-    {
       "otherEntityName": "produit",
       "otherEntityRelationshipName": "caracteristique",
       "relationshipName": "produit",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "ligneTransaction",
+      "otherEntityRelationshipName": "caracteristique",
+      "relationshipName": "ligneTransaction",
       "relationshipType": "many-to-one"
     }
   ],

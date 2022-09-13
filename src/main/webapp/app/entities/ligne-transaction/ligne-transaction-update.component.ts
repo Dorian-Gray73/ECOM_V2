@@ -2,11 +2,11 @@ import { Component, Vue, Inject } from 'vue-property-decorator';
 
 import AlertService from '@/shared/alert/alert.service';
 
-import TransactionService from '@/entities/transaction/transaction.service';
-import { ITransaction } from '@/shared/model/transaction.model';
-
 import CaracteristiqueService from '@/entities/caracteristique/caracteristique.service';
 import { ICaracteristique } from '@/shared/model/caracteristique.model';
+
+import TransactionService from '@/entities/transaction/transaction.service';
+import { ITransaction } from '@/shared/model/transaction.model';
 
 import { ILigneTransaction, LigneTransaction } from '@/shared/model/ligne-transaction.model';
 import LigneTransactionService from './ligne-transaction.service';
@@ -27,13 +27,13 @@ export default class LigneTransactionUpdate extends Vue {
 
   public ligneTransaction: ILigneTransaction = new LigneTransaction();
 
-  @Inject('transactionService') private transactionService: () => TransactionService;
-
-  public transactions: ITransaction[] = [];
-
   @Inject('caracteristiqueService') private caracteristiqueService: () => CaracteristiqueService;
 
   public caracteristiques: ICaracteristique[] = [];
+
+  @Inject('transactionService') private transactionService: () => TransactionService;
+
+  public transactions: ITransaction[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -115,15 +115,15 @@ export default class LigneTransactionUpdate extends Vue {
   }
 
   public initRelationships(): void {
-    this.transactionService()
-      .retrieve()
-      .then(res => {
-        this.transactions = res.data;
-      });
     this.caracteristiqueService()
       .retrieve()
       .then(res => {
         this.caracteristiques = res.data;
+      });
+    this.transactionService()
+      .retrieve()
+      .then(res => {
+        this.transactions = res.data;
       });
   }
 }

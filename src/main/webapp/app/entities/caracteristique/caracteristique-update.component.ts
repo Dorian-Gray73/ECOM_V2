@@ -5,11 +5,11 @@ import AlertService from '@/shared/alert/alert.service';
 import ImageService from '@/entities/image/image.service';
 import { IImage } from '@/shared/model/image.model';
 
-import LigneTransactionService from '@/entities/ligne-transaction/ligne-transaction.service';
-import { ILigneTransaction } from '@/shared/model/ligne-transaction.model';
-
 import ProduitService from '@/entities/produit/produit.service';
 import { IProduit } from '@/shared/model/produit.model';
+
+import LigneTransactionService from '@/entities/ligne-transaction/ligne-transaction.service';
+import { ILigneTransaction } from '@/shared/model/ligne-transaction.model';
 
 import { ICaracteristique, Caracteristique } from '@/shared/model/caracteristique.model';
 import CaracteristiqueService from './caracteristique.service';
@@ -36,13 +36,13 @@ export default class CaracteristiqueUpdate extends Vue {
 
   public images: IImage[] = [];
 
-  @Inject('ligneTransactionService') private ligneTransactionService: () => LigneTransactionService;
-
-  public ligneTransactions: ILigneTransaction[] = [];
-
   @Inject('produitService') private produitService: () => ProduitService;
 
   public produits: IProduit[] = [];
+
+  @Inject('ligneTransactionService') private ligneTransactionService: () => LigneTransactionService;
+
+  public ligneTransactions: ILigneTransaction[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -129,15 +129,15 @@ export default class CaracteristiqueUpdate extends Vue {
       .then(res => {
         this.images = res.data;
       });
-    this.ligneTransactionService()
-      .retrieve()
-      .then(res => {
-        this.ligneTransactions = res.data;
-      });
     this.produitService()
       .retrieve()
       .then(res => {
         this.produits = res.data;
+      });
+    this.ligneTransactionService()
+      .retrieve()
+      .then(res => {
+        this.ligneTransactions = res.data;
       });
   }
 }
