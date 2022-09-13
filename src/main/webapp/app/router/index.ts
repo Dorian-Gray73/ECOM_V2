@@ -13,6 +13,10 @@ import account from '@/router/account';
 import admin from '@/router/admin';
 import entities from '@/router/entities';
 import pages from '@/router/pages';
+import Accueil from '@/core/accueil/accueil.vue';
+import Recherche from '@/core/recherche/recherche.vue';
+import Panier from '@/core/panier/panier.vue';
+import ProduitDetails from '@/core/produitDetails/produitDetails.vue';
 
 Vue.use(Router);
 
@@ -22,8 +26,28 @@ const router = new Router({
   routes: [
     {
       path: '/',
+      name: 'Accueil',
+      component: Accueil
+    },
+    {
+      path: '/home',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/recherche',
+      name: 'Recherche',
+      component: Recherche
+    },
+    {
+      path: '/produitDetails',
+      name: 'ProduitDetails',
+      component: ProduitDetails
+    },
+    {
+      path: '/panier',
+      name: 'Panier',
+      component: Panier
     },
     {
       path: '/forbidden',
