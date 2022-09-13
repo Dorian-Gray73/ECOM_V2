@@ -1,11 +1,11 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="CaracteristiqueHeading">
-      <span v-text="$t('ecomV2App.caracteristique.home.title')" id="caracteristique-heading">Caracteristiques</span>
+      <span v-text="$t('ecomApp.caracteristique.home.title')" id="caracteristique-heading">Caracteristiques</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
-          <span v-text="$t('ecomV2App.caracteristique.home.refreshListLabel')">Refresh List</span>
+          <span v-text="$t('ecomApp.caracteristique.home.refreshListLabel')">Refresh List</span>
         </button>
         <router-link :to="{ name: 'CaracteristiqueCreate' }" custom v-slot="{ navigate }">
           <button
@@ -15,26 +15,25 @@
             class="btn btn-primary jh-create-entity create-caracteristique"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span v-text="$t('ecomV2App.caracteristique.home.createLabel')"> Create a new Caracteristique </span>
+            <span v-text="$t('ecomApp.caracteristique.home.createLabel')"> Create a new Caracteristique </span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && caracteristiques && caracteristiques.length === 0">
-      <span v-text="$t('ecomV2App.caracteristique.home.notFound')">No caracteristiques found</span>
+      <span v-text="$t('ecomApp.caracteristique.home.notFound')">No caracteristiques found</span>
     </div>
     <div class="table-responsive" v-if="caracteristiques && caracteristiques.length > 0">
       <table class="table table-striped" aria-describedby="caracteristiques">
         <thead>
           <tr>
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.caracteristique.couleur')">Couleur</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.caracteristique.couleurHexa')">Couleur Hexa</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.caracteristique.quantite')">Quantite</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.caracteristique.lienImage')">Lien Image</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.caracteristique.ligneTransaction')">Ligne Transaction</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.caracteristique.produit')">Produit</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.caracteristique.couleur')">Couleur</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.caracteristique.quantite')">Quantite</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.caracteristique.lienImage')">Lien Image</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.caracteristique.ligneTransaction')">Ligne Transaction</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.caracteristique.produit')">Produit</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -46,7 +45,6 @@
               }}</router-link>
             </td>
             <td>{{ caracteristique.couleur }}</td>
-            <td>{{ caracteristique.couleurHexa }}</td>
             <td>{{ caracteristique.quantite }}</td>
             <td>{{ caracteristique.lienImage }}</td>
             <td>
@@ -103,15 +101,12 @@
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
-        ><span
-          id="ecomV2App.caracteristique.delete.question"
-          data-cy="caracteristiqueDeleteDialogHeading"
-          v-text="$t('entity.delete.title')"
+        ><span id="ecomApp.caracteristique.delete.question" data-cy="caracteristiqueDeleteDialogHeading" v-text="$t('entity.delete.title')"
           >Confirm delete operation</span
         ></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-caracteristique-heading" v-text="$t('ecomV2App.caracteristique.delete.question', { id: removeId })">
+        <p id="jhi-delete-caracteristique-heading" v-text="$t('ecomApp.caracteristique.delete.question', { id: removeId })">
           Are you sure you want to delete this Caracteristique?
         </p>
       </div>

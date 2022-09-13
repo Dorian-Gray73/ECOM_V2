@@ -8,10 +8,6 @@
       <font-awesome-icon icon="asterisk" />
       <span v-text="$t('global.menu.entities.produit')">Produit</span>
     </b-dropdown-item>
-    <b-dropdown-item to="/modele">
-      <font-awesome-icon icon="asterisk" />
-      <span v-text="$t('global.menu.entities.modele')">Modele</span>
-    </b-dropdown-item>
     <b-dropdown-item to="/caracteristique">
       <font-awesome-icon icon="asterisk" />
       <span v-text="$t('global.menu.entities.caracteristique')">Caracteristique</span>

@@ -57,7 +57,7 @@ export default class Caracteristique extends Vue {
     this.caracteristiqueService()
       .delete(this.removeId)
       .then(() => {
-        const message = this.$t('ecomV2App.caracteristique.deleted', { param: this.removeId });
+        const message = this.$t('ecomApp.caracteristique.deleted', { param: this.removeId });
         this.$bvToast.toast(message.toString(), {
           toaster: 'b-toaster-top-center',
           title: 'Info',

@@ -3,35 +3,41 @@
     <div class="col-8">
       <div v-if="produit">
         <h2 class="jh-entity-heading" data-cy="produitDetailsHeading">
-          <span v-text="$t('ecomV2App.produit.detail.title')">Produit</span> {{ produit.id }}
+          <span v-text="$t('ecomApp.produit.detail.title')">Produit</span> {{ produit.id }}
         </h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span v-text="$t('ecomV2App.produit.nom')">Nom</span>
+            <span v-text="$t('ecomApp.produit.nom')">Nom</span>
           </dt>
           <dd>
             <span>{{ produit.nom }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.produit.prix')">Prix</span>
+            <span v-text="$t('ecomApp.produit.prix')">Prix</span>
           </dt>
           <dd>
             <span>{{ produit.prix }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.produit.lienImage')">Lien Image</span>
+            <span v-text="$t('ecomApp.produit.lienImage')">Lien Image</span>
           </dt>
           <dd>
             <span>{{ produit.lienImage }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.produit.marque')">Marque</span>
+            <span v-text="$t('ecomApp.produit.marque')">Marque</span>
           </dt>
           <dd>
             <span>{{ produit.marque }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.produit.progressif')">Progressif</span>
+            <span v-text="$t('ecomApp.produit.modele')">Modele</span>
+          </dt>
+          <dd>
+            <span>{{ produit.modele }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('ecomApp.produit.progressif')">Progressif</span>
           </dt>
           <dd>
             <span>{{ produit.progressif }}</span>

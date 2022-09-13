@@ -2,7 +2,7 @@
   <b-navbar data-cy="navbar" toggleable="md" type="dark" class="jh-navbar">
     <b-navbar-brand class="logo" b-link to="/">
       <span class="logo-img"></span>
-      <span v-text="$t('global.title')" class="navbar-title">ECOM_V2</span> <span class="navbar-version">{{ version }}</span>
+      <span v-text="$t('global.title')" class="navbar-title">ECOM</span> <span class="navbar-version">{{ version }}</span>
     </b-navbar-brand>
     <b-navbar-toggle
       right
@@ -68,6 +68,10 @@
           <b-dropdown-item v-if="openAPIEnabled" to="/admin/docs" active-class="active">
             <font-awesome-icon icon="book" />
             <span v-text="$t('global.menu.admin.apidocs')">API</span>
+          </b-dropdown-item>
+          <b-dropdown-item v-if="!inProduction" href="./h2-console/" target="_tab">
+            <font-awesome-icon icon="database" />
+            <span v-text="$t('global.menu.admin.database')">Database</span>
           </b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item-dropdown id="languagesnavBarDropdown" right v-if="languages && Object.keys(languages).length > 1">

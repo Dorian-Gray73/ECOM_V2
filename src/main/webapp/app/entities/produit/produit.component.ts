@@ -57,7 +57,7 @@ export default class Produit extends Vue {
     this.produitService()
       .delete(this.removeId)
       .then(() => {
-        const message = this.$t('ecomV2App.produit.deleted', { param: this.removeId });
+        const message = this.$t('ecomApp.produit.deleted', { param: this.removeId });
         this.$bvToast.toast(message.toString(), {
           toaster: 'b-toaster-top-center',
           title: 'Info',

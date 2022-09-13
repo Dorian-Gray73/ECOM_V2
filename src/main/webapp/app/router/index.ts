@@ -7,12 +7,16 @@ Component.registerHooks([
 ]);
 import Router, { RouteConfig } from 'vue-router';
 
-const Home = () => import('@/core/home/home.vue');
+const Accueil = () => import('@/core/accueil/accueil.vue');
 const Error = () => import('@/core/error/error.vue');
 import account from '@/router/account';
 import admin from '@/router/admin';
 import entities from '@/router/entities';
 import pages from '@/router/pages';
+import Recherche from '@/core/recherche/recherche.vue';
+import Panier from '@/core/panier/panier.vue';
+import Produit from '@/core/produit/produit.vue';
+import Home from '@/core/home/home.vue';
 
 Vue.use(Router);
 
@@ -22,8 +26,28 @@ const router = new Router({
   routes: [
     {
       path: '/',
+      name: 'Accueil',
+      component: Accueil
+    },
+    {
+      path: '/home',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/recherche',
+      name: 'Recherche',
+      component: Recherche
+    },
+    {
+      path: '/produitDetails',
+      name: 'ProduitDetails',
+      component: Produit
+    },
+    {
+      path: '/panier',
+      name: 'Panier',
+      component: Panier
     },
     {
       path: '/forbidden',

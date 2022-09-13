@@ -63,7 +63,7 @@ export default class ImageUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('ecomV2App.image.updated', { param: param.id });
+          const message = this.$t('ecomApp.image.updated', { param: param.id });
           return (this.$root as any).$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Info',
@@ -82,7 +82,7 @@ export default class ImageUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('ecomV2App.image.created', { param: param.id });
+          const message = this.$t('ecomApp.image.created', { param: param.id });
           (this.$root as any).$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',

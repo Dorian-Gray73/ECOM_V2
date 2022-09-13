@@ -1,11 +1,11 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="LigneTransactionHeading">
-      <span v-text="$t('ecomV2App.ligneTransaction.home.title')" id="ligne-transaction-heading">Ligne Transactions</span>
+      <span v-text="$t('ecomApp.ligneTransaction.home.title')" id="ligne-transaction-heading">Ligne Transactions</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
-          <span v-text="$t('ecomV2App.ligneTransaction.home.refreshListLabel')">Refresh List</span>
+          <span v-text="$t('ecomApp.ligneTransaction.home.refreshListLabel')">Refresh List</span>
         </button>
         <router-link :to="{ name: 'LigneTransactionCreate' }" custom v-slot="{ navigate }">
           <button
@@ -15,23 +15,23 @@
             class="btn btn-primary jh-create-entity create-ligne-transaction"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span v-text="$t('ecomV2App.ligneTransaction.home.createLabel')"> Create a new Ligne Transaction </span>
+            <span v-text="$t('ecomApp.ligneTransaction.home.createLabel')"> Create a new Ligne Transaction </span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && ligneTransactions && ligneTransactions.length === 0">
-      <span v-text="$t('ecomV2App.ligneTransaction.home.notFound')">No ligneTransactions found</span>
+      <span v-text="$t('ecomApp.ligneTransaction.home.notFound')">No ligneTransactions found</span>
     </div>
     <div class="table-responsive" v-if="ligneTransactions && ligneTransactions.length > 0">
       <table class="table table-striped" aria-describedby="ligneTransactions">
         <thead>
           <tr>
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.ligneTransaction.quantite')">Quantite</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.ligneTransaction.prixUnitaire')">Prix Unitaire</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.ligneTransaction.transaction')">Transaction</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.ligneTransaction.quantite')">Quantite</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.ligneTransaction.prixUnitaire')">Prix Unitaire</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.ligneTransaction.transaction')">Transaction</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -92,14 +92,14 @@
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
         ><span
-          id="ecomV2App.ligneTransaction.delete.question"
+          id="ecomApp.ligneTransaction.delete.question"
           data-cy="ligneTransactionDeleteDialogHeading"
           v-text="$t('entity.delete.title')"
           >Confirm delete operation</span
         ></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-ligneTransaction-heading" v-text="$t('ecomV2App.ligneTransaction.delete.question', { id: removeId })">
+        <p id="jhi-delete-ligneTransaction-heading" v-text="$t('ecomApp.ligneTransaction.delete.question', { id: removeId })">
           Are you sure you want to delete this Ligne Transaction?
         </p>
       </div>

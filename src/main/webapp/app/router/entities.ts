@@ -16,12 +16,6 @@ const ProduitUpdate = () => import('@/entities/produit/produit-update.vue');
 // prettier-ignore
 const ProduitDetails = () => import('@/entities/produit/produit-details.vue');
 // prettier-ignore
-const Modele = () => import('@/entities/modele/modele.vue');
-// prettier-ignore
-const ModeleUpdate = () => import('@/entities/modele/modele-update.vue');
-// prettier-ignore
-const ModeleDetails = () => import('@/entities/modele/modele-details.vue');
-// prettier-ignore
 const Caracteristique = () => import('@/entities/caracteristique/caracteristique.vue');
 // prettier-ignore
 const CaracteristiqueUpdate = () => import('@/entities/caracteristique/caracteristique-update.vue');
@@ -97,30 +91,6 @@ export default {
       path: 'produit/:produitId/view',
       name: 'ProduitView',
       component: ProduitDetails,
-      meta: { authorities: [Authority.USER] },
-    },
-    {
-      path: 'modele',
-      name: 'Modele',
-      component: Modele,
-      meta: { authorities: [Authority.USER] },
-    },
-    {
-      path: 'modele/new',
-      name: 'ModeleCreate',
-      component: ModeleUpdate,
-      meta: { authorities: [Authority.USER] },
-    },
-    {
-      path: 'modele/:modeleId/edit',
-      name: 'ModeleEdit',
-      component: ModeleUpdate,
-      meta: { authorities: [Authority.USER] },
-    },
-    {
-      path: 'modele/:modeleId/view',
-      name: 'ModeleView',
-      component: ModeleDetails,
       meta: { authorities: [Authority.USER] },
     },
     {

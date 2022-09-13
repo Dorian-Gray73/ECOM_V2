@@ -17,7 +17,6 @@ import CaracteristiqueService from './caracteristique.service';
 const validations: any = {
   caracteristique: {
     couleur: {},
-    couleurHexa: {},
     quantite: {},
     lienImage: {},
   },
@@ -73,7 +72,7 @@ export default class CaracteristiqueUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('ecomV2App.caracteristique.updated', { param: param.id });
+          const message = this.$t('ecomApp.caracteristique.updated', { param: param.id });
           return (this.$root as any).$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Info',
@@ -92,7 +91,7 @@ export default class CaracteristiqueUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('ecomV2App.caracteristique.created', { param: param.id });
+          const message = this.$t('ecomApp.caracteristique.created', { param: param.id });
           (this.$root as any).$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',

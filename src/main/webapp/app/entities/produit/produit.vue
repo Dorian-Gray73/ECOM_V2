@@ -1,11 +1,11 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="ProduitHeading">
-      <span v-text="$t('ecomV2App.produit.home.title')" id="produit-heading">Produits</span>
+      <span v-text="$t('ecomApp.produit.home.title')" id="produit-heading">Produits</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
-          <span v-text="$t('ecomV2App.produit.home.refreshListLabel')">Refresh List</span>
+          <span v-text="$t('ecomApp.produit.home.refreshListLabel')">Refresh List</span>
         </button>
         <router-link :to="{ name: 'ProduitCreate' }" custom v-slot="{ navigate }">
           <button
@@ -15,25 +15,26 @@
             class="btn btn-primary jh-create-entity create-produit"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span v-text="$t('ecomV2App.produit.home.createLabel')"> Create a new Produit </span>
+            <span v-text="$t('ecomApp.produit.home.createLabel')"> Create a new Produit </span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && produits && produits.length === 0">
-      <span v-text="$t('ecomV2App.produit.home.notFound')">No produits found</span>
+      <span v-text="$t('ecomApp.produit.home.notFound')">No produits found</span>
     </div>
     <div class="table-responsive" v-if="produits && produits.length > 0">
       <table class="table table-striped" aria-describedby="produits">
         <thead>
           <tr>
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.produit.nom')">Nom</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.produit.prix')">Prix</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.produit.lienImage')">Lien Image</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.produit.marque')">Marque</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.produit.progressif')">Progressif</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.produit.nom')">Nom</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.produit.prix')">Prix</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.produit.lienImage')">Lien Image</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.produit.marque')">Marque</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.produit.modele')">Modele</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.produit.progressif')">Progressif</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -46,6 +47,7 @@
             <td>{{ produit.prix }}</td>
             <td>{{ produit.lienImage }}</td>
             <td>{{ produit.marque }}</td>
+            <td>{{ produit.modele }}</td>
             <td>{{ produit.progressif }}</td>
             <td class="text-right">
               <div class="btn-group">
@@ -79,12 +81,12 @@
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
-        ><span id="ecomV2App.produit.delete.question" data-cy="produitDeleteDialogHeading" v-text="$t('entity.delete.title')"
+        ><span id="ecomApp.produit.delete.question" data-cy="produitDeleteDialogHeading" v-text="$t('entity.delete.title')"
           >Confirm delete operation</span
         ></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-produit-heading" v-text="$t('ecomV2App.produit.delete.question', { id: removeId })">
+        <p id="jhi-delete-produit-heading" v-text="$t('ecomApp.produit.delete.question', { id: removeId })">
           Are you sure you want to delete this Produit?
         </p>
       </div>

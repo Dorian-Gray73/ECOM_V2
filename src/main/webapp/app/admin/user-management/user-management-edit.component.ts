@@ -125,6 +125,6 @@ export default class JhiUserManagementEdit extends Vue {
   }
 
   private getMessageFromHeader(res: any): any {
-    return this.$t(res.headers['x-ecomv2app-alert'], { param: decodeURIComponent(res.headers['x-ecomv2app-params'].replace(/\+/g, ' ')) });
+    return this.$t(res.headers['x-ecomapp-alert'], { param: decodeURIComponent(res.headers['x-ecomapp-params'].replace(/\+/g, ' ')) });
   }
 }

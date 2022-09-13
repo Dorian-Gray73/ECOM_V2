@@ -3,9 +3,9 @@
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2
-          id="ecomV2App.image.home.createOrEditLabel"
+          id="ecomApp.image.home.createOrEditLabel"
           data-cy="ImageCreateUpdateHeading"
-          v-text="$t('ecomV2App.image.home.createOrEditLabel')"
+          v-text="$t('ecomApp.image.home.createOrEditLabel')"
         >
           Create or edit a Image
         </h2>
@@ -15,7 +15,7 @@
             <input type="text" class="form-control" id="id" name="id" v-model="image.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.image.lienImage')" for="image-lienImage">Lien Image</label>
+            <label class="form-control-label" v-text="$t('ecomApp.image.lienImage')" for="image-lienImage">Lien Image</label>
             <input
               type="text"
               class="form-control"
@@ -27,7 +27,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.image.caracteristique')" for="image-caracteristique"
+            <label class="form-control-label" v-text="$t('ecomApp.image.caracteristique')" for="image-caracteristique"
               >Caracteristique</label
             >
             <select
@@ -52,7 +52,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.image.produit')" for="image-produit">Produit</label>
+            <label class="form-control-label" v-text="$t('ecomApp.image.produit')" for="image-produit">Produit</label>
             <select class="form-control" id="image-produit" data-cy="produit" name="produit" v-model="image.produit">
               <option v-bind:value="null"></option>
               <option

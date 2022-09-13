@@ -3,9 +3,9 @@
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2
-          id="ecomV2App.caracteristique.home.createOrEditLabel"
+          id="ecomApp.caracteristique.home.createOrEditLabel"
           data-cy="CaracteristiqueCreateUpdateHeading"
-          v-text="$t('ecomV2App.caracteristique.home.createOrEditLabel')"
+          v-text="$t('ecomApp.caracteristique.home.createOrEditLabel')"
         >
           Create or edit a Caracteristique
         </h2>
@@ -15,7 +15,7 @@
             <input type="text" class="form-control" id="id" name="id" v-model="caracteristique.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.caracteristique.couleur')" for="caracteristique-couleur">Couleur</label>
+            <label class="form-control-label" v-text="$t('ecomApp.caracteristique.couleur')" for="caracteristique-couleur">Couleur</label>
             <input
               type="text"
               class="form-control"
@@ -27,21 +27,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.caracteristique.couleurHexa')" for="caracteristique-couleurHexa"
-              >Couleur Hexa</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              name="couleurHexa"
-              id="caracteristique-couleurHexa"
-              data-cy="couleurHexa"
-              :class="{ valid: !$v.caracteristique.couleurHexa.$invalid, invalid: $v.caracteristique.couleurHexa.$invalid }"
-              v-model="$v.caracteristique.couleurHexa.$model"
-            />
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.caracteristique.quantite')" for="caracteristique-quantite"
+            <label class="form-control-label" v-text="$t('ecomApp.caracteristique.quantite')" for="caracteristique-quantite"
               >Quantite</label
             >
             <input
@@ -55,7 +41,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.caracteristique.lienImage')" for="caracteristique-lienImage"
+            <label class="form-control-label" v-text="$t('ecomApp.caracteristique.lienImage')" for="caracteristique-lienImage"
               >Lien Image</label
             >
             <input
@@ -69,10 +55,7 @@
             />
           </div>
           <div class="form-group">
-            <label
-              class="form-control-label"
-              v-text="$t('ecomV2App.caracteristique.ligneTransaction')"
-              for="caracteristique-ligneTransaction"
+            <label class="form-control-label" v-text="$t('ecomApp.caracteristique.ligneTransaction')" for="caracteristique-ligneTransaction"
               >Ligne Transaction</label
             >
             <select
@@ -97,7 +80,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.caracteristique.produit')" for="caracteristique-produit">Produit</label>
+            <label class="form-control-label" v-text="$t('ecomApp.caracteristique.produit')" for="caracteristique-produit">Produit</label>
             <select class="form-control" id="caracteristique-produit" data-cy="produit" name="produit" v-model="caracteristique.produit">
               <option v-bind:value="null"></option>
               <option

@@ -66,7 +66,7 @@ export default class TransactionUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('ecomV2App.transaction.updated', { param: param.id });
+          const message = this.$t('ecomApp.transaction.updated', { param: param.id });
           return (this.$root as any).$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Info',
@@ -85,7 +85,7 @@ export default class TransactionUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('ecomV2App.transaction.created', { param: param.id });
+          const message = this.$t('ecomApp.transaction.created', { param: param.id });
           (this.$root as any).$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',

@@ -3,17 +3,17 @@
     <div class="col-8">
       <div v-if="image">
         <h2 class="jh-entity-heading" data-cy="imageDetailsHeading">
-          <span v-text="$t('ecomV2App.image.detail.title')">Image</span> {{ image.id }}
+          <span v-text="$t('ecomApp.image.detail.title')">Image</span> {{ image.id }}
         </h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span v-text="$t('ecomV2App.image.lienImage')">Lien Image</span>
+            <span v-text="$t('ecomApp.image.lienImage')">Lien Image</span>
           </dt>
           <dd>
             <span>{{ image.lienImage }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.image.caracteristique')">Caracteristique</span>
+            <span v-text="$t('ecomApp.image.caracteristique')">Caracteristique</span>
           </dt>
           <dd>
             <div v-if="image.caracteristique">
@@ -23,7 +23,7 @@
             </div>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.image.produit')">Produit</span>
+            <span v-text="$t('ecomApp.image.produit')">Produit</span>
           </dt>
           <dd>
             <div v-if="image.produit">

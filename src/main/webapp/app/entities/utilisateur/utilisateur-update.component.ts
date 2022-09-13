@@ -62,7 +62,7 @@ export default class UtilisateurUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('ecomV2App.utilisateur.updated', { param: param.id });
+          const message = this.$t('ecomApp.utilisateur.updated', { param: param.id });
           return (this.$root as any).$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Info',
@@ -81,7 +81,7 @@ export default class UtilisateurUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('ecomV2App.utilisateur.created', { param: param.id });
+          const message = this.$t('ecomApp.utilisateur.created', { param: param.id });
           (this.$root as any).$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',

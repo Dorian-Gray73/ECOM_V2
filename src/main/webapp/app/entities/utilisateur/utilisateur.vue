@@ -1,11 +1,11 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="UtilisateurHeading">
-      <span v-text="$t('ecomV2App.utilisateur.home.title')" id="utilisateur-heading">Utilisateurs</span>
+      <span v-text="$t('ecomApp.utilisateur.home.title')" id="utilisateur-heading">Utilisateurs</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
-          <span v-text="$t('ecomV2App.utilisateur.home.refreshListLabel')">Refresh List</span>
+          <span v-text="$t('ecomApp.utilisateur.home.refreshListLabel')">Refresh List</span>
         </button>
         <router-link :to="{ name: 'UtilisateurCreate' }" custom v-slot="{ navigate }">
           <button
@@ -15,25 +15,25 @@
             class="btn btn-primary jh-create-entity create-utilisateur"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span v-text="$t('ecomV2App.utilisateur.home.createLabel')"> Create a new Utilisateur </span>
+            <span v-text="$t('ecomApp.utilisateur.home.createLabel')"> Create a new Utilisateur </span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && utilisateurs && utilisateurs.length === 0">
-      <span v-text="$t('ecomV2App.utilisateur.home.notFound')">No utilisateurs found</span>
+      <span v-text="$t('ecomApp.utilisateur.home.notFound')">No utilisateurs found</span>
     </div>
     <div class="table-responsive" v-if="utilisateurs && utilisateurs.length > 0">
       <table class="table table-striped" aria-describedby="utilisateurs">
         <thead>
           <tr>
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.utilisateur.nom')">Nom</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.utilisateur.prenom')">Prenom</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.utilisateur.courriel')">Courriel</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.utilisateur.adresse')">Adresse</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.utilisateur.type')">Type</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.utilisateur.nom')">Nom</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.utilisateur.prenom')">Prenom</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.utilisateur.courriel')">Courriel</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.utilisateur.adresse')">Adresse</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.utilisateur.type')">Type</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -46,7 +46,7 @@
             <td>{{ utilisateur.prenom }}</td>
             <td>{{ utilisateur.courriel }}</td>
             <td>{{ utilisateur.adresse }}</td>
-            <td v-text="$t('ecomV2App.Type.' + utilisateur.type)">{{ utilisateur.type }}</td>
+            <td v-text="$t('ecomApp.Type.' + utilisateur.type)">{{ utilisateur.type }}</td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'UtilisateurView', params: { utilisateurId: utilisateur.id } }" custom v-slot="{ navigate }">
@@ -79,12 +79,12 @@
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
-        ><span id="ecomV2App.utilisateur.delete.question" data-cy="utilisateurDeleteDialogHeading" v-text="$t('entity.delete.title')"
+        ><span id="ecomApp.utilisateur.delete.question" data-cy="utilisateurDeleteDialogHeading" v-text="$t('entity.delete.title')"
           >Confirm delete operation</span
         ></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-utilisateur-heading" v-text="$t('ecomV2App.utilisateur.delete.question', { id: removeId })">
+        <p id="jhi-delete-utilisateur-heading" v-text="$t('ecomApp.utilisateur.delete.question', { id: removeId })">
           Are you sure you want to delete this Utilisateur?
         </p>
       </div>

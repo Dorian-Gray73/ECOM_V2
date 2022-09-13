@@ -3,9 +3,9 @@
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2
-          id="ecomV2App.produit.home.createOrEditLabel"
+          id="ecomApp.produit.home.createOrEditLabel"
           data-cy="ProduitCreateUpdateHeading"
-          v-text="$t('ecomV2App.produit.home.createOrEditLabel')"
+          v-text="$t('ecomApp.produit.home.createOrEditLabel')"
         >
           Create or edit a Produit
         </h2>
@@ -15,7 +15,7 @@
             <input type="text" class="form-control" id="id" name="id" v-model="produit.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.produit.nom')" for="produit-nom">Nom</label>
+            <label class="form-control-label" v-text="$t('ecomApp.produit.nom')" for="produit-nom">Nom</label>
             <input
               type="text"
               class="form-control"
@@ -27,7 +27,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.produit.prix')" for="produit-prix">Prix</label>
+            <label class="form-control-label" v-text="$t('ecomApp.produit.prix')" for="produit-prix">Prix</label>
             <input
               type="number"
               class="form-control"
@@ -39,7 +39,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.produit.lienImage')" for="produit-lienImage">Lien Image</label>
+            <label class="form-control-label" v-text="$t('ecomApp.produit.lienImage')" for="produit-lienImage">Lien Image</label>
             <input
               type="text"
               class="form-control"
@@ -51,7 +51,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.produit.marque')" for="produit-marque">Marque</label>
+            <label class="form-control-label" v-text="$t('ecomApp.produit.marque')" for="produit-marque">Marque</label>
             <input
               type="text"
               class="form-control"
@@ -63,7 +63,19 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.produit.progressif')" for="produit-progressif">Progressif</label>
+            <label class="form-control-label" v-text="$t('ecomApp.produit.modele')" for="produit-modele">Modele</label>
+            <input
+              type="text"
+              class="form-control"
+              name="modele"
+              id="produit-modele"
+              data-cy="modele"
+              :class="{ valid: !$v.produit.modele.$invalid, invalid: $v.produit.modele.$invalid }"
+              v-model="$v.produit.modele.$model"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('ecomApp.produit.progressif')" for="produit-progressif">Progressif</label>
             <input
               type="checkbox"
               class="form-check"

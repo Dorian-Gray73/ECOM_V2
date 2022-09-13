@@ -3,9 +3,9 @@
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2
-          id="ecomV2App.ligneTransaction.home.createOrEditLabel"
+          id="ecomApp.ligneTransaction.home.createOrEditLabel"
           data-cy="LigneTransactionCreateUpdateHeading"
-          v-text="$t('ecomV2App.ligneTransaction.home.createOrEditLabel')"
+          v-text="$t('ecomApp.ligneTransaction.home.createOrEditLabel')"
         >
           Create or edit a LigneTransaction
         </h2>
@@ -15,7 +15,7 @@
             <input type="text" class="form-control" id="id" name="id" v-model="ligneTransaction.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.ligneTransaction.quantite')" for="ligne-transaction-quantite"
+            <label class="form-control-label" v-text="$t('ecomApp.ligneTransaction.quantite')" for="ligne-transaction-quantite"
               >Quantite</label
             >
             <input
@@ -29,7 +29,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.ligneTransaction.prixUnitaire')" for="ligne-transaction-prixUnitaire"
+            <label class="form-control-label" v-text="$t('ecomApp.ligneTransaction.prixUnitaire')" for="ligne-transaction-prixUnitaire"
               >Prix Unitaire</label
             >
             <input
@@ -43,7 +43,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.ligneTransaction.transaction')" for="ligne-transaction-transaction"
+            <label class="form-control-label" v-text="$t('ecomApp.ligneTransaction.transaction')" for="ligne-transaction-transaction"
               >Transaction</label
             >
             <select

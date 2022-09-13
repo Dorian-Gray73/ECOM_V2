@@ -3,9 +3,9 @@
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2
-          id="ecomV2App.transaction.home.createOrEditLabel"
+          id="ecomApp.transaction.home.createOrEditLabel"
           data-cy="TransactionCreateUpdateHeading"
-          v-text="$t('ecomV2App.transaction.home.createOrEditLabel')"
+          v-text="$t('ecomApp.transaction.home.createOrEditLabel')"
         >
           Create or edit a Transaction
         </h2>
@@ -15,7 +15,7 @@
             <input type="text" class="form-control" id="id" name="id" v-model="transaction.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.transaction.etat')" for="transaction-etat">Etat</label>
+            <label class="form-control-label" v-text="$t('ecomApp.transaction.etat')" for="transaction-etat">Etat</label>
             <select
               class="form-control"
               name="etat"
@@ -28,14 +28,14 @@
                 v-for="etatProduit in etatProduitValues"
                 :key="etatProduit"
                 v-bind:value="etatProduit"
-                v-bind:label="$t('ecomV2App.EtatProduit.' + etatProduit)"
+                v-bind:label="$t('ecomApp.EtatProduit.' + etatProduit)"
               >
                 {{ etatProduit }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.transaction.date')" for="transaction-date">Date</label>
+            <label class="form-control-label" v-text="$t('ecomApp.transaction.date')" for="transaction-date">Date</label>
             <b-input-group class="mb-3">
               <b-input-group-prepend>
                 <b-form-datepicker
@@ -63,7 +63,7 @@
             </b-input-group>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.transaction.utilisateur')" for="transaction-utilisateur"
+            <label class="form-control-label" v-text="$t('ecomApp.transaction.utilisateur')" for="transaction-utilisateur"
               >Utilisateur</label
             >
             <select

@@ -8,9 +8,6 @@ import { ICaracteristique } from '@/shared/model/caracteristique.model';
 import ImageService from '@/entities/image/image.service';
 import { IImage } from '@/shared/model/image.model';
 
-import ModeleService from '@/entities/modele/modele.service';
-import { IModele } from '@/shared/model/modele.model';
-
 import { IProduit, Produit } from '@/shared/model/produit.model';
 import ProduitService from './produit.service';
 
@@ -20,6 +17,7 @@ const validations: any = {
     prix: {},
     lienImage: {},
     marque: {},
+    modele: {},
     progressif: {},
   },
 };
@@ -40,10 +38,6 @@ export default class ProduitUpdate extends Vue {
   @Inject('imageService') private imageService: () => ImageService;
 
   public images: IImage[] = [];
-
-  @Inject('modeleService') private modeleService: () => ModeleService;
-
-  public modeles: IModele[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -74,7 +68,7 @@ export default class ProduitUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('ecomV2App.produit.updated', { param: param.id });
+          const message = this.$t('ecomApp.produit.updated', { param: param.id });
           return (this.$root as any).$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Info',
@@ -93,7 +87,7 @@ export default class ProduitUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('ecomV2App.produit.created', { param: param.id });
+          const message = this.$t('ecomApp.produit.created', { param: param.id });
           (this.$root as any).$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',
@@ -134,11 +128,6 @@ export default class ProduitUpdate extends Vue {
       .retrieve()
       .then(res => {
         this.images = res.data;
-      });
-    this.modeleService()
-      .retrieve()
-      .then(res => {
-        this.modeles = res.data;
       });
   }
 }

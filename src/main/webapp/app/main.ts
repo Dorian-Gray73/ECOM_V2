@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.common with an alias.
 import Vue from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 import { setupAxiosInterceptors } from '@/shared/config/axios-interceptor';
 
 import App from './app.vue';
@@ -24,6 +25,16 @@ import LoginService from './account/login.service';
 import AccountService from './account/account.service';
 import AlertService from './shared/alert/alert.service';
 
+import { BCarousel } from 'bootstrap-vue';
+import { BCarouselSlide } from 'bootstrap-vue';
+import { LayoutPlugin } from 'bootstrap-vue';
+import { FormCheckboxPlugin } from 'bootstrap-vue';
+import { BFormCheckboxGroup } from 'bootstrap-vue';
+import { BFormCheckbox } from 'bootstrap-vue';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
 import '../content/scss/global.scss';
 import '../content/scss/vendor.scss';
 import TranslationService from '@/locale/translation.service';
@@ -38,10 +49,19 @@ config.initFortAwesome(Vue);
 bootstrapVueConfig.initBootstrapVue(Vue);
 Vue.use(Vue2Filters);
 Vue.use(ToastPlugin);
+Vue.use(LayoutPlugin);
+Vue.use(FormCheckboxPlugin);
+Vue.component('b-form-checkbox-group', BFormCheckboxGroup);
+Vue.component('b-form-checkbox', BFormCheckbox);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('jhi-item-count', JhiItemCountComponent);
 Vue.component('jhi-sort-indicator', JhiSortIndicatorComponent);
+Vue.component('b-carousel', BCarousel);
+Vue.component('b-carousel-slide', BCarouselSlide);
 Vue.component('infinite-loading', InfiniteLoading);
+
+library.add(fas);
+
 const i18n = config.initI18N(Vue);
 const store = config.initVueXStore(Vue);
 

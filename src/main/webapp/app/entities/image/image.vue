@@ -1,11 +1,11 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="ImageHeading">
-      <span v-text="$t('ecomV2App.image.home.title')" id="image-heading">Images</span>
+      <span v-text="$t('ecomApp.image.home.title')" id="image-heading">Images</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
-          <span v-text="$t('ecomV2App.image.home.refreshListLabel')">Refresh List</span>
+          <span v-text="$t('ecomApp.image.home.refreshListLabel')">Refresh List</span>
         </button>
         <router-link :to="{ name: 'ImageCreate' }" custom v-slot="{ navigate }">
           <button
@@ -15,23 +15,23 @@
             class="btn btn-primary jh-create-entity create-image"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span v-text="$t('ecomV2App.image.home.createLabel')"> Create a new Image </span>
+            <span v-text="$t('ecomApp.image.home.createLabel')"> Create a new Image </span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && images && images.length === 0">
-      <span v-text="$t('ecomV2App.image.home.notFound')">No images found</span>
+      <span v-text="$t('ecomApp.image.home.notFound')">No images found</span>
     </div>
     <div class="table-responsive" v-if="images && images.length > 0">
       <table class="table table-striped" aria-describedby="images">
         <thead>
           <tr>
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.image.lienImage')">Lien Image</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.image.caracteristique')">Caracteristique</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.image.produit')">Produit</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.image.lienImage')">Lien Image</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.image.caracteristique')">Caracteristique</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.image.produit')">Produit</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -85,12 +85,12 @@
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
-        ><span id="ecomV2App.image.delete.question" data-cy="imageDeleteDialogHeading" v-text="$t('entity.delete.title')"
+        ><span id="ecomApp.image.delete.question" data-cy="imageDeleteDialogHeading" v-text="$t('entity.delete.title')"
           >Confirm delete operation</span
         ></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-image-heading" v-text="$t('ecomV2App.image.delete.question', { id: removeId })">
+        <p id="jhi-delete-image-heading" v-text="$t('ecomApp.image.delete.question', { id: removeId })">
           Are you sure you want to delete this Image?
         </p>
       </div>

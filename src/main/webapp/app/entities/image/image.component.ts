@@ -57,7 +57,7 @@ export default class Image extends Vue {
     this.imageService()
       .delete(this.removeId)
       .then(() => {
-        const message = this.$t('ecomV2App.image.deleted', { param: this.removeId });
+        const message = this.$t('ecomApp.image.deleted', { param: this.removeId });
         this.$bvToast.toast(message.toString(), {
           toaster: 'b-toaster-top-center',
           title: 'Info',

@@ -1,11 +1,11 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="TransactionHeading">
-      <span v-text="$t('ecomV2App.transaction.home.title')" id="transaction-heading">Transactions</span>
+      <span v-text="$t('ecomApp.transaction.home.title')" id="transaction-heading">Transactions</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
-          <span v-text="$t('ecomV2App.transaction.home.refreshListLabel')">Refresh List</span>
+          <span v-text="$t('ecomApp.transaction.home.refreshListLabel')">Refresh List</span>
         </button>
         <router-link :to="{ name: 'TransactionCreate' }" custom v-slot="{ navigate }">
           <button
@@ -15,23 +15,23 @@
             class="btn btn-primary jh-create-entity create-transaction"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span v-text="$t('ecomV2App.transaction.home.createLabel')"> Create a new Transaction </span>
+            <span v-text="$t('ecomApp.transaction.home.createLabel')"> Create a new Transaction </span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && transactions && transactions.length === 0">
-      <span v-text="$t('ecomV2App.transaction.home.notFound')">No transactions found</span>
+      <span v-text="$t('ecomApp.transaction.home.notFound')">No transactions found</span>
     </div>
     <div class="table-responsive" v-if="transactions && transactions.length > 0">
       <table class="table table-striped" aria-describedby="transactions">
         <thead>
           <tr>
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.transaction.etat')">Etat</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.transaction.date')">Date</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.transaction.utilisateur')">Utilisateur</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.transaction.etat')">Etat</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.transaction.date')">Date</span></th>
+            <th scope="row"><span v-text="$t('ecomApp.transaction.utilisateur')">Utilisateur</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -40,7 +40,7 @@
             <td>
               <router-link :to="{ name: 'TransactionView', params: { transactionId: transaction.id } }">{{ transaction.id }}</router-link>
             </td>
-            <td v-text="$t('ecomV2App.EtatProduit.' + transaction.etat)">{{ transaction.etat }}</td>
+            <td v-text="$t('ecomApp.EtatProduit.' + transaction.etat)">{{ transaction.etat }}</td>
             <td>{{ transaction.date }}</td>
             <td>
               <div v-if="transaction.utilisateur">
@@ -81,12 +81,12 @@
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
-        ><span id="ecomV2App.transaction.delete.question" data-cy="transactionDeleteDialogHeading" v-text="$t('entity.delete.title')"
+        ><span id="ecomApp.transaction.delete.question" data-cy="transactionDeleteDialogHeading" v-text="$t('entity.delete.title')"
           >Confirm delete operation</span
         ></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-transaction-heading" v-text="$t('ecomV2App.transaction.delete.question', { id: removeId })">
+        <p id="jhi-delete-transaction-heading" v-text="$t('ecomApp.transaction.delete.question', { id: removeId })">
           Are you sure you want to delete this Transaction?
         </p>
       </div>

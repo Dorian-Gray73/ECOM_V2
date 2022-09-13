@@ -57,7 +57,7 @@ export default class Utilisateur extends Vue {
     this.utilisateurService()
       .delete(this.removeId)
       .then(() => {
-        const message = this.$t('ecomV2App.utilisateur.deleted', { param: this.removeId });
+        const message = this.$t('ecomApp.utilisateur.deleted', { param: this.removeId });
         this.$bvToast.toast(message.toString(), {
           toaster: 'b-toaster-top-center',
           title: 'Info',

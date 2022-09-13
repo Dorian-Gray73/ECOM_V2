@@ -3,9 +3,9 @@
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2
-          id="ecomV2App.utilisateur.home.createOrEditLabel"
+          id="ecomApp.utilisateur.home.createOrEditLabel"
           data-cy="UtilisateurCreateUpdateHeading"
-          v-text="$t('ecomV2App.utilisateur.home.createOrEditLabel')"
+          v-text="$t('ecomApp.utilisateur.home.createOrEditLabel')"
         >
           Create or edit a Utilisateur
         </h2>
@@ -15,7 +15,7 @@
             <input type="text" class="form-control" id="id" name="id" v-model="utilisateur.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.utilisateur.nom')" for="utilisateur-nom">Nom</label>
+            <label class="form-control-label" v-text="$t('ecomApp.utilisateur.nom')" for="utilisateur-nom">Nom</label>
             <input
               type="text"
               class="form-control"
@@ -27,7 +27,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.utilisateur.prenom')" for="utilisateur-prenom">Prenom</label>
+            <label class="form-control-label" v-text="$t('ecomApp.utilisateur.prenom')" for="utilisateur-prenom">Prenom</label>
             <input
               type="text"
               class="form-control"
@@ -39,7 +39,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.utilisateur.courriel')" for="utilisateur-courriel">Courriel</label>
+            <label class="form-control-label" v-text="$t('ecomApp.utilisateur.courriel')" for="utilisateur-courriel">Courriel</label>
             <input
               type="text"
               class="form-control"
@@ -51,7 +51,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.utilisateur.adresse')" for="utilisateur-adresse">Adresse</label>
+            <label class="form-control-label" v-text="$t('ecomApp.utilisateur.adresse')" for="utilisateur-adresse">Adresse</label>
             <input
               type="text"
               class="form-control"
@@ -63,7 +63,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.utilisateur.type')" for="utilisateur-type">Type</label>
+            <label class="form-control-label" v-text="$t('ecomApp.utilisateur.type')" for="utilisateur-type">Type</label>
             <select
               class="form-control"
               name="type"
@@ -72,7 +72,7 @@
               id="utilisateur-type"
               data-cy="type"
             >
-              <option v-for="type in typeValues" :key="type" v-bind:value="type" v-bind:label="$t('ecomV2App.Type.' + type)">
+              <option v-for="type in typeValues" :key="type" v-bind:value="type" v-bind:label="$t('ecomApp.Type.' + type)">
                 {{ type }}
               </option>
             </select>

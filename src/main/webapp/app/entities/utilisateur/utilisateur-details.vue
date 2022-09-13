@@ -3,38 +3,38 @@
     <div class="col-8">
       <div v-if="utilisateur">
         <h2 class="jh-entity-heading" data-cy="utilisateurDetailsHeading">
-          <span v-text="$t('ecomV2App.utilisateur.detail.title')">Utilisateur</span> {{ utilisateur.id }}
+          <span v-text="$t('ecomApp.utilisateur.detail.title')">Utilisateur</span> {{ utilisateur.id }}
         </h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span v-text="$t('ecomV2App.utilisateur.nom')">Nom</span>
+            <span v-text="$t('ecomApp.utilisateur.nom')">Nom</span>
           </dt>
           <dd>
             <span>{{ utilisateur.nom }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.utilisateur.prenom')">Prenom</span>
+            <span v-text="$t('ecomApp.utilisateur.prenom')">Prenom</span>
           </dt>
           <dd>
             <span>{{ utilisateur.prenom }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.utilisateur.courriel')">Courriel</span>
+            <span v-text="$t('ecomApp.utilisateur.courriel')">Courriel</span>
           </dt>
           <dd>
             <span>{{ utilisateur.courriel }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.utilisateur.adresse')">Adresse</span>
+            <span v-text="$t('ecomApp.utilisateur.adresse')">Adresse</span>
           </dt>
           <dd>
             <span>{{ utilisateur.adresse }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.utilisateur.type')">Type</span>
+            <span v-text="$t('ecomApp.utilisateur.type')">Type</span>
           </dt>
           <dd>
-            <span v-text="$t('ecomV2App.Type.' + utilisateur.type)">{{ utilisateur.type }}</span>
+            <span v-text="$t('ecomApp.Type.' + utilisateur.type)">{{ utilisateur.type }}</span>
           </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

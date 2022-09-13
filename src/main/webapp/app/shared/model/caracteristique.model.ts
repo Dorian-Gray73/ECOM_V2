@@ -5,7 +5,6 @@ import { IProduit } from '@/shared/model/produit.model';
 export interface ICaracteristique {
   id?: number;
   couleur?: string | null;
-  couleurHexa?: string | null;
   quantite?: number | null;
   lienImage?: string | null;
   images?: IImage[] | null;
@@ -17,7 +16,6 @@ export class Caracteristique implements ICaracteristique {
   constructor(
     public id?: number,
     public couleur?: string | null,
-    public couleurHexa?: string | null,
     public quantite?: number | null,
     public lienImage?: string | null,
     public images?: IImage[] | null,

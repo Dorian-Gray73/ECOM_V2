@@ -3,35 +3,29 @@
     <div class="col-8">
       <div v-if="caracteristique">
         <h2 class="jh-entity-heading" data-cy="caracteristiqueDetailsHeading">
-          <span v-text="$t('ecomV2App.caracteristique.detail.title')">Caracteristique</span> {{ caracteristique.id }}
+          <span v-text="$t('ecomApp.caracteristique.detail.title')">Caracteristique</span> {{ caracteristique.id }}
         </h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span v-text="$t('ecomV2App.caracteristique.couleur')">Couleur</span>
+            <span v-text="$t('ecomApp.caracteristique.couleur')">Couleur</span>
           </dt>
           <dd>
             <span>{{ caracteristique.couleur }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.caracteristique.couleurHexa')">Couleur Hexa</span>
-          </dt>
-          <dd>
-            <span>{{ caracteristique.couleurHexa }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('ecomV2App.caracteristique.quantite')">Quantite</span>
+            <span v-text="$t('ecomApp.caracteristique.quantite')">Quantite</span>
           </dt>
           <dd>
             <span>{{ caracteristique.quantite }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.caracteristique.lienImage')">Lien Image</span>
+            <span v-text="$t('ecomApp.caracteristique.lienImage')">Lien Image</span>
           </dt>
           <dd>
             <span>{{ caracteristique.lienImage }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.caracteristique.ligneTransaction')">Ligne Transaction</span>
+            <span v-text="$t('ecomApp.caracteristique.ligneTransaction')">Ligne Transaction</span>
           </dt>
           <dd>
             <div v-if="caracteristique.ligneTransaction">
@@ -41,7 +35,7 @@
             </div>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.caracteristique.produit')">Produit</span>
+            <span v-text="$t('ecomApp.caracteristique.produit')">Produit</span>
           </dt>
           <dd>
             <div v-if="caracteristique.produit">

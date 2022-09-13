@@ -3,23 +3,23 @@
     <div class="col-8">
       <div v-if="ligneTransaction">
         <h2 class="jh-entity-heading" data-cy="ligneTransactionDetailsHeading">
-          <span v-text="$t('ecomV2App.ligneTransaction.detail.title')">LigneTransaction</span> {{ ligneTransaction.id }}
+          <span v-text="$t('ecomApp.ligneTransaction.detail.title')">LigneTransaction</span> {{ ligneTransaction.id }}
         </h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span v-text="$t('ecomV2App.ligneTransaction.quantite')">Quantite</span>
+            <span v-text="$t('ecomApp.ligneTransaction.quantite')">Quantite</span>
           </dt>
           <dd>
             <span>{{ ligneTransaction.quantite }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.ligneTransaction.prixUnitaire')">Prix Unitaire</span>
+            <span v-text="$t('ecomApp.ligneTransaction.prixUnitaire')">Prix Unitaire</span>
           </dt>
           <dd>
             <span>{{ ligneTransaction.prixUnitaire }}</span>
           </dd>
           <dt>
-            <span v-text="$t('ecomV2App.ligneTransaction.transaction')">Transaction</span>
+            <span v-text="$t('ecomApp.ligneTransaction.transaction')">Transaction</span>
           </dt>
           <dd>
             <div v-if="ligneTransaction.transaction">
