@@ -10,7 +10,17 @@ import LigneTransactionService from './ligne-transaction/ligne-transaction.servi
 import ImageService from './image/image.service';
 // jhipster-needle-add-entity-service-to-entities-component-import - JHipster will import entities services here
 
-@Component
+import JhiNavbar from '@/core/jhi-navbar/jhi-navbar.vue';
+import LoginForm from '@/account/login-form/login-form.vue';
+import Ribbon from '@/core/ribbon/ribbon.vue';
+
+@Component({
+  components: {
+    ribbon: Ribbon,
+    'jhi-navbar': JhiNavbar,
+    'login-form': LoginForm,
+  },
+})
 export default class Entities extends Vue {
   @Provide('userService') private userService = () => new UserService();
   @Provide('utilisateurService') private utilisateurService = () => new UtilisateurService();
