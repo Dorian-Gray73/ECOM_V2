@@ -31,6 +31,9 @@ import { FormCheckboxPlugin } from 'bootstrap-vue';
 import { BFormCheckboxGroup } from 'bootstrap-vue';
 import { BFormCheckbox } from 'bootstrap-vue';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
 import '../content/scss/global.scss';
 import '../content/scss/vendor.scss';
 import TranslationService from '@/locale/translation.service';
@@ -57,6 +60,8 @@ Vue.component('b-carousel-slide', BCarouselSlide);
 Vue.component('infinite-loading', InfiniteLoading);
 const i18n = config.initI18N(Vue);
 const store = config.initVueXStore(Vue);
+
+library.add(fas);
 
 const translationService = new TranslationService(store, i18n);
 const loginService = new LoginService();
