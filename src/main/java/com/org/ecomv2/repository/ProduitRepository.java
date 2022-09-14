@@ -12,6 +12,10 @@ import org.springframework.stereotype.Repository;
 @Transactional
 @Repository
 public interface ProduitRepository extends JpaRepository<Produit, Long> {
+    /**
+     * Function which return the name of Produit
+     * @return Une liste de Produits
+     */
     @Query("SELECT nom from Produit")
     List<Produit> getNomProduits();
 }
