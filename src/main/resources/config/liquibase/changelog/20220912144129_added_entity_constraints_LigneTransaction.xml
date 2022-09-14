@@ -13,5 +13,11 @@
                                  constraintName="fk_ligne_transaction__transaction_id"
                                  referencedColumnNames="id"
                                  referencedTableName="transaction"/>
+
+        <addForeignKeyConstraint baseColumnNames="caracteristique_id"
+                                 baseTableName="ligne_transaction"
+                                 constraintName="fk_ligne_transaction__caracteristique_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="caracteristique"/>
     </changeSet>
 </databaseChangeLog>

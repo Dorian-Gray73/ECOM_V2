@@ -11,9 +11,9 @@ import CaracteristiqueService from '@/entities/caracteristique/caracteristique.s
 
 import ImageService from '@/entities/image/image.service';
 
-import ProduitService from '@/entities/produit/produit.service';
-
 import LigneTransactionService from '@/entities/ligne-transaction/ligne-transaction.service';
+
+import ProduitService from '@/entities/produit/produit.service';
 import AlertService from '@/shared/alert/alert.service';
 
 const localVue = createLocalVue();
@@ -53,13 +53,13 @@ describe('Component Tests', () => {
               retrieve: sinon.stub().resolves({}),
             } as any),
 
-          produitService: () =>
-            sinon.createStubInstance<ProduitService>(ProduitService, {
+          ligneTransactionService: () =>
+            sinon.createStubInstance<LigneTransactionService>(LigneTransactionService, {
               retrieve: sinon.stub().resolves({}),
             } as any),
 
-          ligneTransactionService: () =>
-            sinon.createStubInstance<LigneTransactionService>(LigneTransactionService, {
+          produitService: () =>
+            sinon.createStubInstance<ProduitService>(ProduitService, {
               retrieve: sinon.stub().resolves({}),
             } as any),
         },

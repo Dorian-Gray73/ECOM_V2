@@ -67,6 +67,34 @@
               </option>
             </select>
           </div>
+          <div class="form-group">
+            <label
+              class="form-control-label"
+              v-text="$t('ecomV2App.ligneTransaction.caracteristique')"
+              for="ligne-transaction-caracteristique"
+              >Caracteristique</label
+            >
+            <select
+              class="form-control"
+              id="ligne-transaction-caracteristique"
+              data-cy="caracteristique"
+              name="caracteristique"
+              v-model="ligneTransaction.caracteristique"
+            >
+              <option v-bind:value="null"></option>
+              <option
+                v-bind:value="
+                  ligneTransaction.caracteristique && caracteristiqueOption.id === ligneTransaction.caracteristique.id
+                    ? ligneTransaction.caracteristique
+                    : caracteristiqueOption
+                "
+                v-for="caracteristiqueOption in caracteristiques"
+                :key="caracteristiqueOption.id"
+              >
+                {{ caracteristiqueOption.id }}
+              </option>
+            </select>
+          </div>
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">

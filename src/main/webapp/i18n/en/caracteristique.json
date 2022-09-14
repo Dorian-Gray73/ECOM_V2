@@ -21,8 +21,8 @@
       "couleur": "Couleur",
       "quantite": "Quantite",
       "image": "Image",
-      "produit": "Produit",
-      "ligneTransaction": "Ligne Transaction"
+      "ligneTransaction": "Ligne Transaction",
+      "produit": "Produit"
     }
   }
 }
