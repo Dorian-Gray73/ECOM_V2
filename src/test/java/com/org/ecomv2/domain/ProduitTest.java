@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 
 import com.org.ecomv2.repository.ProduitRepository;
 import com.org.ecomv2.web.rest.TestUtil;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,7 +16,7 @@ class ProduitTest {
 
     @Test
     public void getProduits() {
-        String[] noms = this.produitRepository.getNomProduits();
+        List<Produit> noms = this.produitRepository.getNomProduits();
         System.out.println(noms);
         assertNotNull(noms);
     }
