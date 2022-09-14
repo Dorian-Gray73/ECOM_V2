@@ -1,14 +1,14 @@
 import { IImage } from '@/shared/model/image.model';
-import { IProduit } from '@/shared/model/produit.model';
 import { ILigneTransaction } from '@/shared/model/ligne-transaction.model';
+import { IProduit } from '@/shared/model/produit.model';
 
 export interface ICaracteristique {
   id?: number;
   couleur?: string | null;
   quantite?: number | null;
   images?: IImage[] | null;
+  ligneTransactions?: ILigneTransaction[] | null;
   produit?: IProduit | null;
-  ligneTransaction?: ILigneTransaction | null;
 }
 
 export class Caracteristique implements ICaracteristique {
@@ -17,7 +17,7 @@ export class Caracteristique implements ICaracteristique {
     public couleur?: string | null,
     public quantite?: number | null,
     public images?: IImage[] | null,
-    public produit?: IProduit | null,
-    public ligneTransaction?: ILigneTransaction | null
+    public ligneTransactions?: ILigneTransaction[] | null,
+    public produit?: IProduit | null
   ) {}
 }

@@ -28,16 +28,6 @@
               }}</router-link>
             </div>
           </dd>
-          <dt>
-            <span v-text="$t('ecomV2App.caracteristique.ligneTransaction')">Ligne Transaction</span>
-          </dt>
-          <dd>
-            <div v-if="caracteristique.ligneTransaction">
-              <router-link :to="{ name: 'LigneTransactionView', params: { ligneTransactionId: caracteristique.ligneTransaction.id } }">{{
-                caracteristique.ligneTransaction.id
-              }}</router-link>
-            </div>
-          </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
           <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.back')"> Back</span>

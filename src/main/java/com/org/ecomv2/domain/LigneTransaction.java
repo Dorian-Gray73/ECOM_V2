@@ -2,8 +2,6 @@ package com.org.ecomv2.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.*;
 
 /**
@@ -27,13 +25,13 @@ public class LigneTransaction implements Serializable {
     @Column(name = "prix_unitaire")
     private Float prixUnitaire;
 
-    @OneToMany(mappedBy = "ligneTransaction")
-    @JsonIgnoreProperties(value = { "images", "produit", "ligneTransaction" }, allowSetters = true)
-    private Set<Caracteristique> caracteristiques = new HashSet<>();
-
     @ManyToOne
     @JsonIgnoreProperties(value = { "ligneTransactions", "utilisateur" }, allowSetters = true)
     private Transaction transaction;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "images", "ligneTransactions", "produit" }, allowSetters = true)
+    private Caracteristique caracteristique;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -76,37 +74,6 @@ public class LigneTransaction implements Serializable {
         this.prixUnitaire = prixUnitaire;
     }
 
-    public Set<Caracteristique> getCaracteristiques() {
-        return this.caracteristiques;
-    }
-
-    public void setCaracteristiques(Set<Caracteristique> caracteristiques) {
-        if (this.caracteristiques != null) {
-            this.caracteristiques.forEach(i -> i.setLigneTransaction(null));
-        }
-        if (caracteristiques != null) {
-            caracteristiques.forEach(i -> i.setLigneTransaction(this));
-        }
-        this.caracteristiques = caracteristiques;
-    }
-
-    public LigneTransaction caracteristiques(Set<Caracteristique> caracteristiques) {
-        this.setCaracteristiques(caracteristiques);
-        return this;
-    }
-
-    public LigneTransaction addCaracteristique(Caracteristique caracteristique) {
-        this.caracteristiques.add(caracteristique);
-        caracteristique.setLigneTransaction(this);
-        return this;
-    }
-
-    public LigneTransaction removeCaracteristique(Caracteristique caracteristique) {
-        this.caracteristiques.remove(caracteristique);
-        caracteristique.setLigneTransaction(null);
-        return this;
-    }
-
     public Transaction getTransaction() {
         return this.transaction;
     }
@@ -117,6 +84,19 @@ public class LigneTransaction implements Serializable {
 
     public LigneTransaction transaction(Transaction transaction) {
         this.setTransaction(transaction);
+        return this;
+    }
+
+    public Caracteristique getCaracteristique() {
+        return this.caracteristique;
+    }
+
+    public void setCaracteristique(Caracteristique caracteristique) {
+        this.caracteristique = caracteristique;
+    }
+
+    public LigneTransaction caracteristique(Caracteristique caracteristique) {
+        this.setCaracteristique(caracteristique);
         return this;
     }
 

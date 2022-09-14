@@ -57,6 +57,6 @@ relationship OneToMany {
     
     Produit{modele} to Modele
 
-	LigneTransaction to Caracteristique{LigneTransaction} 
+	Caracteristique{ligneTransaction} to LigneTransaction
 
 }
