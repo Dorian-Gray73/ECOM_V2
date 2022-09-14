@@ -3,12 +3,14 @@
     <span id="title">Résultats de la recherche</span>
     <hr id="separate" />
     <div id="resultat">
+      <!-- SearchBar -->
       <b-input-group id="searchBar">
         <font-awesome-icon icon="fa-solid fa-magnifying-glass" id="iconSearchBar" />
         <b-form-input placeholder="Nom d'une monture" id="inputSearchBar"></b-form-input>
       </b-input-group>
 
       <div id="containerSearch">
+        <!-- Filtre -->
         <div id="filtres">
           <div>Couleur</div>
           <b-form-group v-slot="{ ariaDescribedby }">
@@ -22,57 +24,20 @@
           </b-form-group>
           <div>Prix</div>
         </div>
-        <div id="affichageSearch">
-          <div class="cardPhoto">
-            <a href="/produitDetails">
-              <div id="photo"></div>
-              <div id="nomMonture">Lunette</div>
-              <div id="prixMonture">130 euros</div>
-            </a>
-          </div>
-
-          <div class="cardPhoto">
-            <div id="photo"></div>
-            <div id="nomMonture">Lunette</div>
-            <div id="prixMonture">130 euros</div>
-          </div>
-          <div class="cardPhoto">
-            <div id="photo"></div>
-            <div id="nomMonture">Lunette</div>
-            <div id="prixMonture">130 euros</div>
-          </div>
-          <div class="cardPhoto">
-            <div id="photo"></div>
-            <div id="nomMonture">Lunette</div>
-            <div id="prixMonture">130 euros</div>
-          </div>
-
-          <div class="cardPhoto">
-            <div id="photo"></div>
-            <div id="nomMonture">Lunette</div>
-            <div id="prixMonture">130 euros</div>
-          </div>
-
-          <div class="cardPhoto">
-            <div id="photo"></div>
-            <div id="nomMonture">Lunette</div>
-            <div id="prixMonture">130 euros</div>
-          </div>
-          <div class="cardPhoto">
-            <div id="photo"></div>
-            <div id="nomMonture">Lunette</div>
-            <div id="prixMonture">130 euros</div>
-          </div>
-
-          <div class="cardPhoto">
-            <div id="photo"></div>
-            <div id="nomMonture">Lunette</div>
-            <div id="prixMonture">130 euros</div>
-          </div>
-          <div class="cardPhoto">
-            <div id="photo"></div>
-            <div id="nomMonture">Lunette</div>
-            <div id="prixMonture">130 euros</div>
+        <div id="divPagination">
+          <!-- Affichage Search -->
+          <div id="affichageSearch">
+            <v-for v-for="produit in produits">
+              <div class="cardPhoto">
+                <router-link :to="`/produitDetails/${produit.id}`">
+                  <div id="photo"></div>
+                  <div class="caracteristique">
+                    <div id="nomMonture">{{ produit.nom }}</div>
+                    <div id="prixMonture">{{ produit.prix }}€</div>
+                  </div>
+                </router-link>
+              </div>
+            </v-for>
           </div>
           <b-pagination v-model="currentPage" :total-rows="rows" id="pagination"></b-pagination>
         </div>
@@ -126,6 +91,11 @@
   height: 1186px;
 }
 
+#affichageSearch::after {
+  content: '';
+  flex: auto;
+}
+
 #filtres {
   flex: 1;
   display: flex;
@@ -156,26 +126,6 @@
   background-color: #f7f7f7;
 }
 
-#nomMonture {
-  font-family: 'IBM Plex Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 23px;
-
-  color: #5b85aa;
-}
-
-#prixMonture {
-  font-family: 'IBM Plex Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 23px;
-
-  color: #5b85aa;
-}
-
 #resultat {
   align-items: center;
   display: flex;
@@ -185,5 +135,20 @@
 
 #pagination {
   margin: auto;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.caracteristique {
+  padding: 0px;
+  gap: 8px;
+}
+
+#divPagination {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 </style>

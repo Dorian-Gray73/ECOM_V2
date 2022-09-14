@@ -40,7 +40,7 @@ const router = new Router({
       component: Recherche
     },
     {
-      path: '/produitDetails',
+      path: '/produitDetails/:id',
       name: 'ProduitDetails',
       component: ProduitDetails
     },
