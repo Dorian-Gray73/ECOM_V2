@@ -1,11 +1,24 @@
 package com.org.ecomv2.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNotNull;
 
+import com.org.ecomv2.repository.ProduitRepository;
 import com.org.ecomv2.web.rest.TestUtil;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 class ProduitTest {
+
+    @Autowired
+    ProduitRepository produitRepository;
+
+    @Test
+    public void getProduits() {
+        String[] noms = this.produitRepository.getNomProduits();
+        System.out.println(noms);
+        assertNotNull(noms);
+    }
 
     @Test
     void equalsVerifier() throws Exception {
