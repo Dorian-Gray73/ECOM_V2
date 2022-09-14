@@ -27,7 +27,7 @@
         <div id="divPagination">
           <!-- Affichage Search -->
           <div id="affichageSearch">
-            <v-for v-for="produit in produits">
+            <v-for v-for="produit in produits" :key="produit.id">
               <div class="cardPhoto">
                 <router-link :to="`/produitDetails/${produit.id}`">
                   <div id="photo"></div>
