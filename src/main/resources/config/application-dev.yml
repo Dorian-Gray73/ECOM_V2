@@ -32,9 +32,9 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://ec2-34-247-72-29.eu-west-1.compute.amazonaws.com:5432/deacc9v59mllv5
-    username: xdozkgmilxaluy
-    password: bc6aff3454961f9bfeb54b3754fcc3c806ffd097c6127bac75bb4d760908b71e
+    url: jdbc:postgresql://ec2-54-246-185-161.eu-west-1.compute.amazonaws.com:5432/d1o321489943ih
+    username: hgyjbmtpmeluoh
+    password: b45bbadc0e58002806d0b1fe1dd2e134930414667bb04ec7e08776cb9c93b5b1
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -42,7 +42,7 @@ spring:
     database-platform: tech.jhipster.domain.util.FixedPostgreSQL10Dialect
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
-    contexts: dev, faker
+    contexts: dev
   mail:
     host: localhost
     port: 25
