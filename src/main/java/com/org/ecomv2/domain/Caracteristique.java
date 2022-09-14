@@ -31,13 +31,13 @@ public class Caracteristique implements Serializable {
     @JsonIgnoreProperties(value = { "caracteristique", "produit" }, allowSetters = true)
     private Set<Image> images = new HashSet<>();
 
+    @OneToMany(mappedBy = "caracteristique")
+    @JsonIgnoreProperties(value = { "transaction", "caracteristique" }, allowSetters = true)
+    private Set<LigneTransaction> ligneTransactions = new HashSet<>();
+
     @ManyToOne
     @JsonIgnoreProperties(value = { "caracteristiques", "images", "modeles" }, allowSetters = true)
     private Produit produit;
-
-    @ManyToOne
-    @JsonIgnoreProperties(value = { "caracteristiques", "transaction" }, allowSetters = true)
-    private LigneTransaction ligneTransaction;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -111,6 +111,37 @@ public class Caracteristique implements Serializable {
         return this;
     }
 
+    public Set<LigneTransaction> getLigneTransactions() {
+        return this.ligneTransactions;
+    }
+
+    public void setLigneTransactions(Set<LigneTransaction> ligneTransactions) {
+        if (this.ligneTransactions != null) {
+            this.ligneTransactions.forEach(i -> i.setCaracteristique(null));
+        }
+        if (ligneTransactions != null) {
+            ligneTransactions.forEach(i -> i.setCaracteristique(this));
+        }
+        this.ligneTransactions = ligneTransactions;
+    }
+
+    public Caracteristique ligneTransactions(Set<LigneTransaction> ligneTransactions) {
+        this.setLigneTransactions(ligneTransactions);
+        return this;
+    }
+
+    public Caracteristique addLigneTransaction(LigneTransaction ligneTransaction) {
+        this.ligneTransactions.add(ligneTransaction);
+        ligneTransaction.setCaracteristique(this);
+        return this;
+    }
+
+    public Caracteristique removeLigneTransaction(LigneTransaction ligneTransaction) {
+        this.ligneTransactions.remove(ligneTransaction);
+        ligneTransaction.setCaracteristique(null);
+        return this;
+    }
+
     public Produit getProduit() {
         return this.produit;
     }
@@ -121,19 +152,6 @@ public class Caracteristique implements Serializable {
 
     public Caracteristique produit(Produit produit) {
         this.setProduit(produit);
-        return this;
-    }
-
-    public LigneTransaction getLigneTransaction() {
-        return this.ligneTransaction;
-    }
-
-    public void setLigneTransaction(LigneTransaction ligneTransaction) {
-        this.ligneTransaction = ligneTransaction;
-    }
-
-    public Caracteristique ligneTransaction(LigneTransaction ligneTransaction) {
-        this.setLigneTransaction(ligneTransaction);
         return this;
     }
 

@@ -34,7 +34,7 @@ public class Produit implements Serializable {
     private Boolean progressif;
 
     @OneToMany(mappedBy = "produit")
-    @JsonIgnoreProperties(value = { "images", "produit", "ligneTransaction" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "images", "ligneTransactions", "produit" }, allowSetters = true)
     private Set<Caracteristique> caracteristiques = new HashSet<>();
 
     @OneToMany(mappedBy = "produit")

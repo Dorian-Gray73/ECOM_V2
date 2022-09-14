@@ -23,7 +23,7 @@ public class Image implements Serializable {
     private String lienImage;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "images", "produit", "ligneTransaction" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "images", "ligneTransactions", "produit" }, allowSetters = true)
     private Caracteristique caracteristique;
 
     @ManyToOne

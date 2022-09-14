@@ -9,9 +9,9 @@ import LigneTransactionUpdateComponent from '@/entities/ligne-transaction/ligne-
 import LigneTransactionClass from '@/entities/ligne-transaction/ligne-transaction-update.component';
 import LigneTransactionService from '@/entities/ligne-transaction/ligne-transaction.service';
 
-import CaracteristiqueService from '@/entities/caracteristique/caracteristique.service';
-
 import TransactionService from '@/entities/transaction/transaction.service';
+
+import CaracteristiqueService from '@/entities/caracteristique/caracteristique.service';
 import AlertService from '@/shared/alert/alert.service';
 
 const localVue = createLocalVue();
@@ -46,13 +46,13 @@ describe('Component Tests', () => {
           ligneTransactionService: () => ligneTransactionServiceStub,
           alertService: () => new AlertService(),
 
-          caracteristiqueService: () =>
-            sinon.createStubInstance<CaracteristiqueService>(CaracteristiqueService, {
+          transactionService: () =>
+            sinon.createStubInstance<TransactionService>(TransactionService, {
               retrieve: sinon.stub().resolves({}),
             } as any),
 
-          transactionService: () =>
-            sinon.createStubInstance<TransactionService>(TransactionService, {
+          caracteristiqueService: () =>
+            sinon.createStubInstance<CaracteristiqueService>(CaracteristiqueService, {
               retrieve: sinon.stub().resolves({}),
             } as any),
         },
