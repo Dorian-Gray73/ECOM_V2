@@ -27,10 +27,7 @@
 <style scoped>
 #navbar {
   background-color: #ffffff;
-  margin-top: 32px;
-  margin-bottom: 26px;
-  margin-left: 4%;
-  margin-right: 4%;
+  margin: 32px 128px;
   box-shadow: 0px 4px 16px rgba(94, 102, 161, 0.05);
   height: 96px;
   padding: 16px 64px;

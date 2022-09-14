@@ -1,7 +1,11 @@
 <template>
   <div id="pageRecherche">
-    <span id="title">Panier</span>
-    <hr id="separate" />
+    <div class="progressionPanier">
+      <div class="step active">Panier</div>
+      <div class="step">Connexion</div>
+      <div class="step">Paiement</div>
+      <div class="step">Confirmation</div>
+    </div>
     <div id="contenuPanier">
       <div id="produitPanier">
         <div class="produit">
@@ -28,6 +32,7 @@
 #contenuPanier {
   display: flex;
   margin: 20px 128px;
+  gap: 32px;
 }
 
 #produitPanier {
@@ -67,5 +72,23 @@
   width: 128px;
   height: 128px;
   background-color: #f7f7f7;
+}
+
+.progressionPanier {
+  display: flex;
+  margin: 0 128px;
+  border-bottom: solid 1px #5b85aa;
+}
+
+.step {
+  font-weight: 200;
+  text-align: center;
+  padding: 8px 64px;
+}
+
+.step.active {
+  font-weight: bold;
+  border-bottom: solid 1px #5b85aa;
+  padding-bottom: 7px;
 }
 </style>

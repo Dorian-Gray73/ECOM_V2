@@ -54,7 +54,6 @@
 #containerFooter {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   padding: 64px 128px;
   gap: 128px;
 }
