@@ -38,17 +38,17 @@
         <tbody>
           <tr v-for="caracteristique in caracteristiques" :key="caracteristique.id" data-cy="entityTable">
             <td>
-              <router-link :to="{ name: 'CaracteristiqueView', params: { caracteristiqueId: caracteristique.id } }">{{
-                caracteristique.id
-              }}</router-link>
+              <router-link :to="{ name: 'CaracteristiqueView', params: { caracteristiqueId: caracteristique.id } }"
+                >{{ caracteristique.id }}
+              </router-link>
             </td>
             <td>{{ caracteristique.couleur }}</td>
             <td>{{ caracteristique.quantite }}</td>
             <td>
               <div v-if="caracteristique.produit">
-                <router-link :to="{ name: 'ProduitView', params: { produitId: caracteristique.produit.id } }">{{
-                  caracteristique.produit.id
-                }}</router-link>
+                <router-link :to="{ name: 'ProduitView', params: { produitId: caracteristique.produit.id } }"
+                  >{{ caracteristique.produit.id }}
+                </router-link>
               </div>
             </td>
             <td class="text-right">

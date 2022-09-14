@@ -3,7 +3,7 @@ import { Inject, Vue } from 'vue-property-decorator';
 import LoginService from '@/account/login.service';
 import JhiNavbar from '@/core/jhi-navbar/jhi-navbar.vue';
 import LoginForm from '@/account/login-form/login-form.vue';
-import Ribbon from '@/core/ribbon/ribbon.component';
+import Ribbon from '@/core/ribbon/ribbon.vue';
 
 @Component({
   components: {
