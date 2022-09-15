@@ -14,7 +14,7 @@
         <div>{{ produit.prix }}€</div>
       </div>
       <div>Couleur</div>
-      <b-button id="btnCommander" v-on:click="addPanier()">Commander</b-button>
+      <b-button id="btnCommander" v-on:click="addProduit(produit)">Ajouter au panier</b-button>
     </div>
   </div>
 </template>
@@ -82,7 +82,6 @@
   padding: 16px 32px;
   gap: 10px;
 
-  width: 168px;
   height: 55px;
 
   background: #5b85aa;

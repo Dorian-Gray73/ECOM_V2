@@ -90,11 +90,10 @@
   gap: 32px;
   height: 1186px;
 }
-
-#affichageSearch::after {
+/*#affichageSearch::after {
   content: '';
   flex: auto;
-}
+}*/
 
 #filtres {
   flex: 1;

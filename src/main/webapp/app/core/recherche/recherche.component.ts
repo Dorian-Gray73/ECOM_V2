@@ -2,12 +2,16 @@ import { Component, Inject, Provide, Vue } from 'vue-property-decorator';
 import { IProduit } from '@/shared/model/produit.model';
 import AlertService from '@/shared/alert/alert.service';
 import ProduitService from '@/entities/produit/produit.service';
+import AccountService from '@/account/account.service';
+import PanierService from '@/panier/panier.service';
 
 @Component
 export default class Recherche extends Vue {
   // Call Service
   @Provide('produitService') private produitService = () => new ProduitService();
   @Inject('alertService') private alertService: () => AlertService;
+  @Inject('panierService')
+  private panierService: () => PanierService;
 
   // Data
   public produits: IProduit[] = [];

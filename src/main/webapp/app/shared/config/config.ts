@@ -47,6 +47,7 @@ import Vue2Filters from 'vue2-filters';
 
 import * as filters from '@/shared/date/filters';
 import { accountStore } from '@/shared/config/store/account-store';
+import { panierStore } from '@/shared/config/store/panier-store';
 import { translationStore } from '@/shared/config/store/translation-store';
 
 const dateTimeFormats: DateTimeFormats = {
@@ -166,6 +167,7 @@ export function initVueXStore(vue) {
   return new Vuex.Store({
     modules: {
       accountStore,
+      panierStore,
       translationStore,
     },
   });

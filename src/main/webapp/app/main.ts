@@ -37,6 +37,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import '../content/scss/global.scss';
 import '../content/scss/vendor.scss';
 import TranslationService from '@/locale/translation.service';
+import PanierService from '@/panier/panier.service';
 /* tslint:disable */
 
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
@@ -66,6 +67,7 @@ library.add(fas);
 const translationService = new TranslationService(store, i18n);
 const loginService = new LoginService();
 const accountService = new AccountService(store, translationService, router);
+const panierService = new PanierService(store);
 
 router.beforeEach(async (to, from, next) => {
   if (!to.matched.length) {

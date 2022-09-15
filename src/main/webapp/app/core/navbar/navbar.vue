@@ -4,25 +4,32 @@
       <img id="logo" src="/content/images/Lu_Net_Logo.png" />
     </b-navbar-brand>
     <div class="navbar-nav ml-auto">
-      <b-nav-item href="/" class="navbar-nav">
+      <!-- Recommandations -->
+      <b-nav-item to="/" class="navbar-nav">
         <font-awesome-icon :icon="['fa', 'fa-lightbulb']" class="icon alt" />
         Recommandations
       </b-nav-item>
-      <b-nav-item href="/recherche" class="navbar-nav">
+      <!-- Tout le catalogue -->
+      <b-nav-item to="/recherche" class="navbar-nav">
         <font-awesome-icon icon="fa-solid fa-list" />
         Tout le catalogue
       </b-nav-item>
-      <b-nav-item href="/recherche" class="navbar-nav">
+      <!-- Recherche -->
+
+      <b-nav-item to="/recherche" class="navbar-nav">
         <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
         Recherche
       </b-nav-item>
-      <b-nav-item class="navbar-nav" href="/home">
+
+      <!-- Connexion -->
+      <b-nav-item to="/home" class="navbar-nav">
         <font-awesome-icon icon="fa-solid fa-user" />
         Connexion
       </b-nav-item>
-      <b-nav-item href="/panier" class="navbar-nav">
+      <!-- Panier -->
+      <b-nav-item to="/panier" class="navbar-nav">
         <font-awesome-icon :icon="['fa', 'fa-basket-shopping']" class="icon alt" />
-        Panier
+        Panier ({{ $store.getters.nbProduit }})
       </b-nav-item>
     </div>
   </b-navbar>
