@@ -8,15 +8,17 @@
     </div>
     <div id="contenuPanier">
       <div id="produitPanier">
-        <div class="produit">
-          <div class="photoProduit"></div>
-          <div class="nomPrix">Nom <br />Prix</div>
-          <div class="quantite">Select quantity</div>
-          <div class="prixTotal">Prix total :</div>
-          <div>
-            <font-awesome-icon icon="fa-solid fa-trash" />
+        <v-for v-for="produit in $store.getters.panier" :key="produit.id">
+          <div class="produit">
+            <div class="photoProduit"></div>
+            <div class="nomPrix">{{ produit.nom }} <br />{{ produit.prix }}€</div>
+            <div class="quantite">Select quantity</div>
+            <div class="prixTotal">Prix total :</div>
+            <div v-on:click="deleteProduit(produit)">
+              <font-awesome-icon icon="fa-solid fa-trash" />
+            </div>
           </div>
-        </div>
+        </v-for>
       </div>
       <div id="validerPanier">
         <div>Articles :</div>
@@ -43,6 +45,7 @@
   align-items: flex-start;
   padding: 0px;
   gap: 32px;
+  overflow: auto;
 }
 
 #validerPanier {

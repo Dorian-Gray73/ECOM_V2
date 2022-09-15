@@ -3,15 +3,18 @@
     <div id="produit">
       <div id="photo"></div>
       <div id="textMonture">
-        <div id="nomMonture">Nom de la monture</div>
-        <div id="formeMonture">Forme de la monture</div>
-        <div id="couleurMonture">Couleur de la monture</div>
+        <div id="nomMonture">{{ produit.nom }}</div>
+        <div id="marqueMonture">{{ produit.marque }}</div>
+        <div id="couleurMonture">{{ produit.couleur }}</div>
       </div>
     </div>
     <div id="caracteristiques">
-      <div>Prix</div>
+      <div id="divPrix">
+        <div id="textPrix">Prix</div>
+        <div>{{ produit.prix }}€</div>
+      </div>
       <div>Couleur</div>
-      <b-button>Commander</b-button>
+      <b-button id="btnCommander" v-on:click="addProduit(produit)">Ajouter au panier</b-button>
     </div>
   </div>
 </template>
@@ -28,12 +31,14 @@
   width: 954px;
   height: 576px;
   padding: 32px;
+  gap: 49px;
   background: #ffffff;
 }
 
 #caracteristiques {
   display: flex;
   padding: 32px;
+  gap: 32px;
   width: 394px;
   height: 379px;
   background: #ffffff;
@@ -49,8 +54,37 @@
   background: #f7f7f7;
 }
 
+#marqueMonture {
+  border: solid 1px #5b85aa;
+  text-align: center;
+}
+
 #textMonture {
   display: flex;
   flex-direction: column;
+}
+
+#nomMonture {
+  font-weight: 700;
+  font-size: 32px;
+}
+
+#textPrix {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+#divPrix {
+  gap: 8px;
+}
+
+#btnCommander {
+  padding: 16px 32px;
+  gap: 10px;
+
+  height: 55px;
+
+  background: #5b85aa;
+  margin: auto;
 }
 </style>
