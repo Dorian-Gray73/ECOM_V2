@@ -29,7 +29,7 @@
       <!-- Panier -->
       <b-nav-item to="/panier" class="navbar-nav">
         <font-awesome-icon :icon="['fa', 'fa-basket-shopping']" class="icon alt" />
-        Panier ({{ $store.getters.nbProduit }})
+        Panier <b-badge variant="light">{{ $store.getters.nbProduit }}</b-badge>
       </b-nav-item>
     </div>
   </b-navbar>
