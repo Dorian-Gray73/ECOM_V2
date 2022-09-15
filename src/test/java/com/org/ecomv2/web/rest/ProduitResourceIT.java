@@ -107,16 +107,16 @@ class ProduitResourceIT {
         assertThat(testProduit.getProgressif()).isEqualTo(DEFAULT_PROGRESSIF);
     }
 
-    @Test
-    @Transactional
-    //    @RequestMapping(path = "/produits", method = RequestMethod.GET)
-    void getNoms() throws Exception {
-        List<Produit> nomProduits = this.produitRepository.getNomProduits();
-        System.out.println("the nomproduits " + nomProduits);
-        Integer nbProduits = nomProduits.size();
-        System.out.println("the numbaaaaa " + nomProduits.size());
-        assertEquals(8, nbProduits, "Problème avec le nb de produits");
-    }
+    //    @Test
+    //    @Transactional
+    //    //    @RequestMapping(path = "/produits", method = RequestMethod.GET)
+    //    void getNoms() throws Exception {
+    //        List<String> nomProduits = this.produitRepository.getNomProduits();
+    //        System.out.println("the nomproduits " + nomProduits);
+    //        Integer nbProduits = nomProduits.size();
+    //        System.out.println("the numbaaaaa " + nomProduits.size());
+    //        assertEquals(8, nbProduits, "Problème avec le nb de produits");
+    //    }
 
     @Test
     @Transactional

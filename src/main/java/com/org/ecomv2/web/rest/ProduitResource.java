@@ -149,19 +149,19 @@ public class ProduitResource {
      *
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of produits in body.
      */
-    //    @GetMapping("/produits")
-    //    public List<Produit> getAllProduits() {
-    //        log.debug("REST request to get all Produits");
-    //        return produitRepository.findAll();
-    //    }
+    @GetMapping("/produits")
+    public List<Produit> getAllProduits() {
+        log.debug("REST request to get all Produits");
+        return produitRepository.findAll();
+    }
 
     /**
      * {@code GET /produits} : get all the name of produits
      *
      * @return the {@link ResponseEntity} with status {@code 200 (ok)} and a table with the name.
      */
-    @GetMapping("/produits")
-    public List<Produit> getName() {
+    @GetMapping("/produits/nom")
+    public List<String> getName() {
         log.debug("Coucou");
         return produitRepository.getNomProduits();
     }
