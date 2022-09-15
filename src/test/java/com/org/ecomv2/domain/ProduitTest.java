@@ -11,16 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 class ProduitTest {
 
-    @Autowired
-    ProduitRepository produitRepository;
-
-    @Test
-    public void getProduits() {
-        List<Produit> noms = this.produitRepository.getNomProduits();
-        System.out.println(noms);
-        assertNotNull(noms);
-    }
-
     @Test
     void equalsVerifier() throws Exception {
         TestUtil.equalsVerifier(Produit.class);

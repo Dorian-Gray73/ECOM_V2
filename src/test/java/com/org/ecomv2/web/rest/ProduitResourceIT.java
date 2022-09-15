@@ -2,6 +2,7 @@ package com.org.ecomv2.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -102,6 +103,13 @@ class ProduitResourceIT {
         assertThat(testProduit.getPrix()).isEqualTo(DEFAULT_PRIX);
         assertThat(testProduit.getMarque()).isEqualTo(DEFAULT_MARQUE);
         assertThat(testProduit.getProgressif()).isEqualTo(DEFAULT_PROGRESSIF);
+    }
+
+    @Test
+    @Transactional
+    void getNoms() throws Exception {
+        Integer nbProduit = produitRepository.getNomProduits().size();
+        assertEquals(8, nbProduit, "Problème avec le nb de produits");
     }
 
     @Test
