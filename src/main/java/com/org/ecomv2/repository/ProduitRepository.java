@@ -9,13 +9,13 @@ import org.springframework.stereotype.Repository;
 /**
  * Spring Data JPA repository for the Produit entity.
  */
-@Transactional
 @Repository
+@Transactional
 public interface ProduitRepository extends JpaRepository<Produit, Long> {
     /**
      * Function which return the name of Produit
      * @return Une liste de Produits
      */
-    @Query("SELECT nom from produit")
+    @Query("select nom FROM Produit")
     List<Produit> getNomProduits();
 }

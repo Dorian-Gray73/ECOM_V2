@@ -21,6 +21,8 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Integration tests for the {@link ProduitResource} REST controller.
@@ -49,7 +51,7 @@ class ProduitResourceIT {
     private static AtomicLong count = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
 
     @Autowired
-    private ProduitRepository produitRepository;
+    ProduitRepository produitRepository;
 
     @Autowired
     private EntityManager em;
@@ -107,9 +109,13 @@ class ProduitResourceIT {
 
     @Test
     @Transactional
+    //    @RequestMapping(path = "/produits", method = RequestMethod.GET)
     void getNoms() throws Exception {
-        Integer nbProduit = produitRepository.getNomProduits().size();
-        assertEquals(8, nbProduit, "Problème avec le nb de produits");
+        List<Produit> nomProduits = this.produitRepository.getNomProduits();
+        System.out.println("the nomproduits " + nomProduits);
+        Integer nbProduits = nomProduits.size();
+        System.out.println("the numbaaaaa " + nomProduits.size());
+        assertEquals(8, nbProduits, "Problème avec le nb de produits");
     }
 
     @Test
