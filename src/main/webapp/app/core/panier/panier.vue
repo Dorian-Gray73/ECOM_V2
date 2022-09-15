@@ -11,7 +11,7 @@
         <v-for v-for="produit in $store.getters.panier" :key="produit.id">
           <div class="produit">
             <div class="photoProduit"></div>
-            <div class="nomPrix">{{ produit.nom }} <br />{{ produit.prix }}€</div>
+            <div class="nomPrix">{{ produit.nom }} <br />{{ produit.couleur }}<br />{{ produit.prix }}€</div>
             <div class="quantite">Select quantity</div>
             <div class="prixTotal">Prix total :</div>
             <div v-on:click="deleteProduit(produit)">
