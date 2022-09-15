@@ -16,6 +16,6 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
      * Function which return the name of Produit
      * @return Une liste de Produits
      */
-    @Query("SELECT nom from Produit")
+    @Query("SELECT nom from produit")
     List<Produit> getNomProduits();
 }
