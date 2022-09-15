@@ -2,6 +2,7 @@ package com.org.ecomv2.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -20,6 +21,8 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Integration tests for the {@link ProduitResource} REST controller.
@@ -48,7 +51,7 @@ class ProduitResourceIT {
     private static AtomicLong count = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
 
     @Autowired
-    private ProduitRepository produitRepository;
+    ProduitRepository produitRepository;
 
     @Autowired
     private EntityManager em;
@@ -103,6 +106,17 @@ class ProduitResourceIT {
         assertThat(testProduit.getMarque()).isEqualTo(DEFAULT_MARQUE);
         assertThat(testProduit.getProgressif()).isEqualTo(DEFAULT_PROGRESSIF);
     }
+
+    //    @Test
+    //    @Transactional
+    //    //    @RequestMapping(path = "/produits", method = RequestMethod.GET)
+    //    void getNoms() throws Exception {
+    //        List<String> nomProduits = this.produitRepository.getNomProduits();
+    //        System.out.println("the nomproduits " + nomProduits);
+    //        Integer nbProduits = nomProduits.size();
+    //        System.out.println("the numbaaaaa " + nomProduits.size());
+    //        assertEquals(8, nbProduits, "Problème avec le nb de produits");
+    //    }
 
     @Test
     @Transactional

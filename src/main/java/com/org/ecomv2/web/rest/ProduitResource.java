@@ -156,6 +156,17 @@ public class ProduitResource {
     }
 
     /**
+     * {@code GET /produits} : get all the name of produits
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (ok)} and a table with the name.
+     */
+    @GetMapping("/produits/nom")
+    public List<String> getName() {
+        log.debug("Coucou");
+        return produitRepository.getNomProduits();
+    }
+
+    /**
      * {@code GET  /produits/:id} : get the "id" produit.
      *
      * @param id the id of the produit to retrieve.
