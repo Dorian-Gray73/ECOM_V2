@@ -5,12 +5,15 @@ import com.org.ecomv2.repository.TransactionRepository;
 import com.org.ecomv2.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -138,6 +141,17 @@ public class TransactionResource {
             result,
             HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, transaction.getId().toString())
         );
+    }
+
+    @PatchMapping(value = "/transactions/update/date/{transactionId}/{newDate}")
+    public ResponseEntity<Transaction> updateTransactionDate(@PathVariable Long transactionId, @PathVariable LocalDate newDate) {
+        try {
+            Transaction transaction = transactionRepository.findById(transactionId).get();
+            transaction.setDate(newDate);
+            return new ResponseEntity<Transaction>(transactionRepository.save(transaction), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     /**
