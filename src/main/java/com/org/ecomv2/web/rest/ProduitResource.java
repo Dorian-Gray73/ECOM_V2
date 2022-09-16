@@ -167,6 +167,16 @@ public class ProduitResource {
     }
 
     /**
+     * {@code GET /produits} : get all les marques des produits
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (ok)} and a list of les marques
+     */
+    @GetMapping("/produits/marques")
+    public List<String> getAllMarques() {
+        return produitRepository.getAllMarques();
+    }
+
+    /**
      * {@code GET  /produits/:id} : get the "id" produit.
      *
      * @param id the id of the produit to retrieve.
