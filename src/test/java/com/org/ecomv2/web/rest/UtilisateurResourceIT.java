@@ -2,21 +2,31 @@ package com.org.ecomv2.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.org.ecomv2.IntegrationTest;
+import com.org.ecomv2.domain.User;
 import com.org.ecomv2.domain.Utilisateur;
 import com.org.ecomv2.domain.enumeration.Type;
+import com.org.ecomv2.repository.UserRepository;
 import com.org.ecomv2.repository.UtilisateurRepository;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import javax.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -26,6 +36,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Integration tests for the {@link UtilisateurResource} REST controller.
  */
 @IntegrationTest
+@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @WithMockUser
 class UtilisateurResourceIT {
@@ -55,6 +66,12 @@ class UtilisateurResourceIT {
     private UtilisateurRepository utilisateurRepository;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Mock
+    private UtilisateurRepository utilisateurRepositoryMock;
+
+    @Autowired
     private EntityManager em;
 
     @Autowired
@@ -75,6 +92,11 @@ class UtilisateurResourceIT {
             .courriel(DEFAULT_COURRIEL)
             .adresse(DEFAULT_ADRESSE)
             .type(DEFAULT_TYPE);
+        // Add required entity
+        User user = UserResourceIT.createEntity(em);
+        em.persist(user);
+        em.flush();
+        utilisateur.setInternal_user(user);
         return utilisateur;
     }
 
@@ -91,6 +113,11 @@ class UtilisateurResourceIT {
             .courriel(UPDATED_COURRIEL)
             .adresse(UPDATED_ADRESSE)
             .type(UPDATED_TYPE);
+        // Add required entity
+        User user = UserResourceIT.createEntity(em);
+        em.persist(user);
+        em.flush();
+        utilisateur.setInternal_user(user);
         return utilisateur;
     }
 
@@ -117,6 +144,9 @@ class UtilisateurResourceIT {
         assertThat(testUtilisateur.getCourriel()).isEqualTo(DEFAULT_COURRIEL);
         assertThat(testUtilisateur.getAdresse()).isEqualTo(DEFAULT_ADRESSE);
         assertThat(testUtilisateur.getType()).isEqualTo(DEFAULT_TYPE);
+
+        // Validate the id for MapsId, the ids must be same
+        assertThat(testUtilisateur.getId()).isEqualTo(testUtilisateur.getUser().getId());
     }
 
     @Test
@@ -139,6 +169,41 @@ class UtilisateurResourceIT {
 
     @Test
     @Transactional
+    void updateUtilisateurMapsIdAssociationWithNewId() throws Exception {
+        // Initialize the database
+        utilisateurRepository.saveAndFlush(utilisateur);
+        int databaseSizeBeforeCreate = utilisateurRepository.findAll().size();
+
+        // Load the utilisateur
+        Utilisateur updatedUtilisateur = utilisateurRepository.findById(utilisateur.getId()).get();
+        assertThat(updatedUtilisateur).isNotNull();
+        // Disconnect from session so that the updates on updatedUtilisateur are not directly saved in db
+        em.detach(updatedUtilisateur);
+
+        // Update the User with new association value
+        updatedUtilisateur.setUser();
+
+        // Update the entity
+        restUtilisateurMockMvc
+            .perform(
+                put(ENTITY_API_URL_ID, updatedUtilisateur.getId())
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(updatedUtilisateur))
+            )
+            .andExpect(status().isOk());
+
+        // Validate the Utilisateur in the database
+        List<Utilisateur> utilisateurList = utilisateurRepository.findAll();
+        assertThat(utilisateurList).hasSize(databaseSizeBeforeCreate);
+        Utilisateur testUtilisateur = utilisateurList.get(utilisateurList.size() - 1);
+        // Validate the id for MapsId, the ids must be same
+        // Uncomment the following line for assertion. However, please note that there is a known issue and uncommenting will fail the test.
+        // Please look at https://github.com/jhipster/generator-jhipster/issues/9100. You can modify this test as necessary.
+        // assertThat(testUtilisateur.getId()).isEqualTo(testUtilisateur.getUser().getId());
+    }
+
+    @Test
+    @Transactional
     void getAllUtilisateurs() throws Exception {
         // Initialize the database
         utilisateurRepository.saveAndFlush(utilisateur);
@@ -154,6 +219,23 @@ class UtilisateurResourceIT {
             .andExpect(jsonPath("$.[*].courriel").value(hasItem(DEFAULT_COURRIEL)))
             .andExpect(jsonPath("$.[*].adresse").value(hasItem(DEFAULT_ADRESSE)))
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())));
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllUtilisateursWithEagerRelationshipsIsEnabled() throws Exception {
+        when(utilisateurRepositoryMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restUtilisateurMockMvc.perform(get(ENTITY_API_URL + "?eagerload=true")).andExpect(status().isOk());
+
+        verify(utilisateurRepositoryMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllUtilisateursWithEagerRelationshipsIsNotEnabled() throws Exception {
+        when(utilisateurRepositoryMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restUtilisateurMockMvc.perform(get(ENTITY_API_URL + "?eagerload=false")).andExpect(status().isOk());
+        verify(utilisateurRepositoryMock, times(1)).findAll(any(Pageable.class));
     }
 
     @Test
