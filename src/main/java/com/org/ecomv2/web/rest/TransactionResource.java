@@ -152,6 +152,16 @@ public class TransactionResource {
     }
 
     /**
+     * {@code GET  /transactions} : get transaction 'en cours' selon l'utilisateur.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} la transaction en cours.
+     */
+    @GetMapping("/transactions/encours/utilisateur/{utilisateurId}")
+    public List<Transaction> getTransactionByUser(@PathVariable Long utilisateurId) {
+        return transactionRepository.getTransactionByUser(utilisateurId);
+    }
+
+    /**
      * {@code GET  /transactions/:id} : get the "id" transaction.
      *
      * @param id the id of the transaction to retrieve.
