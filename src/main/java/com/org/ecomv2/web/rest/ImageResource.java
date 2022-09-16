@@ -155,6 +155,16 @@ public class ImageResource {
     }
 
     /**
+     * {@code GET  /images} : get all the images et leurs caracteristiques ainsi que leurs produits correspondants.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of images et leurs caracteristiques et produits.
+     */
+    @GetMapping("/images/produits/caracteristiques/{produitId}")
+    public List<Image> getAllProduitImages(@PathVariable Long produitId) {
+        return imageRepository.getProduitCaracteristiqueImage(produitId);
+    }
+
+    /**
      * {@code GET  /images/:id} : get the "id" image.
      *
      * @param id the id of the image to retrieve.
