@@ -20,4 +20,12 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     @Modifying(clearAutomatically = true, flushAutomatically = true)
     @Query("UPDATE Transaction SET date = :newDate WHERE id = :transactionId")
     void updateTransactionDate(@Param("transactionId") Long transactionId, @Param("newDate") LocalDate newDate);
+
+    @Modifying(clearAutomatically = true, flushAutomatically = true)
+    @Query("UPDATE Transaction SET date = :newDate, etat = :newEtat WHERE id = :transactionId")
+    void updateTransactionDate(
+        @Param("transactionId") Long transactionId,
+        @Param("newDate") LocalDate newDate,
+        @Param("newEtat") EtatProduit newEtat
+    );
 }

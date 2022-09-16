@@ -1,6 +1,7 @@
 package com.org.ecomv2.web.rest;
 
 import com.org.ecomv2.domain.Transaction;
+import com.org.ecomv2.domain.enumeration.EtatProduit;
 import com.org.ecomv2.repository.TransactionRepository;
 import com.org.ecomv2.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
@@ -148,6 +149,22 @@ public class TransactionResource {
         try {
             Transaction transaction = transactionRepository.findById(transactionId).get();
             transaction.setDate(newDate);
+            return new ResponseEntity<Transaction>(transactionRepository.save(transaction), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PatchMapping(value = "/transactions/update/date/{transactionId}/{newDate}/{newEtat}")
+    public ResponseEntity<Transaction> updateTransactionDate(
+        @PathVariable Long transactionId,
+        @PathVariable LocalDate newDate,
+        @PathVariable EtatProduit newEtat
+    ) {
+        try {
+            Transaction transaction = transactionRepository.findById(transactionId).get();
+            transaction.setDate(newDate);
+            transaction.setEtat(newEtat);
             return new ResponseEntity<Transaction>(transactionRepository.save(transaction), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
