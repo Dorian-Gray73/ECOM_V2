@@ -145,6 +145,16 @@ public class ImageResource {
     }
 
     /**
+     * {@code GET  /images} : get all the images et leurs produits correspondants.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of images et leurs produits.
+     */
+    @GetMapping("/images/produits")
+    public List<Image> getAllProduitsImages() {
+        return imageRepository.getAllProduitsImages();
+    }
+
+    /**
      * {@code GET  /images/:id} : get the "id" image.
      *
      * @param id the id of the image to retrieve.
