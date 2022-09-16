@@ -59,7 +59,7 @@ public class UtilisateurResource {
             throw new BadRequestAlertException("Invalid association value provided", ENTITY_NAME, "null");
         }
         Long userId = utilisateur.getInternal_user().getId();
-        userRepository.findById(userId).ifPresent(utilisateur::user);
+        userRepository.findById(userId).ifPresent(utilisateur::internal_user);
         Utilisateur result = utilisateurRepository.save(utilisateur);
         return ResponseEntity
             .created(new URI("/api/utilisateurs/" + result.getId()))
