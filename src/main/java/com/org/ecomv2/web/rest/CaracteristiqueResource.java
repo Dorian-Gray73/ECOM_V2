@@ -151,6 +151,11 @@ public class CaracteristiqueResource {
         return caracteristiqueRepository.findAll();
     }
 
+    @GetMapping("/caracteristiques/produit/{produitId}")
+    public List<Caracteristique> getCaracteristiquesParProduit(@PathVariable Long produitId) {
+        return caracteristiqueRepository.getCaracteristiquesBy(produitId);
+    }
+
     /**
      * {@code GET  /caracteristiques/:id} : get the "id" caracteristique.
      *
