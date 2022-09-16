@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
+
 Component.registerHooks([
   'beforeRouteEnter',
   'beforeRouteLeave',
@@ -13,10 +14,11 @@ import account from '@/router/account';
 import admin from '@/router/admin';
 import entities from '@/router/entities';
 import pages from '@/router/pages';
-import Accueil from '@/core/accueil/accueil.vue';
 import Recherche from '@/core/recherche/recherche.vue';
 import Panier from '@/core/panier/panier.vue';
 import ProduitDetails from '@/core/produitDetails/produitDetails.vue';
+import Recommandations from '@/core/recommandations/recommandations.vue';
+import Catalogue from '@/core/catalogue/catalogue.vue';
 
 Vue.use(Router);
 
@@ -26,8 +28,8 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'Accueil',
-      component: Accueil
+      name: 'Recommandations',
+      component: Recommandations
     },
     {
       path: '/home',
@@ -38,6 +40,11 @@ const router = new Router({
       path: '/recherche',
       name: 'Recherche',
       component: Recherche
+    },
+    {
+      path: '/catalogue',
+      name: 'Catalogue',
+      component: Catalogue
     },
     {
       path: '/produitDetails/:id',
@@ -53,13 +60,13 @@ const router = new Router({
       path: '/forbidden',
       name: 'Forbidden',
       component: Error,
-      meta: { error403: true }
+      meta: {error403: true}
     },
     {
       path: '/not-found',
       name: 'NotFound',
       component: Error,
-      meta: { error404: true }
+      meta: {error404: true}
     },
     ...account,
     ...admin,

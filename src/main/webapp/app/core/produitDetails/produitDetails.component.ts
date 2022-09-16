@@ -11,9 +11,7 @@ export default class ProduitDetails extends Vue {
   public produit: IProduit = {};
 
   beforeRouteEnter(to, from, next) {
-    console.log('test');
     next(vm => {
-      console.log(to.params);
       if (to.params.id) {
         vm.retrieveProduit(to.params.id);
       }
@@ -29,7 +27,6 @@ export default class ProduitDetails extends Vue {
       .find(produitId)
       .then(res => {
         this.produit = res;
-        console.log(this.produit);
       })
       .catch(error => {
         this.alertService().showHttpError(this, error.response);
@@ -41,5 +38,6 @@ export default class ProduitDetails extends Vue {
     console.log(this.$store.state);
     console.log(this.$store.getters.nbProduit);
     console.log(this.$store.getters.panier);
+    console.log(this.$store.getters.quantite);
   }
 }
