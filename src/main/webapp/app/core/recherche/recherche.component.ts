@@ -72,6 +72,7 @@ export default class Recherche extends Vue {
 
   // Pagination
   get produitList() {
-    return this.produits.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
+    let produitsFiltered = this.produits.filter(produits => produits.nom.toLowerCase().includes(this.search.toLowerCase()));
+    return produitsFiltered.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
   }
 }
