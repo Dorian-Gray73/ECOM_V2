@@ -48,6 +48,12 @@ spring:
     port: 587
     username: lunet38400@gmail.com
     password: Jhipster2022
+    protocol: smtp
+    tls: true
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: smtp.gmail.com
   messages:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   thymeleaf:
