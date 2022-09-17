@@ -4,15 +4,19 @@ import AlertService from '@/shared/alert/alert.service';
 import ProduitService from '@/entities/produit/produit.service';
 import AccountService from '@/account/account.service';
 import PanierService from '@/panier/panier.service';
+import CaracteristiqueService from '@/entities/caracteristique/caracteristique.service';
 
 @Component
 export default class Recherche extends Vue {
   // Call Service
   @Provide('produitService') private produitService = () => new ProduitService();
+  @Provide('caracteristiqueService') private caracteristiqueService = () => new CaracteristiqueService();
   @Inject('alertService') private alertService: () => AlertService;
 
   // Data
   public produits: IProduit[] = [];
+  public couleurs = [];
+  public selectedCouleurs = [];
   public isFetching = false;
   public search = '';
   public rows = 0;
@@ -21,10 +25,12 @@ export default class Recherche extends Vue {
 
   public mounted(): void {
     this.retrieveAllProduits();
+    this.retrieveAllCouleurs();
   }
 
   public clear(): void {
     this.retrieveAllProduits();
+    this.retrieveAllCouleurs();
   }
 
   //Récupération des produits
@@ -45,6 +51,24 @@ export default class Recherche extends Vue {
       );
   }
 
+  //Récupération des couleurs
+  public retrieveAllCouleurs(): void {
+    this.isFetching = true;
+    this.caracteristiqueService()
+      .retrieveCouleurs()
+      .then(
+        res => {
+          this.couleurs = res.data;
+          console.log(this.couleurs);
+          this.isFetching = false;
+        },
+        err => {
+          this.isFetching = false;
+          this.alertService().showHttpError(this, err.response);
+        }
+      );
+  }
+
   public handleSyncList(): void {
     this.clear();
   }
@@ -55,18 +79,6 @@ export default class Recherche extends Vue {
   //Recup couleur
 
   //Recup max prix
-
-  data() {
-    return {
-      selected: [], // Must be an array reference!
-      options: [
-        { text: 'Orange', value: 'orange' },
-        { text: 'Apple', value: 'apple' },
-        { text: 'Pineapple', value: 'pineapple' },
-        { text: 'Grape', value: 'grape' },
-      ],
-    };
-  }
 
   // Pagination
   get produitList() {

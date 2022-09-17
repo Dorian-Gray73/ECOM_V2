@@ -31,6 +31,19 @@ export default class CaracteristiqueService {
     });
   }
 
+  public retrieveCouleurs(): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .get(`${baseApiUrl}/couleurs`)
+        .then(res => {
+          resolve(res);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
   public delete(id: number): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios

@@ -15,12 +15,12 @@
           <div>Couleur</div>
           <b-form-group v-slot="{ ariaDescribedby }">
             <b-form-checkbox-group
-              v-model="selected"
-              :options="options"
+              v-model="selectedCouleurs"
+              :options="couleurs"
               :aria-describedby="ariaDescribedby"
               name="flavour-2a"
               stacked
-            ></b-form-checkbox-group>
+            />
           </b-form-group>
           <div>Prix</div>
         </div>
@@ -107,7 +107,7 @@
   justify-content: center;
   align-items: flex-start;
   padding: 32px;
-  gap: 64px;
+  gap: 16px;
   background: #ffffff;
 }
 
@@ -152,6 +152,7 @@ a:hover {
 }
 
 #divPagination {
+  flex: 6;
   display: flex;
   flex-direction: column;
   gap: 16px;
