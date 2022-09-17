@@ -5,6 +5,7 @@ import com.org.ecomv2.repository.ProduitRepository;
 import com.org.ecomv2.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -164,6 +165,11 @@ public class ProduitResource {
     public List<String> getName() {
         log.debug("Coucou");
         return produitRepository.getNomProduits();
+    }
+
+    @GetMapping("/produits/prix")
+    public List<Object> getAllPrix() {
+        return produitRepository.getAllPrix();
     }
 
     /**
