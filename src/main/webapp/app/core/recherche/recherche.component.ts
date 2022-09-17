@@ -17,6 +17,7 @@ export default class Recherche extends Vue {
   public produits: IProduit[] = [];
   public couleurs = [];
   public selectedCouleurs = [];
+  public prixMinMax = [];
   public isFetching = false;
   public search = '';
   public rows = 0;
@@ -26,11 +27,13 @@ export default class Recherche extends Vue {
   public mounted(): void {
     this.retrieveAllProduits();
     this.retrieveAllCouleurs();
+    this.retrievePrix();
   }
 
   public clear(): void {
     this.retrieveAllProduits();
     this.retrieveAllCouleurs();
+    this.retrievePrix();
   }
 
   //Récupération des produits
@@ -59,7 +62,24 @@ export default class Recherche extends Vue {
       .then(
         res => {
           this.couleurs = res.data;
-          console.log(this.couleurs);
+          this.isFetching = false;
+        },
+        err => {
+          this.isFetching = false;
+          this.alertService().showHttpError(this, err.response);
+        }
+      );
+  }
+
+  //Récupération des prix min et max
+  public retrievePrix(): void {
+    this.isFetching = true;
+    this.produitService()
+      .retrievePrix()
+      .then(
+        res => {
+          this.prixMinMax = res.data;
+          console.log(this.prixMinMax);
           this.isFetching = false;
         },
         err => {
