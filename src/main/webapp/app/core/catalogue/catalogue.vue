@@ -5,7 +5,7 @@
     <div id="divPagination">
       <div id="affichageSearch">
         <!--Affiche catalogue -->
-        <div v-for="produit in produits" :key="produit.id">
+        <div v-for="produit in produitList" :key="produit.id" id="produittList">
           <div class="cardPhoto">
             <router-link :to="`/produitDetails/${produit.id}`">
               <div id="photo"></div>
@@ -18,7 +18,14 @@
         </div>
       </div>
       <!-- Pagination -->
-      <b-pagination v-model="currentPage" :total-rows="rows" id="pagination"></b-pagination>
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+        aria-controls="produittList"
+        align="center"
+        id="pagination"
+      />
     </div>
   </div>
 </template>

@@ -14,8 +14,9 @@ export default class Catalogue extends Vue {
   // Data
   public produits: IProduit[] = [];
   public isFetching = false;
-  public rows = 100;
+  public rows = 0;
   public currentPage = 1;
+  public perPage = 12;
 
   public mounted(): void {
     this.retrieveAllProduits();
@@ -33,6 +34,7 @@ export default class Catalogue extends Vue {
       .then(
         res => {
           this.produits = res.data;
+          this.rows = this.produits.length;
           this.isFetching = false;
         },
         err => {
@@ -44,5 +46,10 @@ export default class Catalogue extends Vue {
 
   public handleSyncList(): void {
     this.clear();
+  }
+
+  // Pagination
+  get produitList() {
+    return this.produits.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
   }
 }
