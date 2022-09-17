@@ -45,7 +45,7 @@ spring:
   liquibase:
     contexts: prod
   mail:
-    host: smtp.gmail.com
+    host: smtp-mail.outlook.com
     port: 587
     username: lunet38400@gmail.com
     password: Jhipster2022
@@ -54,7 +54,7 @@ spring:
     properties.mail.smtp:
       auth: true
       starttls.enable: true
-      ssl.trust: smtp.gmail.com
+      ssl.trust: smtp-mail.outlook.com
   thymeleaf:
     cache: true
   sleuth:
