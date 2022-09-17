@@ -11,6 +11,24 @@
           "minlength": "Your username is required to be at least 1 character.",
           "maxlength": "Your username cannot be longer than 50 characters.",
           "pattern": "Your username is invalid."
+        },
+        "nom": {
+          "required": "Your last name is required.",
+          "minlength": "Your last name is required to be at least 1 character.",
+          "maxlength": "Your last name cannot be longer than 30 characters.",
+          "pattern": "Your last name is invalid."
+        },
+        "prenom": {
+          "required": "Your first name is required.",
+          "minlength": "Your first name is required to be at least 1 character.",
+          "maxlength": "Your first name cannot be longer than 30 characters.",
+          "pattern": "Your first name is invalid."
+        },
+        "addresse": {
+          "required": "Your adress is required.",
+          "minlength": "Your adress is required to be at least 10 character.",
+          "maxlength": "Your adress cannot be longer than 100 characters.",
+          "pattern": "Your adress is invalid."
         }
       },
       "success": "<strong>Registration saved!</strong> Please check your email for confirmation.",
