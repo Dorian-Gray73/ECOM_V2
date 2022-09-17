@@ -151,6 +151,21 @@ public class CaracteristiqueResource {
         return caracteristiqueRepository.findAll();
     }
 
+    @GetMapping("/caracteristiques/produit/{produitId}")
+    public List<Caracteristique> getCaracteristiquesParProduit(@PathVariable Long produitId) {
+        return caracteristiqueRepository.getCaracteristiquesBy(produitId);
+    }
+
+    /**
+     * {@code GET  /caracteristiques} : get all the colours.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of colours in body.
+     */
+    @GetMapping("/caracteristiques/couleurs")
+    public List<String> getAllCouleurs() {
+        return caracteristiqueRepository.getAllCouleurs();
+    }
+
     /**
      * {@code GET  /caracteristiques/:id} : get the "id" caracteristique.
      *

@@ -1,5 +1,6 @@
 <template>
   <div id="pageRecherche">
+    <!-- Progression Panier -->
     <div class="progressionPanier">
       <div class="step active">Panier</div>
       <div class="step">Connexion</div>
@@ -7,23 +8,25 @@
       <div class="step">Confirmation</div>
     </div>
     <div id="contenuPanier">
-      <div id="produitPanier">
-        <v-for v-for="produit in $store.getters.panier" :key="produit.id">
+      <!-- Produits du panier -->
+      <div id="produitPanier" :key="componentKey">
+        <div v-for="produit in panier" :key="produit.id">
           <div class="produit">
             <div class="photoProduit"></div>
-            <div class="nomPrix">{{ produit.nom }} <br />{{ produit.prix }}€</div>
-            <div class="quantite">Select quantity</div>
-            <div class="prixTotal">Prix total :</div>
+            <div class="nomPrix">{{ produit.nom }} <br />{{ produit.couleur }}<br />{{ produit.prix }}€</div>
+            <div class="quantite">Quantité : {{ quantite[produit.id] }}</div>
+            <div class="prixTotal">Prix total : {{ quantite[produit.id] * produit.prix }}€</div>
             <div v-on:click="deleteProduit(produit)">
               <font-awesome-icon icon="fa-solid fa-trash" />
             </div>
           </div>
-        </v-for>
+        </div>
       </div>
+      <!-- Récap du panier -->
       <div id="validerPanier">
-        <div>Articles :</div>
-        <div>Livraison :</div>
-        <div>Total :</div>
+        <div>Articles : {{ getPrixTotal() }}€</div>
+        <div>Livraison : {{ livraison }}€</div>
+        <div>Total : {{ getPrixTotalLivraison() }}€</div>
         <b-button>Commander</b-button>
       </div>
     </div>
