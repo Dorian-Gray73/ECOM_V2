@@ -170,6 +170,16 @@ public class ProduitResource {
     }
 
     /**
+     * {@code GET  /produits/images/} : returns tous les produits, on récupère toutes les images pour chaque produit
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of produits et les images de chaque produit in body.
+     */
+    @GetMapping("/produits/images")
+    public List<String> produitImages() {
+        return produitRepository.produitsImages();
+    }
+
+    /**
      * {@code GET /produits} : get all the name of produits
      *
      * @return the {@link ResponseEntity} with status {@code 200 (ok)} and a table with the name.
