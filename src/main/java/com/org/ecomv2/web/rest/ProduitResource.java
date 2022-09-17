@@ -1,13 +1,17 @@
 package com.org.ecomv2.web.rest;
 
+import com.org.ecomv2.domain.Caracteristique;
+import com.org.ecomv2.domain.Image;
 import com.org.ecomv2.domain.Produit;
 import com.org.ecomv2.repository.ProduitRepository;
 import com.org.ecomv2.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import javax.persistence.Tuple;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -153,6 +157,16 @@ public class ProduitResource {
     public List<Produit> getAllProduits() {
         log.debug("REST request to get all Produits");
         return produitRepository.findAll();
+    }
+
+    /**
+     * {@code GET  /produits/caracteristiques/images/{produitId}} : d'un produitId, on retrouve un produit avec ses cara et dans chaque cara ses images
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of produits in body.
+     */
+    @GetMapping("/produits/caracteristiques/images/{produitId}")
+    public List<String> getProduitCaracteristiquesImages(@PathVariable Long produitId) {
+        return produitRepository.getProduitCaracteristiquesImages(produitId);
     }
 
     /**
