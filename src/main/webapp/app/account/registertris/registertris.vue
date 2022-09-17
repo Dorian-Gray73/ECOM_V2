@@ -1,4 +1,4 @@
-<!-- Les fichier *bis sont les versions de travail de Damien. -->
+<!-- Les fichier *tris sont des copies des register initiaux. -->
 <template>
   <div>
     <div class="row justify-content-center">
@@ -73,100 +73,6 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="nom" v-text="$t('global.form[\'nom.label\']')">Nom</label>
-            <input
-              type="texte"
-              class="form-control"
-              id="nom"
-              name="nom"
-              v-model="$v.registerAccount.nom.$model"
-              :class="{ valid: !$v.registerAccount.nom.$invalid, invalid: $v.registerAccount.nom.$invalid }"
-              required
-              minlength="1"
-              maxlength="30"
-              v-bind:placeholder="$t('global.form[\'nom.placeholder\']')"
-              data-cy="nom"
-            />
-            <div v-if="$v.registerAccount.nom.$anyDirty && $v.registerAccount.nom.$invalid">
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.nom.required"
-                v-text="$t('register.messages.validate.nom.required')"
-              >
-                Your nom is required.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.nom.minLength"
-                v-text="$t('register.messages.validate.nom.minlength')"
-              >
-                Your nom is required to be at least 1 character.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.nom.maxLength"
-                v-text="$t('register.messages.validate.nom.maxlength')"
-              >
-                Your nom cannot be longer than 30 characters.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.nom.pattern"
-                v-text="$t('register.messages.validate.nom.pattern')"
-              >
-                Your nom can only contain letters.
-              </small>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-control-label" for="prenom" v-text="$t('global.form[\'prenom.label\']')">Prenom</label>
-            <input
-              type="texte"
-              class="form-control"
-              id="prenom"
-              name="prenom"
-              v-model="$v.registerAccount.prenom.$model"
-              :class="{ valid: !$v.registerAccount.prenom.$invalid, invalid: $v.registerAccount.prenom.$invalid }"
-              required
-              minlength="1"
-              maxlength="30"
-              v-bind:placeholder="$t('global.form[\'prenom.placeholder\']')"
-              data-cy="prenom"
-            />
-            <div v-if="$v.registerAccount.prenom.$anyDirty && $v.registerAccount.prenom.$invalid">
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.prenom.required"
-                v-text="$t('register.messages.validate.prenom.required')"
-              >
-                Your prenom is required.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.prenom.minLength"
-                v-text="$t('register.messages.validate.prenom.minlength')"
-              >
-                Your prenom is required to be at least 1 character.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.prenom.maxLength"
-                v-text="$t('register.messages.validate.prenom.maxlength')"
-              >
-                Your prenom cannot be longer than 30 characters.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.prenom.pattern"
-                v-text="$t('register.messages.validate.prenom.pattern')"
-              >
-                Your prenom can only contain letters.
-              </small>
-            </div>
-          </div>
-
-          <div class="form-group">
             <label class="form-control-label" for="email" v-text="$t('global.form[\'email.label\']')">Email</label>
             <input
               type="email"
@@ -213,55 +119,6 @@
               </small>
             </div>
           </div>
-
-          <div class="form-group">
-            <label class="form-control-label" for="adresse" v-text="$t('gloval.form[\'adresse.label\']')">Adresse</label>
-            <input
-              type="texte"
-              class="form-control"
-              id="adresse"
-              name="adresse"
-              v-model="$v.registerAccount.adresse.$model"
-              :class="{ valid: !$v.registerAccount.adresse.$invalid, invalid: $v.registerAccount.adresse.$invalid }"
-              required
-              minlength="10"
-              maxlength="100"
-              pattern="^[a-zA-Z0-9!#$&'*+=?^_`{|}~.-]+@?[ a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
-              v-bind:placeholder="$t('global.form[\'adresse.placeholder\']')"
-              data-cy="adresse"
-            />
-            <div v-if="$v.registerAccount.adresse.$anyDirty && $v.registerAccount.adresse.$invalid">
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.adresse.required"
-                v-text="$t('register.messages.validate.adresse.required')"
-              >
-                Your username is required.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.adresse.minLength"
-                v-text="$t('register.messages.validate.adresse.minlength')"
-              >
-                Your username is required to be at least 10 characters.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.adresse.maxLength"
-                v-text="$t('register.messages.validate.adresse.maxlength')"
-              >
-                Your username cannot be longer than 100 characters.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.adresse.pattern"
-                v-text="$t('register.messages.validate.adresse.pattern')"
-              >
-                Your username can only contain letters and digits.
-              </small>
-            </div>
-          </div>
-
           <div class="form-group">
             <label class="form-control-label" for="firstPassword" v-text="$t('global.form[\'newpassword.label\']')">New password</label>
             <input
@@ -364,4 +221,4 @@
   </div>
 </template>
 
-<script lang="ts" src="./registerbis.component.ts"></script>
+<script lang="ts" src="./register.component.ts"></script>

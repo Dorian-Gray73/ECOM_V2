@@ -1,3 +1,4 @@
+<!-- Les fichiers register sont ceux qui sont chargé par l'application, et donc sujet à modification pour les tests. -->
 <template>
   <div>
     <div class="row justify-content-center">
