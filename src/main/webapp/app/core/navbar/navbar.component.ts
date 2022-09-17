@@ -5,7 +5,7 @@ import LoginService from '@/account/login.service';
 export default class Navbar extends Vue {
   public nbPanier = null;
 
-  //Appel du service
+  // Appel du service
   @Inject('loginService')
   private loginService: () => LoginService;
 
@@ -13,8 +13,8 @@ export default class Navbar extends Vue {
     this.loginService().openLogin((<any>this).$root);
   }
 
+  // Nombre de produits dans le panier
   public get nbProduit(): number {
-    console.log(this.$store.state.nbProduit);
     return this.$store.state.nbProduit;
   }
 }
