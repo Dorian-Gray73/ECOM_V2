@@ -18,6 +18,19 @@ export default class CaracteristiqueService {
     });
   }
 
+  public retrieveCaracteristiquesParProduit(id: number): Promise<ICaracteristique> {
+    return new Promise<ICaracteristique>((resolve, reject) => {
+      axios
+        .get(`${baseApiUrl}/produit/${id}`)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
   public retrieve(): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios
