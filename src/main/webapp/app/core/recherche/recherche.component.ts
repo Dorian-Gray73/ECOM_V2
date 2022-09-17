@@ -4,27 +4,36 @@ import AlertService from '@/shared/alert/alert.service';
 import ProduitService from '@/entities/produit/produit.service';
 import AccountService from '@/account/account.service';
 import PanierService from '@/panier/panier.service';
+import CaracteristiqueService from '@/entities/caracteristique/caracteristique.service';
 
 @Component
 export default class Recherche extends Vue {
   // Call Service
   @Provide('produitService') private produitService = () => new ProduitService();
+  @Provide('caracteristiqueService') private caracteristiqueService = () => new CaracteristiqueService();
   @Inject('alertService') private alertService: () => AlertService;
-  @Inject('panierService')
-  private panierService: () => PanierService;
 
   // Data
   public produits: IProduit[] = [];
+  public couleurs = [];
+  public selectedCouleurs = [];
   public isFetching = false;
+  public search = '';
+  public rows = 0;
+  public currentPage = 1;
+  public perPage = 9;
 
   public mounted(): void {
     this.retrieveAllProduits();
+    this.retrieveAllCouleurs();
   }
 
   public clear(): void {
     this.retrieveAllProduits();
+    this.retrieveAllCouleurs();
   }
 
+  //Récupération des produits
   public retrieveAllProduits(): void {
     this.isFetching = true;
     this.produitService()
@@ -32,8 +41,26 @@ export default class Recherche extends Vue {
       .then(
         res => {
           this.produits = res.data;
+          this.rows = this.produits.length;
           this.isFetching = false;
-          console.log(this.produits);
+        },
+        err => {
+          this.isFetching = false;
+          this.alertService().showHttpError(this, err.response);
+        }
+      );
+  }
+
+  //Récupération des couleurs
+  public retrieveAllCouleurs(): void {
+    this.isFetching = true;
+    this.caracteristiqueService()
+      .retrieveCouleurs()
+      .then(
+        res => {
+          this.couleurs = res.data;
+          console.log(this.couleurs);
+          this.isFetching = false;
         },
         err => {
           this.isFetching = false;
@@ -46,19 +73,16 @@ export default class Recherche extends Vue {
     this.clear();
   }
 
-  data() {
-    return {
-      selected: [], // Must be an array reference!
-      rows: 100,
-      currentPage: 1,
-      options: [
-        { text: 'Orange', value: 'orange' },
-        { text: 'Apple', value: 'apple' },
-        { text: 'Pineapple', value: 'pineapple' },
-        { text: 'Grape', value: 'grape' },
-      ],
-    };
-  }
+  // Récupération des lunettes solaires
 
-  public get;
+  // Récupération des lunetts de vue
+  //Recup couleur
+
+  //Recup max prix
+
+  // Pagination
+  get produitList() {
+    const produitsFiltered = this.produits.filter(produits => produits.nom.toLowerCase().includes(this.search.toLowerCase()));
+    return produitsFiltered.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
+  }
 }

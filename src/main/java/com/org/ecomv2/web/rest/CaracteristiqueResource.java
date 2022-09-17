@@ -157,6 +157,16 @@ public class CaracteristiqueResource {
     }
 
     /**
+     * {@code GET  /caracteristiques} : get all the colours.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of colours in body.
+     */
+    @GetMapping("/caracteristiques/couleurs")
+    public List<String> getAllCouleurs() {
+        return caracteristiqueRepository.getAllCouleurs();
+    }
+
+    /**
      * {@code GET  /caracteristiques/:id} : get the "id" caracteristique.
      *
      * @param id the id of the caracteristique to retrieve.
