@@ -10,8 +10,6 @@ export default class Recherche extends Vue {
   // Call Service
   @Provide('produitService') private produitService = () => new ProduitService();
   @Inject('alertService') private alertService: () => AlertService;
-  @Inject('panierService')
-  private panierService: () => PanierService;
 
   // Data
   public produits: IProduit[] = [];
@@ -72,7 +70,7 @@ export default class Recherche extends Vue {
 
   // Pagination
   get produitList() {
-    let produitsFiltered = this.produits.filter(produits => produits.nom.toLowerCase().includes(this.search.toLowerCase()));
+    const produitsFiltered = this.produits.filter(produits => produits.nom.toLowerCase().includes(this.search.toLowerCase()));
     return produitsFiltered.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
   }
 }
