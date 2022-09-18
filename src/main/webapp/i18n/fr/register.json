@@ -21,14 +21,13 @@
         "prenom": {
           "required": "Votre prénom est obligatoire.",
           "minlength": "Votre prénom doit contenir plus d'un caractère.",
-          "maxlength": "Votre prénom ne peut pas contenir plus de 30 caractères.",
-          "pattern": "Votre prénom est invalide."
+          "maxlength": "Votre prénom ne peut pas contenir plus de 30 caractères."
         },
-        "addresse": {
-          "required": "Votre addresse est obligatoire.",
-          "minlength": "Votre addresse doit contenir plus de 10 caractères.",
+        "adresse": {
+          "required": "Votre adresse est obligatoire.",
+          "minlength": "Votre adresse doit contenir plus de 10 caractères.",
           "maxlength": "Votre adresse ne peut pas contenir plus de 100 caractères.",
-          "pattern": "Votre addresse est invalide."
+          "pattern": "Votre adresse est invalide."
         }
       },
       "success": "<strong>Compte enregistré !</strong> Merci de vérifier votre email de confirmation.",

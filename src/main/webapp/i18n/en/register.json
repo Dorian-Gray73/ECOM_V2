@@ -15,8 +15,7 @@
         "nom": {
           "required": "Your last name is required.",
           "minlength": "Your last name is required to be at least 1 character.",
-          "maxlength": "Your last name cannot be longer than 30 characters.",
-          "pattern": "Your last name is invalid."
+          "maxlength": "Your last name cannot be longer than 30 characters."
         },
         "prenom": {
           "required": "Your first name is required.",
@@ -24,11 +23,11 @@
           "maxlength": "Your first name cannot be longer than 30 characters.",
           "pattern": "Your first name is invalid."
         },
-        "addresse": {
-          "required": "Your adress is required.",
-          "minlength": "Your adress is required to be at least 10 character.",
-          "maxlength": "Your adress cannot be longer than 100 characters.",
-          "pattern": "Your adress is invalid."
+        "adresse": {
+          "required": "Your address is required.",
+          "minlength": "Your address is required to be at least 10 character.",
+          "maxlength": "Your address cannot be longer than 100 characters.",
+          "pattern": "Your address is invalid."
         }
       },
       "success": "<strong>Registration saved!</strong> Please check your email for confirmation.",
