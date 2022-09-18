@@ -30,7 +30,7 @@ public class Transaction implements Serializable {
     @Column(name = "date")
     private LocalDate date;
 
-    @OneToMany(mappedBy = "transaction")
+    @OneToMany(mappedBy = "transaction", fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = { "transaction", "caracteristique" }, allowSetters = true)
     private Set<LigneTransaction> ligneTransactions = new HashSet<>();
 
