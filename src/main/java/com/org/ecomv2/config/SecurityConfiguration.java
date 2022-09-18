@@ -88,6 +88,8 @@ public class SecurityConfiguration {
             .antMatchers("/api/produits/prix").permitAll()
             .antMatchers("/api/produits/marques").permitAll()
             .antMatchers("/api/produits/{id}").permitAll()
+            .antMatchers("/api/produits/images").permitAll()
+            .antMatchers("/api/produits/caracteristiques/images/{produitId}").permitAll()
             .antMatchers("/api/caracteristiques").permitAll()
             .antMatchers("/api/caracteristiques/produit/**").permitAll()
             .antMatchers("/api/caracteristiques/{id}").permitAll()

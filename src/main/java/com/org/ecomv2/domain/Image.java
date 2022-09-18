@@ -27,6 +27,7 @@ public class Image implements Serializable {
     private Caracteristique caracteristique;
 
     @ManyToOne
+    @JoinColumn(name = "produit_id")
     @JsonIgnoreProperties(value = { "caracteristiques", "images", "modeles" }, allowSetters = true)
     private Produit produit;
 

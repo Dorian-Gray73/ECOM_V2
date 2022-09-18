@@ -1,17 +1,13 @@
 package com.org.ecomv2.web.rest;
 
-import com.org.ecomv2.domain.Caracteristique;
-import com.org.ecomv2.domain.Image;
 import com.org.ecomv2.domain.Produit;
 import com.org.ecomv2.repository.ProduitRepository;
 import com.org.ecomv2.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import javax.persistence.Tuple;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -175,7 +171,7 @@ public class ProduitResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of produits et les images de chaque produit in body.
      */
     @GetMapping("/produits/images")
-    public List<String> produitImages() {
+    public List<Produit> produitImages() {
         return produitRepository.produitsImages();
     }
 

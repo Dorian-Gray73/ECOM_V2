@@ -43,10 +43,10 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
      * @return Une liste de produit avec les images pour chaque produit
      */
     @Query(
-        value = "SELECT p.nom, p.prix, p.marque, p.progressif, i.lien_image FROM produit p JOIN image i on i.produit_id = p.id",
+        value = "SELECT p.id ,p.nom nom, p.prix prix , p.marque marque , p.progressif progressif, p.images FROM produit p JOIN image i on i.produit_id = p.id group by (p.id,p.nom, p.prix, p.marque, p.progressif,p.images)",
         nativeQuery = true
     )
-    List<String> produitsImages();
+    List<Produit> produitsImages();
 
     /*
      * Function which return les marques des produits

@@ -36,6 +36,7 @@ public class Caracteristique implements Serializable {
     private Set<LigneTransaction> ligneTransactions = new HashSet<>();
 
     @ManyToOne
+    @JoinColumn(name = "produit_id")
     @JsonIgnoreProperties(value = { "caracteristiques", "images", "modeles" }, allowSetters = true)
     private Produit produit;
 
