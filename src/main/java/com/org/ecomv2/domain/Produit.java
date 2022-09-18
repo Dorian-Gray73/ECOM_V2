@@ -41,7 +41,7 @@ public class Produit implements Serializable {
     @JsonIgnoreProperties(value = { "caracteristique", "produit" }, allowSetters = true)
     private Set<Image> images = new HashSet<>();
 
-    @OneToMany(mappedBy = "produit")
+    @OneToMany(mappedBy = "produit", fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = { "produit" }, allowSetters = true)
     private Set<Modele> modeles = new HashSet<>();
 

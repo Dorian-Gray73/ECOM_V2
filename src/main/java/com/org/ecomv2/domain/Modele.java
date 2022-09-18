@@ -23,6 +23,7 @@ public class Modele implements Serializable {
     private String modele;
 
     @ManyToOne
+    @JoinColumn(name = "produit_id")
     @JsonIgnoreProperties(value = { "caracteristiques", "images", "modeles" }, allowSetters = true)
     private Produit produit;
 
