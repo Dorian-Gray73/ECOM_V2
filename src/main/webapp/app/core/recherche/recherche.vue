@@ -1,7 +1,7 @@
 <template>
   <div id="pageRecherche">
-    <span id="title">Résultats de la recherche</span>
-    <hr id="separate" />
+    <span class="title">Résultats de la recherche</span>
+    <hr class="separate" />
     <div id="resultat">
       <!-- SearchBar -->
       <b-input-group id="searchBar">
@@ -27,16 +27,14 @@
         <div id="divPagination">
           <!-- Affichage Search -->
           <div id="affichageSearch">
-            <div v-for="produit in produitList" :key="produit.id">
-              <div class="cardPhoto">
-                <router-link :to="`/produitDetails/${produit.id}`">
-                  <div id="photo"></div>
-                  <div class="caracteristique">
-                    <div id="nomMonture">{{ produit.nom }}</div>
-                    <div id="prixMonture">{{ produit.prix }}€</div>
-                  </div>
-                </router-link>
-              </div>
+            <div v-for="produit in produitList" :key="produit.id" class="cardPhoto">
+              <router-link :to="`/produitDetails/${produit.id}`">
+                <img :src="`/content/images/${produit.images[0].lienImage}`" class="photo" alt="" />
+                <div class="caracteristique">
+                  <div class="nomMonture">{{ produit.nom }}</div>
+                  <div class="prixMonture">{{ produit.prix }}€</div>
+                </div>
+              </router-link>
             </div>
           </div>
           <!-- Pagination -->
@@ -55,6 +53,12 @@
 </template>
 <script lang="ts" src="./recherche.component.ts"></script>
 <style scoped>
+#pageRecherche {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #searchBar {
   background-color: #ffffff;
   display: flex;
@@ -83,22 +87,22 @@
   gap: 32px;
   height: 1186px;
   margin: 32px 0;
+  width: 100%;
 }
 
 #affichageSearch {
   flex: 6;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   padding: 0px;
   gap: 32px;
   height: 1186px;
 }
 
-/*#affichageSearch::after {
+#affichageSearch::after {
   content: '';
   flex: auto;
-}*/
+}
 
 #filtres {
   flex: 1;
@@ -124,10 +128,11 @@
   background: #ffffff;
 }
 
-#photo {
+.photo {
   width: 256px;
   height: 256px;
   background-color: #f7f7f7;
+  object-fit: cover;
 }
 
 #resultat {
@@ -135,6 +140,9 @@
   display: flex;
   flex-direction: column;
   margin: 20px 128px;
+  max-width: 2019px;
+  width: 100%;
+  padding: 0px 128px;
 }
 
 #pagination {

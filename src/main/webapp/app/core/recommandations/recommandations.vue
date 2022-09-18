@@ -1,7 +1,7 @@
 <template>
   <div id="recommandations">
-    <span id="title">À la une</span>
-    <hr id="separate" />
+    <span class="title">À la une</span>
+    <hr class="separate" />
     <!-- Carousel -->
     <div id="carousel"></div>
     <!-- Btn Collection -->
@@ -15,6 +15,12 @@
 <script lang="ts" src="./recommandations.component.ts"></script>
 
 <style scoped>
+#recommandations {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
 #carousel {
   width: 100%;
   height: 243px;
@@ -24,6 +30,8 @@
 #divBtn {
   display: flex;
   flex-direction: row;
+  gap: 32px;
+  padding: 32px 128px;
 }
 
 #btnSolaire {

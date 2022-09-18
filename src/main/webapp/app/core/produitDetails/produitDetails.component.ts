@@ -1,11 +1,11 @@
 import { Component, Inject, Provide, Vue } from 'vue-property-decorator';
 import { IProduit } from '@/shared/model/produit.model';
 import AlertService from '@/shared/alert/alert.service';
-import CaracteristiqueService from '@/entities/caracteristique/caracteristique.service';
+import ProduitService from '@/entities/produit/produit.service';
 
 @Component
 export default class ProduitDetails extends Vue {
-  @Provide('caracteristiqueService') private caracteristiqueService = () => new CaracteristiqueService();
+  @Provide('produitService') private produitService = () => new ProduitService();
   @Inject('alertService') private alertService: () => AlertService;
 
   public produit: IProduit = {};
@@ -19,18 +19,19 @@ export default class ProduitDetails extends Vue {
   }
 
   public mounted(): void {
-    this.retrieveCaracteristiquesparProduit(this.$route.params.id);
+    this.retriveProduit(this.$route.params.id);
   }
 
   public clear(): void {
-    this.retrieveCaracteristiquesparProduit(this.$route.params.id);
+    this.retriveProduit(this.$route.params.id);
   }
 
-  public retrieveCaracteristiquesparProduit(produitId) {
-    this.caracteristiqueService()
-      .retrieveCaracteristiquesParProduit(produitId)
+  public retriveProduit(produitId) {
+    this.produitService()
+      .find(produitId)
       .then(res => {
         this.produit = res;
+        console.log(this.produit);
       })
       .catch(error => {
         this.alertService().showHttpError(this, error.response);

@@ -1,20 +1,18 @@
 <template>
-  <div id="pageRecherche">
-    <span id="title">Tout le catalogue</span>
-    <hr id="separate" />
+  <div id="pageCatalogue">
+    <span class="title">Tout le catalogue</span>
+    <hr class="separate" />
     <div id="divPagination">
       <div id="affichageSearch">
         <!--Affiche catalogue -->
-        <div v-for="produit in produitList" :key="produit.id" id="produittList">
-          <div class="cardPhoto">
-            <router-link :to="`/produitDetails/${produit.id}`">
-              <div id="photo"></div>
-              <div class="caracteristique">
-                <div id="nomMonture">{{ produit.nom }}</div>
-                <div id="prixMonture">{{ produit.prix }}€</div>
-              </div>
-            </router-link>
-          </div>
+        <div v-for="produit in produitList" :key="produit.id" class="cardPhoto">
+          <router-link :to="`/produitDetails/${produit.id}`">
+            <img :src="`/content/images/${produit.images[0].lienImage}`" class="photo" alt="" />
+            <div class="caracteristique">
+              <div class="nomMonture">{{ produit.nom }}</div>
+              <div class="prixMonture">{{ produit.prix }}€</div>
+            </div>
+          </router-link>
         </div>
       </div>
       <!-- Pagination -->
@@ -31,6 +29,12 @@
 </template>
 <script lang="ts" src="./catalogue.component.ts"></script>
 <style scoped>
+#pageCatalogue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -41,10 +45,11 @@ a:hover {
   margin-top: 10px;
 }
 
-#photo {
+.photo {
   width: 256px;
   height: 256px;
   background-color: #f7f7f7;
+  object-fit: cover;
 }
 
 .cardPhoto {
@@ -56,23 +61,24 @@ a:hover {
 
   width: 304px;
   height: 374px;
-
   background: #ffffff;
 }
 
 #affichageSearch {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   padding: 0px;
-  height: 1186px;
-  margin: 20px 128px;
+  gap: 32px;
 }
 
 #divPagination {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  align-items: center;
+  margin: 20px 128px;
+  max-width: 2019px;
+  width: 100%;
 }
 
 #pagination {

@@ -31,25 +31,29 @@ html {
   font-family: 'IBM';
 }
 
-#title {
+.title {
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
   line-height: 31px;
-  margin-left: 4%;
+  width: 100%;
 }
 
-#separate {
+.separate {
   background-color: #5b85aa;
-  border: 2px solid #5b85aa;
-  height: 0px;
-  margin-top: 4px;
+  height: 2px;
+  margin: 4px -128px 0 -128px;
+  width: 100vw;
 }
 
 #app {
   font-style: normal;
   color: #5b85aa;
   background-color: #f7f7f7;
+  padding: 32px 128px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 #containerfluid {
@@ -60,6 +64,7 @@ html {
 a {
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: none;
 }

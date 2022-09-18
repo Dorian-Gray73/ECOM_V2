@@ -1,7 +1,7 @@
 <template>
   <div id="containerProduit">
     <div id="produit">
-      <div id="photo"></div>
+      <img :src="`/content/images/${produit.images[0].lienImage}`" id="photo" alt="" />
       <div id="textMonture">
         <div id="nomMonture">{{ produit.nom }}</div>
         <div id="marqueMonture">{{ produit.marque }}</div>
@@ -22,7 +22,6 @@
 <style scoped>
 #containerProduit {
   display: flex;
-  margin: 20px 128px;
   gap: 64px;
 }
 

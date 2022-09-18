@@ -47,6 +47,7 @@ export default class Recherche extends Vue {
       .then(
         res => {
           this.produits = res.data;
+          console.log(this.produits);
           this.rows = this.produits.length;
           this.isFetching = false;
         },
@@ -122,7 +123,16 @@ export default class Recherche extends Vue {
 
   // Pagination
   get produitList() {
-    const produitsFiltered = this.produits.filter(produits => produits.nom.toLowerCase().includes(this.search.toLowerCase()));
+    let produitsFiltered;
+    produitsFiltered = this.filtreProduitSearch(this.produits);
     return produitsFiltered.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
   }
+
+  public filtreProduitSearch(produitsListe) {
+    return this.produits.filter(produits => produits.nom.toLowerCase().includes(this.search.toLowerCase()));
+  }
+
+  public filtreProduitCouleur(produitsListe) {}
+
+  public filtreProduitPrix(produitsListe) {}
 }

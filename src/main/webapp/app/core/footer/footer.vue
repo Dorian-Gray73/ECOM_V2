@@ -1,7 +1,7 @@
 <template>
   <div id="footer">
-    <a @click="scrollMeTo('navbar')"><span id="title">Retourner en haut</span></a>
-    <hr id="separate" />
+    <a @click="scrollMeTo('navbar')"><span class="title">Retourner en haut</span></a>
+    <hr class="separate" />
     <div id="containerFooter">
       <!-- 1 -->
       <div class="colFooter">
@@ -54,7 +54,7 @@
 #containerFooter {
   display: flex;
   flex-direction: row;
-  padding: 64px 128px;
+  padding: 64px 0;
   gap: 128px;
 }
 </style>

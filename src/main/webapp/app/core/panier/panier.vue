@@ -1,5 +1,5 @@
 <template>
-  <div id="pageRecherche">
+  <div id="pagePanier">
     <!-- Progression Panier -->
     <div class="progressionPanier">
       <div class="step active">Panier</div>
