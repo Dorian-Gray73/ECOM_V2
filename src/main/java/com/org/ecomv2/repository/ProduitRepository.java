@@ -20,6 +20,7 @@ import org.springframework.stereotype.Repository;
 public interface ProduitRepository extends JpaRepository<Produit, Long> {
     /**
      * Function which return the name of Produit
+     *
      * @return Une liste de Produits
      */
     @Query("select nom FROM Produit")
@@ -27,6 +28,7 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
 
     /**
      * Function which return d'un produitId, on retrouve un produit avec ses cara et dans chaque cara ses images
+     *
      * @return Une liste de produit avec ses cara et dans chaque cara ses images
      */
     @Query(
@@ -37,6 +39,7 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
 
     /**
      * Function which returns tous les produits, on récupère toutes les images pour chaque produit
+     *
      * @return Une liste de produit avec les images pour chaque produit
      */
     @Query(
@@ -45,13 +48,14 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
     )
     List<String> produitsImages();
 
+    /*
      * Function which return les marques des produits
      * @return Une liste des marques
      */
-    @Query(value = "SELECT DISTINCT ON (upper(p.marque)) p.marque FROM Produit p ORDER BY upper(p.marque)", nativeQuery = true) // comme ça on est case-insensitive (i.e. 'a' = 'A')
+    @Query(value = "SELECT DISTINCT ON (upper(p.marque)) p.marque FROM Produit p ORDER BY upper(p.marque)", nativeQuery = true)
+    // comme ça on est case-insensitive (i.e. 'a' = 'A')
     List<String> getAllMarques();
 
     @Query("SELECT min(p.prix), max(p.prix) FROM Produit p")
     List<Object> getAllPrix();
-
 }
