@@ -44,4 +44,14 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
         nativeQuery = true
     )
     List<String> produitsImages();
+
+     * Function which return les marques des produits
+     * @return Une liste des marques
+     */
+    @Query(value = "SELECT DISTINCT ON (upper(p.marque)) p.marque FROM Produit p ORDER BY upper(p.marque)", nativeQuery = true) // comme ça on est case-insensitive (i.e. 'a' = 'A')
+    List<String> getAllMarques();
+
+    @Query("SELECT min(p.prix), max(p.prix) FROM Produit p")
+    List<Object> getAllPrix();
+
 }

@@ -190,6 +190,21 @@ public class ProduitResource {
         return produitRepository.getNomProduits();
     }
 
+    @GetMapping("/produits/prix")
+    public List<Object> getAllPrix() {
+        return produitRepository.getAllPrix();
+    }
+
+    /**
+     * {@code GET /produits} : get all les marques des produits
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (ok)} and a list of les marques
+     */
+    @GetMapping("/produits/marques")
+    public List<String> getAllMarques() {
+        return produitRepository.getAllMarques();
+    }
+
     /**
      * {@code GET  /produits/:id} : get the "id" produit.
      *
