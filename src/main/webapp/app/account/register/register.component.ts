@@ -1,10 +1,11 @@
 import Vue from 'vue';
-import { Component, Inject } from 'vue-property-decorator';
+import { Component, Inject, Provide } from 'vue-property-decorator';
 import { email, helpers, maxLength, minLength, required, sameAs } from 'vuelidate/lib/validators';
 import LoginService from '@/account/login.service';
 import RegisterService from '@/account/register/register.service';
 import UtilisateurService from '@/entities/utilisateur/utilisateur.service';
 import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from '@/constants';
+import { Type } from '@/shared/model/enumerations/type.model';
 
 const loginPattern = helpers.regex('alpha', /^[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$|^[_.@A-Za-z0-9-]+$/);
 const validations: any = {
@@ -61,7 +62,7 @@ const validations: any = {
 export default class Register extends Vue {
   @Inject('registerService') private registerService: () => RegisterService;
   @Inject('loginService') private loginService: () => LoginService;
-  @Inject('utilisateurService') private utilisateurService: () => UtilisateurService;
+  @Provide('utilisateurService') private utilisateurService = () => new UtilisateurService();
   public registerAccount: any = {
     login: undefined,
     email: undefined,
@@ -71,6 +72,8 @@ export default class Register extends Vue {
     nom: undefined,
     prenom: undefined,
     adresse: undefined,
+    type: Type.Acheteur,
+    courriel: undefined,
   };
   public confirmPassword: any = null;
   public error = '';
@@ -98,15 +101,16 @@ export default class Register extends Vue {
         } else {
           this.error = 'ERROR';
         }
-        this.utilisateurService()
-          .create(this.registerUtilisateur)
-          .then(() => {
-            this.success = true;
-          })
-          .catch(error => {
-            this.success = null;
-            this.error = 'ERROR';
-          });
+      });
+    this.registerUtilisateur.email = this.registerAccount.email;
+    this.utilisateurService()
+      .create(this.registerUtilisateur)
+      .then(() => {
+        this.success = true;
+      })
+      .catch(error => {
+        this.success = null;
+        this.error = 'ERROR';
       });
   }
 
