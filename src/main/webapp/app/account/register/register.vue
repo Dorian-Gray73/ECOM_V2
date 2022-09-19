@@ -1,3 +1,4 @@
+<!-- Les fichiers register sont ceux qui sont chargé par l'application, et donc sujet à modification pour les tests. -->
 <template>
   <div>
     <div class="row justify-content-center">
@@ -71,6 +72,87 @@
               </small>
             </div>
           </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="nom" v-text="$t('global.form[\'nom.label\']')">Nom</label>
+            <input
+              type="texte"
+              class="form-control"
+              id="nom"
+              name="nom"
+              v-model="$v.registerUtilisateur.nom.$model"
+              :class="{ valid: !$v.registerUtilisateur.nom.$invalid, invalid: $v.registerUtilisateur.nom.$invalid }"
+              required
+              minlength="1"
+              maxlength="30"
+              v-bind:placeholder="$t('global.form[\'nom.placeholder\']')"
+              data-cy="nom"
+            />
+            <div v-if="$v.registerUtilisateur.nom.$anyDirty && $v.registerUtilisateur.nom.$invalid">
+              <small
+                class="form-text text-danger"
+                v-if="!$v.registerUtilisateur.nom.required"
+                v-text="$t('register.messages.validate.nom.required')"
+              >
+                Your last name is required.
+              </small>
+              <small
+                class="form-text text-danger"
+                v-if="!$v.registerUtilisateur.nom.minLength"
+                v-text="$t('register.messages.validate.nom.minlength')"
+              >
+                Your last name is required to be at least 1 character.
+              </small>
+              <small
+                class="form-text text-danger"
+                v-if="!$v.registerUtilisateur.nom.maxLength"
+                v-text="$t('register.messages.validate.nom.maxlength')"
+              >
+                Your last name cannot be longer than 30 characters.
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="prenom" v-text="$t('global.form[\'prenom.label\']')">Prenom</label>
+            <input
+              type="texte"
+              class="form-control"
+              id="prenom"
+              name="prenom"
+              v-model="$v.registerUtilisateur.prenom.$model"
+              :class="{ valid: !$v.registerUtilisateur.prenom.$invalid, invalid: $v.registerUtilisateur.prenom.$invalid }"
+              required
+              minlength="1"
+              maxlength="30"
+              v-bind:placeholder="$t('global.form[\'prenom.placeholder\']')"
+              data-cy="prenom"
+            />
+            <div v-if="$v.registerUtilisateur.prenom.$anyDirty && $v.registerUtilisateur.prenom.$invalid">
+              <small
+                class="form-text text-danger"
+                v-if="!$v.registerUtilisateur.prenom.required"
+                v-text="$t('register.messages.validate.prenom.required')"
+              >
+                Your prenom is required.
+              </small>
+              <small
+                class="form-text text-danger"
+                v-if="!$v.registerUtilisateur.prenom.minLength"
+                v-text="$t('register.messages.validate.prenom.minlength')"
+              >
+                Your prenom is required to be at least 1 character.
+              </small>
+              <small
+                class="form-text text-danger"
+                v-if="!$v.registerUtilisateur.prenom.maxLength"
+                v-text="$t('register.messages.validate.prenom.maxlength')"
+              >
+                Your prenom cannot be longer than 30 characters.
+              </small>
+            </div>
+          </div>
+
           <div class="form-group">
             <label class="form-control-label" for="email" v-text="$t('global.form[\'email.label\']')">Email</label>
             <input
@@ -118,6 +200,47 @@
               </small>
             </div>
           </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="adresse" v-text="$t('global.form[\'adresse.label\']')">Adresse</label>
+            <input
+              type="texte"
+              class="form-control"
+              id="adresse"
+              name="adresse"
+              v-model="$v.registerUtilisateur.adresse.$model"
+              :class="{ valid: !$v.registerUtilisateur.adresse.$invalid, invalid: $v.registerUtilisateur.adresse.$invalid }"
+              required
+              minlength="10"
+              maxlength="100"
+              v-bind:placeholder="$t('global.form[\'adresse.placeholder\']')"
+              data-cy="adresse"
+            />
+            <div v-if="$v.registerUtilisateur.adresse.$anyDirty && $v.registerUtilisateur.adresse.$invalid">
+              <small
+                class="form-text text-danger"
+                v-if="!$v.registerUtilisateur.adresse.required"
+                v-text="$t('register.messages.validate.adresse.required')"
+              >
+                Your adresse is required.
+              </small>
+              <small
+                class="form-text text-danger"
+                v-if="!$v.registerUtilisateur.adresse.minLength"
+                v-text="$t('register.messages.validate.adresse.minlength')"
+              >
+                Your adresse is required to be at least 10 characters.
+              </small>
+              <small
+                class="form-text text-danger"
+                v-if="!$v.registerUtilisateur.adresse.maxLength"
+                v-text="$t('register.messages.validate.adresse.maxlength')"
+              >
+                Your adresse cannot be longer than 100 characters.
+              </small>
+            </div>
+          </div>
+
           <div class="form-group">
             <label class="form-control-label" for="firstPassword" v-text="$t('global.form[\'newpassword.label\']')">New password</label>
             <input

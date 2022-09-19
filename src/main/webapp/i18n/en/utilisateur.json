@@ -23,7 +23,8 @@
       "courriel": "Courriel",
       "adresse": "Adresse",
       "type": "Type",
-      "transaction": "Transaction"
+      "transaction": "Transaction",
+      "internal_user": "Internal User"
     }
   }
 }

@@ -5,6 +5,8 @@ import AlertService from '@/shared/alert/alert.service';
 import TransactionService from '@/entities/transaction/transaction.service';
 import { ITransaction } from '@/shared/model/transaction.model';
 
+import UserService from '@/entities/user/user.service';
+
 import { IUtilisateur, Utilisateur } from '@/shared/model/utilisateur.model';
 import UtilisateurService from './utilisateur.service';
 import { Type } from '@/shared/model/enumerations/type.model';
@@ -31,6 +33,10 @@ export default class UtilisateurUpdate extends Vue {
   @Inject('transactionService') private transactionService: () => TransactionService;
 
   public transactions: ITransaction[] = [];
+
+  @Inject('userService') private userService: () => UserService;
+
+  public users: Array<any> = [];
   public typeValues: string[] = Object.keys(Type);
   public isSaving = false;
   public currentLanguage = '';
@@ -117,6 +123,12 @@ export default class UtilisateurUpdate extends Vue {
       .retrieve()
       .then(res => {
         this.transactions = res.data;
+      });
+
+    this.userService()
+      .retrieve()
+      .then(res => {
+        this.users = res.data;
       });
   }
 }

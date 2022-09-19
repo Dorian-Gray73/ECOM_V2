@@ -11,6 +11,23 @@
           "minlength": "Votre nom d'utilisateur doit contenir plus d'un caractère.",
           "maxlength": "Votre nom d'utilisateur ne peut pas contenir plus de 50 caractères.",
           "pattern": "Votre nom d'utilisateur est invalide."
+        },
+        "nom": {
+          "required": "Votre nom est obligatoire.",
+          "minlength": "Votre nom doit contenir plus d'un caractère.",
+          "maxlength": "Votre nom ne peut pas contenir plus de 30 caractères.",
+          "pattern": "Votre nom est invalide."
+        },
+        "prenom": {
+          "required": "Votre prénom est obligatoire.",
+          "minlength": "Votre prénom doit contenir plus d'un caractère.",
+          "maxlength": "Votre prénom ne peut pas contenir plus de 30 caractères."
+        },
+        "adresse": {
+          "required": "Votre adresse est obligatoire.",
+          "minlength": "Votre adresse doit contenir plus de 10 caractères.",
+          "maxlength": "Votre adresse ne peut pas contenir plus de 100 caractères.",
+          "pattern": "Votre adresse est invalide."
         }
       },
       "success": "<strong>Compte enregistré !</strong> Merci de vérifier votre email de confirmation.",
