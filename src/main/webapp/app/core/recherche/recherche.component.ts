@@ -18,6 +18,10 @@ export default class Recherche extends Vue {
   public couleurs = [];
   public selectedCouleurs = [];
   public prixMinMax = [];
+  public prixMin = 1;
+  public prixMax = 1;
+  public sliderMin = 1;
+  public sliderMax = 1;
   public marques = [];
   public isFetching = false;
   public search = '';
@@ -80,7 +84,12 @@ export default class Recherche extends Vue {
       .retrievePrix()
       .then(
         res => {
-          this.prixMinMax = res.data;
+          let prixMinMax = res.data;
+          prixMinMax = prixMinMax.split(',');
+          this.prixMin = prixMinMax[0];
+          this.prixMax = prixMinMax[1];
+          this.sliderMin = this.prixMin;
+          this.sliderMax = this.prixMax;
           this.isFetching = false;
         },
         err => {
@@ -115,6 +124,7 @@ export default class Recherche extends Vue {
   get produitList() {
     let produitsFiltered = this.filtreProduitSearch(this.produits);
     produitsFiltered = this.filtreProduitCouleur(produitsFiltered);
+    produitsFiltered = this.filtreProduitPrix(produitsFiltered);
     this.rows = produitsFiltered.length;
     return produitsFiltered.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
   }
@@ -142,6 +152,10 @@ export default class Recherche extends Vue {
   }
 
   public filtreProduitPrix(produitsListe) {
-    return null;
+    return produitsListe.filter(produit => {
+      if (produit.prix > this.sliderMin && produit.prix < this.sliderMax) {
+        return true;
+      }
+    });
   }
 }

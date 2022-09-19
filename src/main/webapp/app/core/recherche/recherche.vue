@@ -22,7 +22,10 @@
               stacked
             />
           </b-form-group>
-          <div>Prix</div>
+          <div>Prix minimum : {{ sliderMin }}</div>
+          <b-form-input id="range-1" v-model="sliderMin" type="range" :min="prixMin" :max="sliderMax"></b-form-input>
+          <div>Prix maximum : {{ sliderMax }}</div>
+          <b-form-input id="range-2" v-model="sliderMax" type="range" :min="sliderMin" :max="prixMax"></b-form-input>
         </div>
         <div id="divPagination">
           <!-- Affichage Search -->
