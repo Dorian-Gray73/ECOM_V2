@@ -123,8 +123,7 @@ export default class Recherche extends Vue {
 
   // Pagination
   get produitList() {
-    let produitsFiltered;
-    produitsFiltered = this.filtreProduitSearch(this.produits);
+    const produitsFiltered = this.filtreProduitSearch(this.produits);
     return produitsFiltered.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
   }
 

@@ -35,21 +35,21 @@
   align-items: center;
 }
 
-a:hover {
-  text-decoration: none;
+#divPagination {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  margin: 20px 128px;
+  max-width: 2019px;
+  width: 100%;
 }
 
-.caracteristique {
+#affichageSearch {
+  display: flex;
+  flex-wrap: wrap;
   padding: 0px;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.photo {
-  width: 256px;
-  height: 256px;
-  background-color: #f7f7f7;
-  object-fit: cover;
+  gap: 32px;
 }
 
 .cardPhoto {
@@ -64,24 +64,23 @@ a:hover {
   background: #ffffff;
 }
 
-#affichageSearch {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0px;
-  gap: 32px;
+.photo {
+  width: 256px;
+  height: 256px;
+  background-color: #f7f7f7;
+  object-fit: cover;
 }
-
-#divPagination {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: center;
-  margin: 20px 128px;
-  max-width: 2019px;
-  width: 100%;
+.caracteristique {
+  padding: 0px;
+  gap: 8px;
+  margin-top: 10px;
 }
 
 #pagination {
   margin: auto;
+}
+
+a:hover {
+  text-decoration: none;
 }
 </style>

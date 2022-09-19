@@ -59,6 +59,15 @@
   align-items: center;
 }
 
+#resultat {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 128px;
+  max-width: 2019px;
+  width: 100%;
+}
+
 #searchBar {
   background-color: #ffffff;
   display: flex;
@@ -66,15 +75,15 @@
   padding: 8px 16px;
 }
 
+#iconSearchBar {
+  width: 16px;
+  margin: auto;
+}
+
 #inputSearchBar {
   margin: auto;
   border: none;
   flex: 1;
-}
-
-#iconSearchBar {
-  width: 16px;
-  margin: auto;
 }
 
 #containerSearch {
@@ -90,6 +99,24 @@
   width: 100%;
 }
 
+#filtres {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px;
+  gap: 16px;
+  background: #ffffff;
+}
+
+#divPagination {
+  flex: 6;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 #affichageSearch {
   flex: 6;
   display: flex;
@@ -102,17 +129,6 @@
 #affichageSearch::after {
   content: '';
   flex: auto;
-}
-
-#filtres {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 32px;
-  gap: 16px;
-  background: #ffffff;
 }
 
 .cardPhoto {
@@ -135,16 +151,6 @@
   object-fit: cover;
 }
 
-#resultat {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin: 20px 128px;
-  max-width: 2019px;
-  width: 100%;
-  padding: 0px 128px;
-}
-
 #pagination {
   margin: auto;
 }
@@ -157,12 +163,5 @@ a:hover {
   padding: 0px;
   gap: 8px;
   margin-top: 10px;
-}
-
-#divPagination {
-  flex: 6;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 }
 </style>
