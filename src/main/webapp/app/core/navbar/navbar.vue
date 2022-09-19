@@ -10,7 +10,7 @@
         Recommandations
       </b-nav-item>
       <!-- Tout le catalogue -->
-      <b-nav-item to="/recherche" class="navbar-nav">
+      <b-nav-item to="/catalogue" class="navbar-nav">
         <font-awesome-icon icon="fa-solid fa-list" />
         Tout le catalogue
       </b-nav-item>

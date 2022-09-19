@@ -1,11 +1,14 @@
 <template>
   <div id="app">
     <div id="app-header">
-      <navbar></navbar>
+      <!-- Navbar -->
+      <navbar />
     </div>
     <div class="container-fluid" id="containerfluid">
-      <router-view></router-view>
-      <jhi-footer></jhi-footer>
+      <!-- Routerview -->
+      <router-view />
+      <!-- Footer -->
+      <footerComponent />
     </div>
   </div>
 </template>

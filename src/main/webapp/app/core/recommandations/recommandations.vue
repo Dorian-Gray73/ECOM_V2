@@ -1,17 +1,18 @@
 <template>
-  <div id="accueil">
+  <div id="recommandations">
     <span id="title">À la une</span>
     <hr id="separate" />
     <!-- Carousel -->
     <div id="carousel"></div>
+    <!-- Btn Collection -->
     <div id="divBtn">
-      <router-link to="/recherche" id="btnSolaire"> Collection Solaire </router-link>
-      <router-link to="/recherche" id="btnVue"> Collection Vue </router-link>
+      <router-link to="/recherche" id="btnSolaire" class="btnCollection"> Collection Solaire </router-link>
+      <router-link to="/recherche" id="btnVue" class="btnCollection"> Collection Vue </router-link>
     </div>
   </div>
 </template>
 
-<script lang="ts" src="./accueil.component.ts"></script>
+<script lang="ts" src="./recommandations.component.ts"></script>
 
 <style scoped>
 #carousel {
@@ -26,20 +27,16 @@
 }
 
 #btnSolaire {
-  width: 1352px;
-  height: 593px;
   background-image: url('../../../content/images/recommandations/solaire.png');
-  text-align: center;
-  vertical-align: center;
-  font-weight: 700;
-  font-size: 48px;
-  color: #ffffff;
 }
 
 #btnVue {
+  background-image: url('../../../content/images/recommandations/vue.png');
+}
+
+.btnCollection {
   width: 1352px;
   height: 593px;
-  background-image: url('../../../content/images/recommandations/vue.png');
   text-align: center;
   vertical-align: center;
   font-weight: 700;
@@ -47,12 +44,12 @@
   color: #ffffff;
 }
 
-#btnSolaire:hover {
+.btnCollection:hover {
   text-decoration: none;
   color: #5b85aa;
 }
 
-#btnVue:hover {
+.btnCollection:hover {
   text-decoration: none;
   color: #5b85aa;
 }

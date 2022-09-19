@@ -16,7 +16,7 @@ import tech.jhipster.config.JHipsterConstants;
 
 public class TestContainersSpringContextCustomizerFactory implements ContextCustomizerFactory {
 
-    private Logger log = LoggerFactory.getLogger(TestContainersSpringContextCustomizerFactory.class);
+    private final Logger log = LoggerFactory.getLogger(TestContainersSpringContextCustomizerFactory.class);
 
     private static SqlTestContainer devTestContainer;
     private static SqlTestContainer prodTestContainer;

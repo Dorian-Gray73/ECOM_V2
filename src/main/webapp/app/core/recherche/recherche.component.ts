@@ -16,6 +16,9 @@ export default class Recherche extends Vue {
   // Data
   public produits: IProduit[] = [];
   public isFetching = false;
+  public search = '';
+  public rows = 100;
+  public currentPage = 1;
 
   public mounted(): void {
     this.retrieveAllProduits();
@@ -25,6 +28,7 @@ export default class Recherche extends Vue {
     this.retrieveAllProduits();
   }
 
+  //Récupération des produits
   public retrieveAllProduits(): void {
     this.isFetching = true;
     this.produitService()
@@ -33,7 +37,6 @@ export default class Recherche extends Vue {
         res => {
           this.produits = res.data;
           this.isFetching = false;
-          console.log(this.produits);
         },
         err => {
           this.isFetching = false;
@@ -46,11 +49,16 @@ export default class Recherche extends Vue {
     this.clear();
   }
 
+  // Récupération des lunettes solaires
+
+  // Récupération des lunetts de vue
+  //Recup couleur
+
+  //Recup max prix
+
   data() {
     return {
       selected: [], // Must be an array reference!
-      rows: 100,
-      currentPage: 1,
       options: [
         { text: 'Orange', value: 'orange' },
         { text: 'Apple', value: 'apple' },

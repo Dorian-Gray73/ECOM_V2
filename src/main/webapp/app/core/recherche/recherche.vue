@@ -6,7 +6,7 @@
       <!-- SearchBar -->
       <b-input-group id="searchBar">
         <font-awesome-icon icon="fa-solid fa-magnifying-glass" id="iconSearchBar" />
-        <b-form-input placeholder="Nom d'une monture" id="inputSearchBar"></b-form-input>
+        <b-form-input placeholder="Nom d'une monture" id="inputSearchBar" v-model="search" />
       </b-input-group>
 
       <div id="containerSearch">
@@ -27,7 +27,7 @@
         <div id="divPagination">
           <!-- Affichage Search -->
           <div id="affichageSearch">
-            <v-for v-for="produit in produits" :key="produit.id">
+            <div v-for="produit in produits" :key="produit.id">
               <div class="cardPhoto">
                 <router-link :to="`/produitDetails/${produit.id}`">
                   <div id="photo"></div>
@@ -37,8 +37,9 @@
                   </div>
                 </router-link>
               </div>
-            </v-for>
+            </div>
           </div>
+          <!-- Pagination -->
           <b-pagination v-model="currentPage" :total-rows="rows" id="pagination"></b-pagination>
         </div>
       </div>
@@ -47,10 +48,6 @@
 </template>
 <script lang="ts" src="./recherche.component.ts"></script>
 <style scoped>
-.col {
-  padding-right: 0;
-}
-
 #searchBar {
   background-color: #ffffff;
   display: flex;
@@ -90,6 +87,7 @@
   gap: 32px;
   height: 1186px;
 }
+
 /*#affichageSearch::after {
   content: '';
   flex: auto;
@@ -143,6 +141,7 @@ a:hover {
 .caracteristique {
   padding: 0px;
   gap: 8px;
+  margin-top: 10px;
 }
 
 #divPagination {
