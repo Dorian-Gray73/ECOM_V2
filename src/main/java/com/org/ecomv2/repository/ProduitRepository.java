@@ -57,5 +57,5 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
     List<String> getAllMarques();
 
     @Query("SELECT min(p.prix), max(p.prix) FROM Produit p")
-    List<Object> getAllPrix();
+    String getAllPrix();
 }

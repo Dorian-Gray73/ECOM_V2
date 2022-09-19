@@ -187,7 +187,7 @@ public class ProduitResource {
     }
 
     @GetMapping("/produits/prix")
-    public List<Object> getAllPrix() {
+    public String getAllPrix() {
         return produitRepository.getAllPrix();
     }
 
