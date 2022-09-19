@@ -38,6 +38,7 @@ spring:
     hikari:
       poolName: Hikari
       auto-commit: false
+      maximumPoolSize: 2
   jpa:
     database-platform: tech.jhipster.domain.util.FixedPostgreSQL10Dialect
   liquibase:
