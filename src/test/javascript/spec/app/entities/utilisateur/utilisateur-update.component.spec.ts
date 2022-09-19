@@ -10,6 +10,8 @@ import UtilisateurClass from '@/entities/utilisateur/utilisateur-update.componen
 import UtilisateurService from '@/entities/utilisateur/utilisateur.service';
 
 import TransactionService from '@/entities/transaction/transaction.service';
+
+import UserService from '@/entities/user/user.service';
 import AlertService from '@/shared/alert/alert.service';
 
 const localVue = createLocalVue();
@@ -48,6 +50,8 @@ describe('Component Tests', () => {
             sinon.createStubInstance<TransactionService>(TransactionService, {
               retrieve: sinon.stub().resolves({}),
             } as any),
+
+          userService: () => new UserService(),
         },
       });
       comp = wrapper.vm;

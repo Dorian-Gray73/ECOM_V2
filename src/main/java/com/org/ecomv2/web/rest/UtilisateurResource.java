@@ -1,6 +1,7 @@
 package com.org.ecomv2.web.rest;
 
 import com.org.ecomv2.domain.Utilisateur;
+import com.org.ecomv2.repository.UserRepository;
 import com.org.ecomv2.repository.UtilisateurRepository;
 import com.org.ecomv2.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
@@ -34,8 +35,11 @@ public class UtilisateurResource {
 
     private final UtilisateurRepository utilisateurRepository;
 
-    public UtilisateurResource(UtilisateurRepository utilisateurRepository) {
+    private final UserRepository userRepository;
+
+    public UtilisateurResource(UtilisateurRepository utilisateurRepository, UserRepository userRepository) {
         this.utilisateurRepository = utilisateurRepository;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -51,6 +55,11 @@ public class UtilisateurResource {
         if (utilisateur.getId() != null) {
             throw new BadRequestAlertException("A new utilisateur cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        if (Objects.isNull(utilisateur.getInternal_user())) {
+            throw new BadRequestAlertException("Invalid association value provided", ENTITY_NAME, "null");
+        }
+        Long userId = utilisateur.getInternal_user().getId();
+        userRepository.findById(userId).ifPresent(utilisateur::internal_user);
         Utilisateur result = utilisateurRepository.save(utilisateur);
         return ResponseEntity
             .created(new URI("/api/utilisateurs/" + result.getId()))
@@ -152,12 +161,18 @@ public class UtilisateurResource {
     /**
      * {@code GET  /utilisateurs} : get all the utilisateurs.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of utilisateurs in body.
      */
     @GetMapping("/utilisateurs")
-    public List<Utilisateur> getAllUtilisateurs() {
+    @Transactional(readOnly = true)
+    public List<Utilisateur> getAllUtilisateurs(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Utilisateurs");
-        return utilisateurRepository.findAll();
+        if (eagerload) {
+            return utilisateurRepository.findAllWithEagerRelationships();
+        } else {
+            return utilisateurRepository.findAll();
+        }
     }
 
     /**
@@ -167,9 +182,10 @@ public class UtilisateurResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the utilisateur, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/utilisateurs/{id}")
+    @Transactional(readOnly = true)
     public ResponseEntity<Utilisateur> getUtilisateur(@PathVariable Long id) {
         log.debug("REST request to get Utilisateur : {}", id);
-        Optional<Utilisateur> utilisateur = utilisateurRepository.findById(id);
+        Optional<Utilisateur> utilisateur = utilisateurRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(utilisateur);
     }
 

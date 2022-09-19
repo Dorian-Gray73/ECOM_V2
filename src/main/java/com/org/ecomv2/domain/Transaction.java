@@ -35,7 +35,7 @@ public class Transaction implements Serializable {
     private Set<LigneTransaction> ligneTransactions = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "transactions" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "transactions", "internal_user" }, allowSetters = true)
     private Utilisateur utilisateur;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

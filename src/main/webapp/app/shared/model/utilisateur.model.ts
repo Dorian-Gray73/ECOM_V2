@@ -1,4 +1,5 @@
 import { ITransaction } from '@/shared/model/transaction.model';
+import { IUser } from '@/shared/model/user.model';
 
 import { Type } from '@/shared/model/enumerations/type.model';
 export interface IUtilisateur {
@@ -9,6 +10,7 @@ export interface IUtilisateur {
   adresse?: string | null;
   type?: Type | null;
   transactions?: ITransaction[] | null;
+  internal_user?: IUser | null;
 }
 
 export class Utilisateur implements IUtilisateur {
@@ -19,6 +21,7 @@ export class Utilisateur implements IUtilisateur {
     public courriel?: string | null,
     public adresse?: string | null,
     public type?: Type | null,
-    public transactions?: ITransaction[] | null
+    public transactions?: ITransaction[] | null,
+    public internal_user?: IUser | null
   ) {}
 }
