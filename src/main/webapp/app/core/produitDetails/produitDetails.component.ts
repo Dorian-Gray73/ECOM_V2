@@ -40,9 +40,5 @@ export default class ProduitDetails extends Vue {
 
   public addProduit(produit): void {
     this.$store.commit('addProduit', produit);
-    console.log(this.$store.state);
-    console.log(this.$store.getters.nbProduit);
-    console.log(this.$store.getters.panier);
-    console.log(this.$store.getters.quantite);
   }
 }

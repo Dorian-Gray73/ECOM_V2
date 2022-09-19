@@ -47,8 +47,6 @@ export default class Recherche extends Vue {
       .then(
         res => {
           this.produits = res.data;
-          console.log(this.produits);
-          this.rows = this.produits.length;
           this.isFetching = false;
         },
         err => {
@@ -100,7 +98,6 @@ export default class Recherche extends Vue {
       .then(
         res => {
           this.marques = res.data;
-          console.log(this.marques);
           this.isFetching = false;
         },
         err => {
@@ -114,24 +111,37 @@ export default class Recherche extends Vue {
     this.clear();
   }
 
-  // Récupération des lunettes solaires
-
-  // Récupération des lunetts de vue
-  //Recup couleur
-
-  //Recup max prix
-
   // Pagination
   get produitList() {
-    const produitsFiltered = this.filtreProduitSearch(this.produits);
+    let produitsFiltered = this.filtreProduitSearch(this.produits);
+    produitsFiltered = this.filtreProduitCouleur(produitsFiltered);
+    this.rows = produitsFiltered.length;
     return produitsFiltered.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
   }
 
   public filtreProduitSearch(produitsListe) {
-    return this.produits.filter(produits => produits.nom.toLowerCase().includes(this.search.toLowerCase()));
+    return produitsListe.filter(produit => produit.nom.toLowerCase().includes(this.search.toLowerCase()));
   }
 
-  public filtreProduitCouleur(produitsListe) {}
+  public filtreProduitCouleur(produitsListe) {
+    let produitListeFiltrer = produitsListe;
+    if (this.selectedCouleurs.length != 0) {
+      produitListeFiltrer = produitsListe.filter(produit => {
+        let produitVerif = false;
+        produit.caracteristiques.forEach(cara => {
+          this.selectedCouleurs.forEach(couleur => {
+            if (cara.couleur.toLowerCase().includes(couleur.toLowerCase())) {
+              produitVerif = true;
+            }
+          });
+        });
+        return produitVerif;
+      });
+    }
+    return produitListeFiltrer;
+  }
 
-  public filtreProduitPrix(produitsListe) {}
+  public filtreProduitPrix(produitsListe) {
+    return null;
+  }
 }
