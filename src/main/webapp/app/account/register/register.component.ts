@@ -74,6 +74,7 @@ export default class Register extends Vue {
     adresse: undefined,
     type: Type.Acheteur,
     courriel: undefined,
+    internal_user: undefined,
   };
   public confirmPassword: any = null;
   public error = '';
@@ -103,6 +104,7 @@ export default class Register extends Vue {
         }
       });
     this.registerUtilisateur.courriel = this.registerAccount.email;
+    this.registerUtilisateur.internal_user = this.registerUtilisateur.login;
     this.utilisateurService()
       .create(this.registerUtilisateur)
       .then(() => {
