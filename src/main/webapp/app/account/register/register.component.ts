@@ -102,7 +102,7 @@ export default class Register extends Vue {
           this.error = 'ERROR';
         }
       });
-    this.registerUtilisateur.email = this.registerAccount.email;
+    this.registerUtilisateur.courriel = this.registerAccount.email;
     this.utilisateurService()
       .create(this.registerUtilisateur)
       .then(() => {
