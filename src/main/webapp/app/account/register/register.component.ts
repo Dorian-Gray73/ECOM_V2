@@ -1,9 +1,11 @@
 import Vue from 'vue';
-import { Component, Inject } from 'vue-property-decorator';
+import { Component, Inject, Provide } from 'vue-property-decorator';
 import { email, helpers, maxLength, minLength, required, sameAs } from 'vuelidate/lib/validators';
 import LoginService from '@/account/login.service';
 import RegisterService from '@/account/register/register.service';
+import UtilisateurService from '@/entities/utilisateur/utilisateur.service';
 import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from '@/constants';
+import { Type } from '@/shared/model/enumerations/type.model';
 
 const loginPattern = helpers.regex('alpha', /^[a-zA-Z0-9!$&*+=?^_`{|}~.-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$|^[_.@A-Za-z0-9-]+$/);
 const validations: any = {
@@ -26,6 +28,23 @@ const validations: any = {
       maxLength: maxLength(254),
     },
   },
+  registerUtilisateur: {
+    nom: {
+      required,
+      minLength: minLength(1),
+      maxLength: maxLength(30),
+    },
+    prenom: {
+      required,
+      minLength: minLength(1),
+      maxLength: maxLength(30),
+    },
+    adresse: {
+      required,
+      minLength: minLength(10),
+      maxLength: maxLength(100),
+    },
+  },
   confirmPassword: {
     required,
     minLength: minLength(4),
@@ -43,10 +62,19 @@ const validations: any = {
 export default class Register extends Vue {
   @Inject('registerService') private registerService: () => RegisterService;
   @Inject('loginService') private loginService: () => LoginService;
+  @Provide('utilisateurService') private utilisateurService = () => new UtilisateurService();
   public registerAccount: any = {
     login: undefined,
     email: undefined,
     password: undefined,
+  };
+  public registerUtilisateur: any = {
+    nom: undefined,
+    prenom: undefined,
+    adresse: undefined,
+    type: Type.Acheteur,
+    courriel: undefined,
+    internal_user: undefined,
   };
   public confirmPassword: any = null;
   public error = '';
@@ -59,6 +87,7 @@ export default class Register extends Vue {
     this.errorUserExists = null;
     this.errorEmailExists = null;
     this.registerAccount.langKey = this.$store.getters.currentLanguage;
+    this.registerUtilisateur.langKey = this.$store.getters.currentLanguage;
     this.registerService()
       .processRegistration(this.registerAccount)
       .then(() => {
@@ -73,6 +102,17 @@ export default class Register extends Vue {
         } else {
           this.error = 'ERROR';
         }
+      });
+    this.registerUtilisateur.courriel = this.registerAccount.email;
+    this.registerUtilisateur.internal_user = this.registerUtilisateur.login;
+    this.utilisateurService()
+      .create(this.registerUtilisateur)
+      .then(() => {
+        this.success = true;
+      })
+      .catch(error => {
+        this.success = null;
+        this.error = 'ERROR';
       });
   }
 

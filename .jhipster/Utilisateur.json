@@ -38,6 +38,15 @@
       "otherEntityRelationshipName": "utilisateur",
       "relationshipName": "transaction",
       "relationshipType": "one-to-many"
+    },
+    {
+      "id": true,
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "utilisateur",
+      "ownerSide": true,
+      "relationshipName": "internal_user",
+      "relationshipType": "one-to-one"
     }
   ],
   "service": "no"
