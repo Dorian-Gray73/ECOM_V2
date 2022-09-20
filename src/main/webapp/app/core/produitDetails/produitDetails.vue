@@ -37,6 +37,7 @@
 #containerProduit {
   display: flex;
   gap: 64px;
+  margin-bottom: 20px;
 }
 
 #produit {
