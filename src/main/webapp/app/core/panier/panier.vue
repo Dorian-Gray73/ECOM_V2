@@ -66,7 +66,7 @@
   flex-direction: row;
   align-items: center;
   padding: 32px;
-  gap: 64px;
+  gap: 48px;
 
   width: 1032px;
   height: 192px;
