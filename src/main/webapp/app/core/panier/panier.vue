@@ -13,7 +13,7 @@
         <div v-for="cara in panier" :key="cara.id">
           <div class="produit">
             <img :src="`/content/images/${cara.images[0].lienImage}`" class="photoProduit" alt="" />
-            <div class="nomPrix">{{ cara.produit.nom }} <br />{{ cara.couleur }}<br />{{ cara.produit.prix }}€</div>
+            <div class="nomPrix">{{ cara.produit.nom }} <br />Couleur : {{ cara.couleur }}<br />Prix : {{ cara.produit.prix }}€</div>
             <div class="quantite">Quantité : {{ quantite[cara.id] }}</div>
             <div class="prixTotal">Prix total : {{ quantite[cara.id] * cara.produit.prix }}€</div>
             <div v-on:click="deleteProduit(cara)">
@@ -97,5 +97,9 @@
   font-weight: bold;
   border-bottom: solid 1px #5b85aa;
   padding-bottom: 7px;
+}
+
+.nomPrix {
+  width: 100px;
 }
 </style>

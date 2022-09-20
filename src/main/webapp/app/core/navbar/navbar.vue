@@ -4,18 +4,17 @@
       <img id="logo" src="/content/images/Lu_Net_Logo.png" />
     </b-navbar-brand>
     <div class="navbar-nav ml-auto">
-      <!-- Recommandations -->
-      <b-nav-item to="/" class="navbar-nav">
-        <font-awesome-icon :icon="['fa', 'fa-lightbulb']" class="icon alt" />
-        Recommandations
-      </b-nav-item>
       <!-- Tout le catalogue -->
-      <b-nav-item to="/catalogue" class="navbar-nav">
+      <b-nav-item to="/" class="navbar-nav">
         <font-awesome-icon icon="fa-solid fa-list" />
         Tout le catalogue
       </b-nav-item>
+      <!-- A propos -->
+      <b-nav-item to="/apropos" class="navbar-nav">
+        <font-awesome-icon :icon="['fa', 'fa-lightbulb']" class="icon alt" />
+        A propos
+      </b-nav-item>
       <!-- Recherche -->
-
       <b-nav-item to="/recherche" class="navbar-nav">
         <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
         Recherche

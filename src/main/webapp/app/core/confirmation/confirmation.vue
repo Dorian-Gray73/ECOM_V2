@@ -7,16 +7,43 @@
       <div class="step done">Paiement</div>
       <div class="step active">Confirmation</div>
     </div>
-    <div id="contenuPanier"></div>
+    <div id="contenuPanier">
+      <div id="produitPanier" :key="componentKey">
+        <div v-for="cara in panier" :key="cara.id" class="produit">
+          <img :src="`/content/images/${cara.images[0].lienImage}`" class="photoProduit" alt="" />
+          <div class="nomPrix">{{ cara.produit.nom }} <br />{{ cara.couleur }}<br />{{ cara.produit.prix }}€</div>
+          <div class="quantite">Quantité : {{ quantite[cara.id] }}</div>
+          <div class="prixTotal">Prix total : {{ quantite[cara.id] * cara.produit.prix }}€</div>
+        </div>
+      </div>
+      <div id="validerCommande">
+        <div>
+          <font-awesome-icon icon="fa-solid fa-circle-check" />
+          Commande validée
+        </div>
+        <div>Prix Total : {{ getPrixTotal() }}€</div>
+        <div>Prix total avec livraison : {{ getPrixTotalLivraison() }}€</div>
+      </div>
+    </div>
   </div>
 </template>
 <script lang="ts" src="./confirmation.component.ts"></script>
 <style scoped>
 #contenuPanier {
   display: flex;
+  flex-direction: column;
   margin: 20px 128px;
   gap: 32px;
-  background-color: #ffffff;
+}
+
+#produitPanier {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 32px;
+  overflow: auto;
 }
 
 .progressionPanier {
@@ -42,5 +69,46 @@
   font-weight: bold;
   border-bottom: solid 1px #5b85aa;
   padding-bottom: 7px;
+}
+
+.produit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 32px;
+  gap: 64px;
+
+  width: 100%;
+  height: 192px;
+
+  background: #ffffff;
+}
+
+.photoProduit {
+  width: 128px;
+  height: 128px;
+  background-color: #f7f7f7;
+  object-fit: cover;
+}
+
+#contenuPanier {
+  display: flex;
+  margin: 20px 128px;
+  gap: 32px;
+}
+
+.nomPrix {
+  width: 100px;
+}
+
+#validerCommande {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #ffffff;
+  width: 100%;
+  height: 128px;
+  gap: 64px;
+  padding: 32px;
 }
 </style>
