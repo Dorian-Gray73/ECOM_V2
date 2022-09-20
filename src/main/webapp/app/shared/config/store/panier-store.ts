@@ -42,13 +42,14 @@ export const panierStore: Module<PanierStateStorable, any> = {
 
       // Si il n'est pas dans le panier on l'ajoute une première fois sinon on change la quantité
       if (produitExist == false) {
-        console.log('test');
         state.panier.push(produit);
         state.quantite[produit.id] = 1;
       } else {
         state.quantite[produit.id] = state.quantite[produit.id] + 1;
       }
       state.nbProduit++;
+      localStorage.setItem('panier', JSON.stringify(state.panier));
+      localStorage.setItem('panier', JSON.stringify(state.quantite));
     },
     deleteProduit(state, produit) {
       let indexProduit = 0;
