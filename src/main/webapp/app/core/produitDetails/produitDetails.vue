@@ -6,7 +6,8 @@
         <div id="nomMonture">{{ caracteristique.produit.nom }}</div>
         <div id="marqueMonture">{{ caracteristique.produit.marque }}</div>
         <div id="couleurMonture">{{ caracteristique.couleur }}</div>
-        <div id="quantiteMonture">Disponible</div>
+        <div v-if="caracteristique.quantite > 0" id="quantiteMonture">Disponible</div>
+        <div v-else id="quantiteMontureNonDispo">Non disponible</div>
       </div>
     </div>
     <div id="caracteristiques">
@@ -27,7 +28,7 @@
           <div>{{ cara.couleur }}</div>
         </div>
       </div>
-      <b-button id="btnCommander" v-on:click="addProduit(caracteristique)">Ajouter au panier</b-button>
+      <b-button v-if="caracteristique.quantite > 0" id="btnCommander" v-on:click="addProduit(caracteristique)">Ajouter au panier</b-button>
     </div>
   </div>
 </template>
@@ -80,6 +81,12 @@
   text-align: center;
 }
 
+#quantiteMontureNonDispo {
+  border: solid 1px indianred;
+  color: indianred;
+  text-align: center;
+}
+
 #textMonture {
   display: flex;
   flex-direction: column;
@@ -88,7 +95,7 @@
 
 #nomMonture {
   font-weight: 700;
-  font-size: 32px;
+  font-size: 24px;
 }
 
 #textPrix {

@@ -31,7 +31,7 @@
           <!-- Affichage Search -->
           <div id="affichageSearch">
             <div v-if="produitList.length == 0" id="catalogueVide">
-              <div id="videTexte">Pas de lunettes disponibles</div>
+              <div id="videTexte">Pas de lunette disponible</div>
             </div>
             <div v-else v-for="produit in produitList" :key="produit.id" class="cardPhoto">
               <router-link :to="`/produitDetails/${produit.id}`">
