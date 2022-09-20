@@ -27,14 +27,14 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> 
     }
 
     @Query(
-        value = "select distinct utilisateur from Utilisateur utilisateur left join fetch utilisateur.internal_user",
+        value = "select distinct utilisateur from Utilisateur utilisateur left join fetch utilisateur.user",
         countQuery = "select count(distinct utilisateur) from Utilisateur utilisateur"
     )
     Page<Utilisateur> findAllWithToOneRelationships(Pageable pageable);
 
-    @Query("select distinct utilisateur from Utilisateur utilisateur left join fetch utilisateur.internal_user")
+    @Query("select distinct utilisateur from Utilisateur utilisateur left join fetch utilisateur.user")
     List<Utilisateur> findAllWithToOneRelationships();
 
-    @Query("select utilisateur from Utilisateur utilisateur left join fetch utilisateur.internal_user where utilisateur.id =:id")
+    @Query("select utilisateur from Utilisateur utilisateur left join fetch utilisateur.user where utilisateur.id =:id")
     Optional<Utilisateur> findOneWithToOneRelationships(@Param("id") Long id);
 }

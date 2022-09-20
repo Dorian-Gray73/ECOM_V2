@@ -40,7 +40,7 @@
       "relationshipType": "one-to-many"
     },
     {
-      "id": true,
+      "id": false,
       "otherEntityField": "login",
       "otherEntityName": "user",
       "otherEntityRelationshipName": "utilisateur",

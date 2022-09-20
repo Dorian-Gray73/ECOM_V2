@@ -18,6 +18,7 @@ const validations: any = {
   caracteristique: {
     couleur: {},
     quantite: {},
+    version: {},
   },
 };
 

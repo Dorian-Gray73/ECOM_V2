@@ -24,7 +24,7 @@
       "adresse": "Adresse",
       "type": "Type",
       "transaction": "Transaction",
-      "internal_user": "Internal User"
+      "user": "User"
     }
   }
 }

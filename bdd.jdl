@@ -24,6 +24,7 @@ entity Modele {
 entity Caracteristique {
     couleur String,
     quantite Integer,
+    version Integer,
 }
 
 entity Transaction {

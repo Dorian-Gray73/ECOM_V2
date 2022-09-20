@@ -7,10 +7,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.org.ecomv2.IntegrationTest;
-import com.org.ecomv2.domain.User;
 import com.org.ecomv2.domain.Utilisateur;
 import com.org.ecomv2.domain.enumeration.Type;
-import com.org.ecomv2.repository.UserRepository;
 import com.org.ecomv2.repository.UtilisateurRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,14 +57,11 @@ class UtilisateurResourceIT {
     private static final String ENTITY_API_URL = "/api/utilisateurs";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
-    private static final Random random = new Random();
-    private static final AtomicLong count = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
+    private static Random random = new Random();
+    private static AtomicLong count = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
 
     @Autowired
     private UtilisateurRepository utilisateurRepository;
-
-    @Autowired
-    private UserRepository userRepository;
 
     @Mock
     private UtilisateurRepository utilisateurRepositoryMock;
@@ -92,11 +87,6 @@ class UtilisateurResourceIT {
             .courriel(DEFAULT_COURRIEL)
             .adresse(DEFAULT_ADRESSE)
             .type(DEFAULT_TYPE);
-        // Add required entity
-        User user = UserResourceIT.createEntity(em);
-        em.persist(user);
-        em.flush();
-        utilisateur.setInternal_user(user);
         return utilisateur;
     }
 
@@ -113,11 +103,6 @@ class UtilisateurResourceIT {
             .courriel(UPDATED_COURRIEL)
             .adresse(UPDATED_ADRESSE)
             .type(UPDATED_TYPE);
-        // Add required entity
-        User user = UserResourceIT.createEntity(em);
-        em.persist(user);
-        em.flush();
-        utilisateur.setInternal_user(user);
         return utilisateur;
     }
 
@@ -144,9 +129,6 @@ class UtilisateurResourceIT {
         assertThat(testUtilisateur.getCourriel()).isEqualTo(DEFAULT_COURRIEL);
         assertThat(testUtilisateur.getAdresse()).isEqualTo(DEFAULT_ADRESSE);
         assertThat(testUtilisateur.getType()).isEqualTo(DEFAULT_TYPE);
-
-        // Validate the id for MapsId, the ids must be same
-        assertThat(testUtilisateur.getId()).isEqualTo(testUtilisateur.getInternal_user().getId());
     }
 
     @Test
@@ -166,43 +148,6 @@ class UtilisateurResourceIT {
         List<Utilisateur> utilisateurList = utilisateurRepository.findAll();
         assertThat(utilisateurList).hasSize(databaseSizeBeforeCreate);
     }
-
-    /*
-    @Test
-    @Transactional
-    void updateUtilisateurMapsIdAssociationWithNewId() throws Exception {
-        // Initialize the database
-        utilisateurRepository.saveAndFlush(utilisateur);
-        int databaseSizeBeforeCreate = utilisateurRepository.findAll().size();
-
-        // Load the utilisateur
-        Utilisateur updatedUtilisateur = utilisateurRepository.findById(utilisateur.getId()).get();
-        assertThat(updatedUtilisateur).isNotNull();
-        // Disconnect from session so that the updates on updatedUtilisateur are not directly saved in db
-        em.detach(updatedUtilisateur);
-
-        // Update the User with new association value
-        updatedUtilisateur.setInternal_user(user);
-
-        // Update the entity
-        restUtilisateurMockMvc
-            .perform(
-                put(ENTITY_API_URL_ID, updatedUtilisateur.getId())
-                .contentType(MediaType.APPLICATION_JSON)
-                    .content(TestUtil.convertObjectToJsonBytes(updatedUtilisateur))
-                    )
-                    .andExpect(status().isOk());
-                    
-                    // Validate the Utilisateur in the database
-                    List<Utilisateur> utilisateurList = utilisateurRepository.findAll();
-                    assertThat(utilisateurList).hasSize(databaseSizeBeforeCreate);
-                    Utilisateur testUtilisateur = utilisateurList.get(utilisateurList.size() - 1);
-                    // Validate the id for MapsId, the ids must be same
-                    // Uncomment the following line for assertion. However, please note that there is a known issue and uncommenting will fail the test.
-                    // Please look at https://github.com/jhipster/generator-jhipster/issues/9100. You can modify this test as necessary.
-                    // assertThat(testUtilisateur.getId()).isEqualTo(testUtilisateur.getUser().getId());
-                }
-                 */
 
     @Test
     @Transactional

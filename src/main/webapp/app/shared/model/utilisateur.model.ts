@@ -10,7 +10,7 @@ export interface IUtilisateur {
   adresse?: string | null;
   type?: Type | null;
   transactions?: ITransaction[] | null;
-  internal_user?: IUser | null;
+  user?: IUser | null;
 }
 
 export class Utilisateur implements IUtilisateur {
@@ -22,6 +22,6 @@ export class Utilisateur implements IUtilisateur {
     public adresse?: string | null,
     public type?: Type | null,
     public transactions?: ITransaction[] | null,
-    public internal_user?: IUser | null
+    public user?: IUser | null
   ) {}
 }

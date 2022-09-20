@@ -34,7 +34,7 @@
             <th scope="row"><span v-text="$t('ecomV2App.utilisateur.courriel')">Courriel</span></th>
             <th scope="row"><span v-text="$t('ecomV2App.utilisateur.adresse')">Adresse</span></th>
             <th scope="row"><span v-text="$t('ecomV2App.utilisateur.type')">Type</span></th>
-            <th scope="row"><span v-text="$t('ecomV2App.utilisateur.internal_user')">Internal User</span></th>
+            <th scope="row"><span v-text="$t('ecomV2App.utilisateur.user')">User</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -49,7 +49,7 @@
             <td>{{ utilisateur.adresse }}</td>
             <td v-text="$t('ecomV2App.Type.' + utilisateur.type)">{{ utilisateur.type }}</td>
             <td>
-              {{ utilisateur.internal_user ? utilisateur.internal_user.login : '' }}
+              {{ utilisateur.user ? utilisateur.user.login : '' }}
             </td>
             <td class="text-right">
               <div class="btn-group">

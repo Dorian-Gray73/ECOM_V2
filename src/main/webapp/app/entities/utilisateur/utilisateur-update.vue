@@ -78,21 +78,11 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('ecomV2App.utilisateur.internal_user')" for="utilisateur-internal_user"
-              >Internal User</label
-            >
-            <select
-              class="form-control"
-              id="utilisateur-internal_user"
-              data-cy="internal_user"
-              name="internal_user"
-              v-model="utilisateur.internal_user"
-            >
+            <label class="form-control-label" v-text="$t('ecomV2App.utilisateur.user')" for="utilisateur-user">User</label>
+            <select class="form-control" id="utilisateur-user" data-cy="user" name="user" v-model="utilisateur.user">
               <option v-bind:value="null"></option>
               <option
-                v-bind:value="
-                  utilisateur.internal_user && userOption.id === utilisateur.internal_user.id ? utilisateur.internal_user : userOption
-                "
+                v-bind:value="utilisateur.user && userOption.id === utilisateur.user.id ? utilisateur.user : userOption"
                 v-for="userOption in users"
                 :key="userOption.id"
               >

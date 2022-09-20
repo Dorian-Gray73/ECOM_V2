@@ -17,6 +17,8 @@ public class Utilisateur implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
     @Column(name = "id")
     private Long id;
 
@@ -41,9 +43,8 @@ public class Utilisateur implements Serializable {
     private Set<Transaction> transactions = new HashSet<>();
 
     @OneToOne
-    @MapsId
-    @JoinColumn(name = "id")
-    private User internal_user;
+    @JoinColumn(unique = true)
+    private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -156,16 +157,16 @@ public class Utilisateur implements Serializable {
         return this;
     }
 
-    public User getInternal_user() {
-        return this.internal_user;
+    public User getUser() {
+        return this.user;
     }
 
-    public void setInternal_user(User user) {
-        this.internal_user = user;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Utilisateur internal_user(User user) {
-        this.setInternal_user(user);
+    public Utilisateur user(User user) {
+        this.setUser(user);
         return this;
     }
 

@@ -27,6 +27,9 @@ public class Caracteristique implements Serializable {
     @Column(name = "quantite")
     private Integer quantite;
 
+    @Column(name = "version")
+    private Integer version;
+
     @OneToMany(mappedBy = "caracteristique")
     @JsonIgnoreProperties(value = { "caracteristique", "produit" }, allowSetters = true)
     private Set<Image> images = new HashSet<>();
@@ -78,6 +81,19 @@ public class Caracteristique implements Serializable {
 
     public void setQuantite(Integer quantite) {
         this.quantite = quantite;
+    }
+
+    public Integer getVersion() {
+        return this.version;
+    }
+
+    public Caracteristique version(Integer version) {
+        this.setVersion(version);
+        return this;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     public Set<Image> getImages() {
@@ -181,6 +197,7 @@ public class Caracteristique implements Serializable {
             "id=" + getId() +
             ", couleur='" + getCouleur() + "'" +
             ", quantite=" + getQuantite() +
+            ", version=" + getVersion() +
             "}";
     }
 }
