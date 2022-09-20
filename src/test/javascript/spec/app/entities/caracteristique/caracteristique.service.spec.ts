@@ -29,7 +29,7 @@ describe('Service Tests', () => {
 
     beforeEach(() => {
       service = new CaracteristiqueService();
-      elemDefault = new Caracteristique(123, 'AAAAAAA', 0);
+      elemDefault = new Caracteristique(123, 'AAAAAAA', 0, 0);
     });
 
     describe('Service methods', () => {
@@ -83,6 +83,7 @@ describe('Service Tests', () => {
           {
             couleur: 'BBBBBB',
             quantite: 1,
+            version: 1,
           },
           elemDefault
         );
@@ -110,6 +111,7 @@ describe('Service Tests', () => {
         const patchObject = Object.assign(
           {
             quantite: 1,
+            version: 1,
           },
           new Caracteristique()
         );
@@ -139,6 +141,7 @@ describe('Service Tests', () => {
           {
             couleur: 'BBBBBB',
             quantite: 1,
+            version: 1,
           },
           elemDefault
         );

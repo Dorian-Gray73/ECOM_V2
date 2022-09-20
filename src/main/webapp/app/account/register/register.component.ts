@@ -104,7 +104,7 @@ export default class Register extends Vue {
         }
       });
     this.registerUtilisateur.courriel = this.registerAccount.email;
-    this.registerUtilisateur.internal_user = this.registerUtilisateur.login;
+    this.registerUtilisateur.internal_user = this.registerAccount.login;
     this.utilisateurService()
       .create(this.registerUtilisateur)
       .then(() => {

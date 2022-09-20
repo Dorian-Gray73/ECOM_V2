@@ -12,6 +12,10 @@
     {
       "fieldName": "quantite",
       "fieldType": "Integer"
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "Integer"
     }
   ],
   "fluentMethods": true,

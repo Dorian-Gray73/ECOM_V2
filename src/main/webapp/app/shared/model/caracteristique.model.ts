@@ -6,6 +6,7 @@ export interface ICaracteristique {
   id?: number;
   couleur?: string | null;
   quantite?: number | null;
+  version?: number | null;
   images?: IImage[] | null;
   ligneTransactions?: ILigneTransaction[] | null;
   produit?: IProduit | null;
@@ -16,6 +17,7 @@ export class Caracteristique implements ICaracteristique {
     public id?: number,
     public couleur?: string | null,
     public quantite?: number | null,
+    public version?: number | null,
     public images?: IImage[] | null,
     public ligneTransactions?: ILigneTransaction[] | null,
     public produit?: IProduit | null
