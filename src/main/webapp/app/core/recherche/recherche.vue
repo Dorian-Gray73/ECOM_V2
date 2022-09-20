@@ -30,7 +30,10 @@
         <div id="divPagination">
           <!-- Affichage Search -->
           <div id="affichageSearch">
-            <div v-for="produit in produitList" :key="produit.id" class="cardPhoto">
+            <div v-if="produitList.length == 0" id="catalogueVide">
+              <div id="videTexte">Pas de lunettes disponibles</div>
+            </div>
+            <div v-else v-for="produit in produitList" :key="produit.id" class="cardPhoto">
               <router-link :to="`/produitDetails/${produit.id}`">
                 <img :src="`/content/images/${produit.images[0].lienImage}`" class="photo" alt="" />
                 <div class="caracteristique">
@@ -132,6 +135,21 @@
 #affichageSearch::after {
   content: '';
   flex: auto;
+}
+
+#catalogueVide {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  height: 128px;
+  text-align: center;
+  width: 100%;
+  align-items: center;
+  margin: auto;
+}
+
+#videTexte {
+  margin: auto;
 }
 
 .cardPhoto {
