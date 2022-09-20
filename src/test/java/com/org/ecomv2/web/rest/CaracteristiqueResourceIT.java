@@ -35,11 +35,14 @@ class CaracteristiqueResourceIT {
     private static final Integer DEFAULT_QUANTITE = 1;
     private static final Integer UPDATED_QUANTITE = 2;
 
+    private static final Integer DEFAULT_VERSION = 1;
+    private static final Integer UPDATED_VERSION = 2;
+
     private static final String ENTITY_API_URL = "/api/caracteristiques";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
-    private static final Random random = new Random();
-    private static final AtomicLong count = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
+    private static Random random = new Random();
+    private static AtomicLong count = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
 
     @Autowired
     private CaracteristiqueRepository caracteristiqueRepository;
@@ -59,7 +62,10 @@ class CaracteristiqueResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Caracteristique createEntity(EntityManager em) {
-        Caracteristique caracteristique = new Caracteristique().couleur(DEFAULT_COULEUR).quantite(DEFAULT_QUANTITE);
+        Caracteristique caracteristique = new Caracteristique()
+            .couleur(DEFAULT_COULEUR)
+            .quantite(DEFAULT_QUANTITE)
+            .version(DEFAULT_VERSION);
         return caracteristique;
     }
 
@@ -70,7 +76,10 @@ class CaracteristiqueResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Caracteristique createUpdatedEntity(EntityManager em) {
-        Caracteristique caracteristique = new Caracteristique().couleur(UPDATED_COULEUR).quantite(UPDATED_QUANTITE);
+        Caracteristique caracteristique = new Caracteristique()
+            .couleur(UPDATED_COULEUR)
+            .quantite(UPDATED_QUANTITE)
+            .version(UPDATED_VERSION);
         return caracteristique;
     }
 
@@ -96,6 +105,7 @@ class CaracteristiqueResourceIT {
         Caracteristique testCaracteristique = caracteristiqueList.get(caracteristiqueList.size() - 1);
         assertThat(testCaracteristique.getCouleur()).isEqualTo(DEFAULT_COULEUR);
         assertThat(testCaracteristique.getQuantite()).isEqualTo(DEFAULT_QUANTITE);
+        assertThat(testCaracteristique.getVersion()).isEqualTo(DEFAULT_VERSION);
     }
 
     @Test
@@ -131,7 +141,8 @@ class CaracteristiqueResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(caracteristique.getId().intValue())))
             .andExpect(jsonPath("$.[*].couleur").value(hasItem(DEFAULT_COULEUR)))
-            .andExpect(jsonPath("$.[*].quantite").value(hasItem(DEFAULT_QUANTITE)));
+            .andExpect(jsonPath("$.[*].quantite").value(hasItem(DEFAULT_QUANTITE)))
+            .andExpect(jsonPath("$.[*].version").value(hasItem(DEFAULT_VERSION)));
     }
 
     @Test
@@ -147,7 +158,8 @@ class CaracteristiqueResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(caracteristique.getId().intValue()))
             .andExpect(jsonPath("$.couleur").value(DEFAULT_COULEUR))
-            .andExpect(jsonPath("$.quantite").value(DEFAULT_QUANTITE));
+            .andExpect(jsonPath("$.quantite").value(DEFAULT_QUANTITE))
+            .andExpect(jsonPath("$.version").value(DEFAULT_VERSION));
     }
 
     @Test
@@ -169,7 +181,7 @@ class CaracteristiqueResourceIT {
         Caracteristique updatedCaracteristique = caracteristiqueRepository.findById(caracteristique.getId()).get();
         // Disconnect from session so that the updates on updatedCaracteristique are not directly saved in db
         em.detach(updatedCaracteristique);
-        updatedCaracteristique.couleur(UPDATED_COULEUR).quantite(UPDATED_QUANTITE);
+        updatedCaracteristique.couleur(UPDATED_COULEUR).quantite(UPDATED_QUANTITE).version(UPDATED_VERSION);
 
         restCaracteristiqueMockMvc
             .perform(
@@ -185,6 +197,7 @@ class CaracteristiqueResourceIT {
         Caracteristique testCaracteristique = caracteristiqueList.get(caracteristiqueList.size() - 1);
         assertThat(testCaracteristique.getCouleur()).isEqualTo(UPDATED_COULEUR);
         assertThat(testCaracteristique.getQuantite()).isEqualTo(UPDATED_QUANTITE);
+        assertThat(testCaracteristique.getVersion()).isEqualTo(UPDATED_VERSION);
     }
 
     @Test
@@ -271,6 +284,7 @@ class CaracteristiqueResourceIT {
         Caracteristique testCaracteristique = caracteristiqueList.get(caracteristiqueList.size() - 1);
         assertThat(testCaracteristique.getCouleur()).isEqualTo(DEFAULT_COULEUR);
         assertThat(testCaracteristique.getQuantite()).isEqualTo(DEFAULT_QUANTITE);
+        assertThat(testCaracteristique.getVersion()).isEqualTo(DEFAULT_VERSION);
     }
 
     @Test
@@ -285,7 +299,7 @@ class CaracteristiqueResourceIT {
         Caracteristique partialUpdatedCaracteristique = new Caracteristique();
         partialUpdatedCaracteristique.setId(caracteristique.getId());
 
-        partialUpdatedCaracteristique.couleur(UPDATED_COULEUR).quantite(UPDATED_QUANTITE);
+        partialUpdatedCaracteristique.couleur(UPDATED_COULEUR).quantite(UPDATED_QUANTITE).version(UPDATED_VERSION);
 
         restCaracteristiqueMockMvc
             .perform(
@@ -301,6 +315,7 @@ class CaracteristiqueResourceIT {
         Caracteristique testCaracteristique = caracteristiqueList.get(caracteristiqueList.size() - 1);
         assertThat(testCaracteristique.getCouleur()).isEqualTo(UPDATED_COULEUR);
         assertThat(testCaracteristique.getQuantite()).isEqualTo(UPDATED_QUANTITE);
+        assertThat(testCaracteristique.getVersion()).isEqualTo(UPDATED_VERSION);
     }
 
     @Test

@@ -19,6 +19,12 @@
             <span>{{ caracteristique.quantite }}</span>
           </dd>
           <dt>
+            <span v-text="$t('ecomV2App.caracteristique.version')">Version</span>
+          </dt>
+          <dd>
+            <span>{{ caracteristique.version }}</span>
+          </dd>
+          <dt>
             <span v-text="$t('ecomV2App.caracteristique.produit')">Produit</span>
           </dt>
           <dd>

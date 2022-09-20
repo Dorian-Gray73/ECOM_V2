@@ -31,6 +31,7 @@
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
             <th scope="row"><span v-text="$t('ecomV2App.caracteristique.couleur')">Couleur</span></th>
             <th scope="row"><span v-text="$t('ecomV2App.caracteristique.quantite')">Quantite</span></th>
+            <th scope="row"><span v-text="$t('ecomV2App.caracteristique.version')">Version</span></th>
             <th scope="row"><span v-text="$t('ecomV2App.caracteristique.produit')">Produit</span></th>
             <th scope="row"></th>
           </tr>
@@ -44,6 +45,7 @@
             </td>
             <td>{{ caracteristique.couleur }}</td>
             <td>{{ caracteristique.quantite }}</td>
+            <td>{{ caracteristique.version }}</td>
             <td>
               <div v-if="caracteristique.produit">
                 <router-link :to="{ name: 'ProduitView', params: { produitId: caracteristique.produit.id } }">{{

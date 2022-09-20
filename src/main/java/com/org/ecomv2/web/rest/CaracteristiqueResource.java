@@ -129,6 +129,9 @@ public class CaracteristiqueResource {
                 if (caracteristique.getQuantite() != null) {
                     existingCaracteristique.setQuantite(caracteristique.getQuantite());
                 }
+                if (caracteristique.getVersion() != null) {
+                    existingCaracteristique.setVersion(caracteristique.getVersion());
+                }
 
                 return existingCaracteristique;
             })
@@ -149,21 +152,6 @@ public class CaracteristiqueResource {
     public List<Caracteristique> getAllCaracteristiques() {
         log.debug("REST request to get all Caracteristiques");
         return caracteristiqueRepository.findAll();
-    }
-
-    @GetMapping("/caracteristiques/produit/{produitId}")
-    public List<Caracteristique> getCaracteristiquesParProduit(@PathVariable Long produitId) {
-        return caracteristiqueRepository.getCaracteristiquesBy(produitId);
-    }
-
-    /**
-     * {@code GET  /caracteristiques} : get all the colours.
-     *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of colours in body.
-     */
-    @GetMapping("/caracteristiques/couleurs")
-    public List<String> getAllCouleurs() {
-        return caracteristiqueRepository.getAllCouleurs();
     }
 
     /**
