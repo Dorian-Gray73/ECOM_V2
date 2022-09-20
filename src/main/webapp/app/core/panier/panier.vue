@@ -27,7 +27,7 @@
         <div>Articles : {{ getPrixTotal() }}€</div>
         <div>Livraison : {{ livraison }}€</div>
         <div>Total : {{ getPrixTotalLivraison() }}€</div>
-        <b-button>Commander</b-button>
+        <b-button v-on:click="commander()">Commander</b-button>
       </div>
     </div>
   </div>

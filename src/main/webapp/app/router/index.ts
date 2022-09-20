@@ -19,6 +19,9 @@ import Panier from '@/core/panier/panier.vue';
 import ProduitDetails from '@/core/produitDetails/produitDetails.vue';
 import Recommandations from '@/core/recommandations/recommandations.vue';
 import Catalogue from '@/core/catalogue/catalogue.vue';
+import Connexion from '@/core/connexion/connexion.vue';
+import Confirmation from '@/core/confirmation/confirmation.vue';
+import Paiement from '@/core/paiement/paiement.vue';
 
 Vue.use(Router);
 
@@ -55,6 +58,21 @@ const router = new Router({
       path: '/panier',
       name: 'Panier',
       component: Panier
+    },
+    {
+      path: '/connexion',
+      name: 'Connexion',
+      component: Connexion
+    },
+    {
+      path: '/confirmation',
+      name: 'Confirmation',
+      component: Confirmation
+    },
+    {
+      path: '/paiement',
+      name: 'Paiement',
+      component: Paiement
     },
     {
       path: '/forbidden',

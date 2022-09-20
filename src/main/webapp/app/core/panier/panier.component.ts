@@ -36,4 +36,8 @@ export default class Panier extends Vue {
   public getPrixTotalLivraison() {
     return this.getPrixTotal() + this.livraison;
   }
+
+  public commander() {
+    this.$router.push({ name: 'Connexion' });
+  }
 }

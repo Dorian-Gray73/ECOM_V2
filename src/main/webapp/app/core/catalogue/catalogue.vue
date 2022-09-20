@@ -5,7 +5,8 @@
     <div id="divPagination">
       <div id="affichageSearch">
         <!--Affiche catalogue -->
-        <div v-for="produit in produitList" :key="produit.id" class="cardPhoto">
+        <div v-if="produits.length == 0" id="catalogueVide"><div id="videTexte">Le catalogue est vide</div></div>
+        <div v-else v-for="produit in produitList" :key="produit.id" class="cardPhoto">
           <router-link :to="`/produitDetails/${produit.id}`">
             <img :src="`/content/images/${produit.images[0].lienImage}`" class="photo" alt="" />
             <div class="caracteristique">
@@ -45,11 +46,27 @@
   width: 100%;
 }
 
+#catalogueVide {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  height: 128px;
+  text-align: center;
+  width: 256px;
+  align-items: center;
+  margin: auto;
+}
+
+#videTexte {
+  margin: auto;
+}
+
 #affichageSearch {
   display: flex;
   flex-wrap: wrap;
   padding: 0px;
   gap: 32px;
+  width: 100%;
 }
 
 .cardPhoto {
@@ -70,6 +87,7 @@
   background-color: #f7f7f7;
   object-fit: cover;
 }
+
 .caracteristique {
   padding: 0px;
   gap: 8px;
