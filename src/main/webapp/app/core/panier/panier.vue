@@ -10,13 +10,13 @@
     <div id="contenuPanier">
       <!-- Produits du panier -->
       <div id="produitPanier" :key="componentKey">
-        <div v-for="produit in panier" :key="produit.id">
+        <div v-for="cara in panier" :key="cara.id">
           <div class="produit">
-            <div class="photoProduit"></div>
-            <div class="nomPrix">{{ produit.nom }} <br />{{ produit.couleur }}<br />{{ produit.prix }}€</div>
-            <div class="quantite">Quantité : {{ quantite[produit.id] }}</div>
-            <div class="prixTotal">Prix total : {{ quantite[produit.id] * produit.prix }}€</div>
-            <div v-on:click="deleteProduit(produit)">
+            <img :src="`/content/images/${cara.images[0].lienImage}`" class="photoProduit" alt="" />
+            <div class="nomPrix">{{ cara.produit.nom }} <br />{{ cara.couleur }}<br />{{ cara.produit.prix }}€</div>
+            <div class="quantite">Quantité : {{ quantite[cara.id] }}</div>
+            <div class="prixTotal">Prix total : {{ quantite[cara.id] * cara.produit.prix }}€</div>
+            <div v-on:click="deleteProduit(cara)">
               <font-awesome-icon icon="fa-solid fa-trash" />
             </div>
           </div>
@@ -27,7 +27,7 @@
         <div>Articles : {{ getPrixTotal() }}€</div>
         <div>Livraison : {{ livraison }}€</div>
         <div>Total : {{ getPrixTotalLivraison() }}€</div>
-        <b-button>Commander</b-button>
+        <b-button v-on:click="commander()">Commander</b-button>
       </div>
     </div>
   </div>
@@ -78,6 +78,7 @@
   width: 128px;
   height: 128px;
   background-color: #f7f7f7;
+  object-fit: cover;
 }
 
 .progressionPanier {

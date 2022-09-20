@@ -10,9 +10,9 @@ export default class Panier extends Vue {
     this.componentKey += 1;
   }
 
-  /* created() {
-     console.log(this.$store.getters.panier);
-   }*/
+  created() {
+    console.log(this.$store.getters.panier);
+  }
 
   panier = computed(() => this.$store.getters.panier);
 
@@ -26,8 +26,8 @@ export default class Panier extends Vue {
 
   public getPrixTotal() {
     let prixTotal = 0;
-    this.$store.getters.panier.forEach(produit => {
-      prixTotal = produit.prix * this.quantite[produit.id];
+    this.$store.getters.panier.forEach(cara => {
+      prixTotal = cara.produit.prix * this.quantite[cara.id];
     });
 
     return prixTotal;
@@ -35,5 +35,9 @@ export default class Panier extends Vue {
 
   public getPrixTotalLivraison() {
     return this.getPrixTotal() + this.livraison;
+  }
+
+  public commander() {
+    this.$router.push({ name: 'Connexion' });
   }
 }
