@@ -1,14 +1,19 @@
 import { Component, Inject, Provide, Vue } from 'vue-property-decorator';
 import { IProduit } from '@/shared/model/produit.model';
-import ProduitService from '@/entities/produit/produit.service';
 import AlertService from '@/shared/alert/alert.service';
+import ProduitService from '@/entities/produit/produit.service';
+import CaracteristiqueService from '@/entities/caracteristique/caracteristique.service';
+import { Caracteristique, ICaracteristique } from '@/shared/model/caracteristique.model';
+import { computed } from 'vue';
 
 @Component
 export default class ProduitDetails extends Vue {
   @Provide('produitService') private produitService = () => new ProduitService();
+  @Provide('caracteristiqueService') private caracteristiqueService = () => new CaracteristiqueService();
   @Inject('alertService') private alertService: () => AlertService;
 
-  public produit: IProduit = {};
+  public caracteristique: Caracteristique = {};
+  public caracteristiques = [];
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
@@ -19,14 +24,19 @@ export default class ProduitDetails extends Vue {
   }
 
   public mounted(): void {
-    this.retrieveProduit(this.$route.params.id);
+    this.retrieveCaracteristiques(this.$route.params.id);
   }
 
-  public retrieveProduit(produitId) {
-    this.produitService()
-      .find(produitId)
+  public clear(): void {
+    this.retrieveCaracteristiques(this.$route.params.id);
+  }
+
+  public retrieveCaracteristiques(produitId) {
+    this.caracteristiqueService()
+      .retrieveCaracteristiquesParProduit(produitId)
       .then(res => {
-        this.produit = res;
+        this.caracteristiques = res;
+        this.caracteristique = this.caracteristiques[0];
       })
       .catch(error => {
         this.alertService().showHttpError(this, error.response);
@@ -35,9 +45,13 @@ export default class ProduitDetails extends Vue {
 
   public addProduit(produit): void {
     this.$store.commit('addProduit', produit);
-    console.log(this.$store.state);
-    console.log(this.$store.getters.nbProduit);
-    console.log(this.$store.getters.panier);
-    console.log(this.$store.getters.quantite);
+  }
+
+  public changeCaracteristique(idCaracteristique): void {
+    this.caracteristiques.forEach(e => {
+      if (e.id == idCaracteristique) {
+        this.caracteristique = e;
+      }
+    });
   }
 }

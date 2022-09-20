@@ -27,7 +27,7 @@ public class Caracteristique implements Serializable {
     @Column(name = "quantite")
     private Integer quantite;
 
-    @OneToMany(mappedBy = "caracteristique")
+    @OneToMany(mappedBy = "caracteristique", fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = { "caracteristique", "produit" }, allowSetters = true)
     private Set<Image> images = new HashSet<>();
 
@@ -36,6 +36,7 @@ public class Caracteristique implements Serializable {
     private Set<LigneTransaction> ligneTransactions = new HashSet<>();
 
     @ManyToOne
+    @JoinColumn(name = "produit_id")
     @JsonIgnoreProperties(value = { "caracteristiques", "images", "modeles" }, allowSetters = true)
     private Produit produit;
 

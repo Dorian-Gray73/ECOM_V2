@@ -33,15 +33,15 @@ public class Produit implements Serializable {
     @Column(name = "progressif")
     private Boolean progressif;
 
-    @OneToMany(mappedBy = "produit")
+    @OneToMany(mappedBy = "produit", fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = { "images", "ligneTransactions", "produit" }, allowSetters = true)
     private Set<Caracteristique> caracteristiques = new HashSet<>();
 
-    @OneToMany(mappedBy = "produit")
+    @OneToMany(mappedBy = "produit", fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = { "caracteristique", "produit" }, allowSetters = true)
     private Set<Image> images = new HashSet<>();
 
-    @OneToMany(mappedBy = "produit")
+    @OneToMany(mappedBy = "produit", fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = { "produit" }, allowSetters = true)
     private Set<Modele> modeles = new HashSet<>();
 

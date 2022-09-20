@@ -1,20 +1,33 @@
 <template>
   <div id="containerProduit">
     <div id="produit">
-      <div id="photo"></div>
+      <img :src="`/content/images/${caracteristique.images[0].lienImage}`" id="photo" alt="" />
       <div id="textMonture">
-        <div id="nomMonture">{{ produit.nom }}</div>
-        <div id="marqueMonture">{{ produit.marque }}</div>
-        <div id="couleurMonture">{{ produit.couleur }}</div>
+        <div id="nomMonture">{{ caracteristique.produit.nom }}</div>
+        <div id="marqueMonture">{{ caracteristique.produit.marque }}</div>
+        <div id="couleurMonture">{{ caracteristique.couleur }}</div>
+        <div id="quantiteMonture">Disponible</div>
       </div>
     </div>
     <div id="caracteristiques">
       <div id="divPrix">
         <div id="textPrix">Prix</div>
-        <div>{{ produit.prix }}€</div>
+        <div>{{ caracteristique.produit.prix }}€</div>
       </div>
       <div>Couleur</div>
-      <b-button id="btnCommander" v-on:click="addProduit(produit)">Ajouter au panier</b-button>
+      <div id="couleurs">
+        <div
+          v-for="cara in caracteristiques"
+          v-on:click="changeCaracteristique(cara.id)"
+          :key="cara.id"
+          class="couleur"
+          :style="{ background: cara.couleur }"
+        >
+          <div class="cercle" />
+          <div>{{ cara.couleur }}</div>
+        </div>
+      </div>
+      <b-button id="btnCommander" v-on:click="addProduit(caracteristique)">Ajouter au panier</b-button>
     </div>
   </div>
 </template>
@@ -22,7 +35,6 @@
 <style scoped>
 #containerProduit {
   display: flex;
-  margin: 20px 128px;
   gap: 64px;
 }
 
@@ -46,12 +58,10 @@
 }
 
 #photo {
-  flex: none;
-  order: 0;
-  flex-grow: 0;
   width: 512px;
   height: 512px;
-  background: #f7f7f7;
+  background-color: #f7f7f7;
+  object-fit: cover;
 }
 
 #marqueMonture {
@@ -59,9 +69,21 @@
   text-align: center;
 }
 
+#couleurMonture {
+  border: solid 1px #5b85aa;
+  text-align: center;
+}
+
+#quantiteMonture {
+  border: solid 1px #28965a;
+  color: #28965a;
+  text-align: center;
+}
+
 #textMonture {
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
 #nomMonture {
@@ -86,5 +108,25 @@
 
   background: #5b85aa;
   margin: auto;
+}
+
+.cercle {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: solid 2px black;
+}
+
+#couleurs {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.couleur {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 </style>

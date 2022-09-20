@@ -22,9 +22,6 @@ export default class Panier extends Vue {
   public deleteProduit(produit): void {
     this.$store.commit('deleteProduit', produit);
     this.forceRerender();
-    console.log('test ici');
-    console.log(this.$store.getters.quantite);
-    console.log(this.quantite);
   }
 
   public getPrixTotal() {

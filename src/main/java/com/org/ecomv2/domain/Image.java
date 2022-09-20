@@ -23,10 +23,12 @@ public class Image implements Serializable {
     private String lienImage;
 
     @ManyToOne
+    @JoinColumn(name = "caracteristique_id")
     @JsonIgnoreProperties(value = { "images", "ligneTransactions", "produit" }, allowSetters = true)
     private Caracteristique caracteristique;
 
     @ManyToOne
+    @JoinColumn(name = "produit_id")
     @JsonIgnoreProperties(value = { "caracteristiques", "images", "modeles" }, allowSetters = true)
     private Produit produit;
 

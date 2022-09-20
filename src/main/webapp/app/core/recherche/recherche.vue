@@ -1,7 +1,7 @@
 <template>
   <div id="pageRecherche">
-    <span id="title">Résultats de la recherche</span>
-    <hr id="separate" />
+    <span class="title">Résultats de la recherche</span>
+    <hr class="separate" />
     <div id="resultat">
       <!-- SearchBar -->
       <b-input-group id="searchBar">
@@ -15,32 +15,40 @@
           <div>Couleur</div>
           <b-form-group v-slot="{ ariaDescribedby }">
             <b-form-checkbox-group
-              v-model="selected"
-              :options="options"
+              v-model="selectedCouleurs"
+              :options="couleurs"
               :aria-describedby="ariaDescribedby"
               name="flavour-2a"
               stacked
-            ></b-form-checkbox-group>
+            />
           </b-form-group>
-          <div>Prix</div>
+          <div>Prix minimum : {{ sliderMin }}</div>
+          <b-form-input id="range-1" v-model="sliderMin" type="range" :min="prixMin" :max="sliderMax"></b-form-input>
+          <div>Prix maximum : {{ sliderMax }}</div>
+          <b-form-input id="range-2" v-model="sliderMax" type="range" :min="sliderMin" :max="prixMax"></b-form-input>
         </div>
         <div id="divPagination">
           <!-- Affichage Search -->
           <div id="affichageSearch">
-            <div v-for="produit in produits" :key="produit.id">
-              <div class="cardPhoto">
-                <router-link :to="`/produitDetails/${produit.id}`">
-                  <div id="photo"></div>
-                  <div class="caracteristique">
-                    <div id="nomMonture">{{ produit.nom }}</div>
-                    <div id="prixMonture">{{ produit.prix }}€</div>
-                  </div>
-                </router-link>
-              </div>
+            <div v-for="produit in produitList" :key="produit.id" class="cardPhoto">
+              <router-link :to="`/produitDetails/${produit.id}`">
+                <img :src="`/content/images/${produit.images[0].lienImage}`" class="photo" alt="" />
+                <div class="caracteristique">
+                  <div class="nomMonture">{{ produit.nom }}</div>
+                  <div class="prixMonture">{{ produit.prix }}€</div>
+                </div>
+              </router-link>
             </div>
           </div>
           <!-- Pagination -->
-          <b-pagination v-model="currentPage" :total-rows="rows" id="pagination"></b-pagination>
+          <b-pagination
+            v-model="currentPage"
+            :total-rows="rows"
+            :per-page="perPage"
+            aria-controls="produittList"
+            align="center"
+            id="pagination"
+          />
         </div>
       </div>
     </div>
@@ -48,6 +56,21 @@
 </template>
 <script lang="ts" src="./recherche.component.ts"></script>
 <style scoped>
+#pageRecherche {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#resultat {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 128px;
+  max-width: 2019px;
+  width: 100%;
+}
+
 #searchBar {
   background-color: #ffffff;
   display: flex;
@@ -55,15 +78,15 @@
   padding: 8px 16px;
 }
 
+#iconSearchBar {
+  width: 16px;
+  margin: auto;
+}
+
 #inputSearchBar {
   margin: auto;
   border: none;
   flex: 1;
-}
-
-#iconSearchBar {
-  width: 16px;
-  margin: auto;
 }
 
 #containerSearch {
@@ -76,22 +99,8 @@
   gap: 32px;
   height: 1186px;
   margin: 32px 0;
+  width: 100%;
 }
-
-#affichageSearch {
-  flex: 6;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 0px;
-  gap: 32px;
-  height: 1186px;
-}
-
-/*#affichageSearch::after {
-  content: '';
-  flex: auto;
-}*/
 
 #filtres {
   flex: 1;
@@ -100,8 +109,29 @@
   justify-content: center;
   align-items: flex-start;
   padding: 32px;
-  gap: 64px;
+  gap: 16px;
   background: #ffffff;
+}
+
+#divPagination {
+  flex: 6;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#affichageSearch {
+  flex: 6;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+  gap: 32px;
+  height: 1186px;
+}
+
+#affichageSearch::after {
+  content: '';
+  flex: auto;
 }
 
 .cardPhoto {
@@ -117,17 +147,11 @@
   background: #ffffff;
 }
 
-#photo {
+.photo {
   width: 256px;
   height: 256px;
   background-color: #f7f7f7;
-}
-
-#resultat {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin: 20px 128px;
+  object-fit: cover;
 }
 
 #pagination {
@@ -142,11 +166,5 @@ a:hover {
   padding: 0px;
   gap: 8px;
   margin-top: 10px;
-}
-
-#divPagination {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 }
 </style>

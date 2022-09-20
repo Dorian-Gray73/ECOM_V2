@@ -156,6 +156,52 @@ public class ProduitResource {
     }
 
     /**
+     * {@code GET  /produits/caracteristiques/images/{produitId}} : d'un produitId, on retrouve un produit avec ses cara et dans chaque cara ses images
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of produits in body.
+     */
+    @GetMapping("/produits/caracteristiques/images/{produitId}")
+    public List<String> getProduitCaracteristiquesImages(@PathVariable Long produitId) {
+        return produitRepository.getProduitCaracteristiquesImages(produitId);
+    }
+
+    /**
+     * {@code GET  /produits/images/} : returns tous les produits, on récupère toutes les images pour chaque produit
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of produits et les images de chaque produit in body.
+     */
+    @GetMapping("/produits/images")
+    public List<Produit> produitImages() {
+        return produitRepository.produitsImages();
+    }
+
+    /**
+     * {@code GET /produits} : get all the name of produits
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (ok)} and a table with the name.
+     */
+    @GetMapping("/produits/nom")
+    public List<String> getName() {
+        log.debug("Coucou");
+        return produitRepository.getNomProduits();
+    }
+
+    @GetMapping("/produits/prix")
+    public String getAllPrix() {
+        return produitRepository.getAllPrix();
+    }
+
+    /**
+     * {@code GET /produits} : get all les marques des produits
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (ok)} and a list of les marques
+     */
+    @GetMapping("/produits/marques")
+    public List<String> getAllMarques() {
+        return produitRepository.getAllMarques();
+    }
+
+    /**
      * {@code GET  /produits/:id} : get the "id" produit.
      *
      * @param id the id of the produit to retrieve.

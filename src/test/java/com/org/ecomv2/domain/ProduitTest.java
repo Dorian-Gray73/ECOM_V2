@@ -1,9 +1,13 @@
 package com.org.ecomv2.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNotNull;
 
+import com.org.ecomv2.repository.ProduitRepository;
 import com.org.ecomv2.web.rest.TestUtil;
+import java.util.List;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 class ProduitTest {
 
