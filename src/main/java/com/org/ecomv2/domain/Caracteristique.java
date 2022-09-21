@@ -30,7 +30,7 @@ public class Caracteristique implements Serializable {
     @Column(name = "version")
     private Integer version;
 
-    @OneToMany(mappedBy = "caracteristique")
+    @OneToMany(mappedBy = "caracteristique", fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = { "caracteristique", "produit" }, allowSetters = true)
     private Set<Image> images = new HashSet<>();
 
