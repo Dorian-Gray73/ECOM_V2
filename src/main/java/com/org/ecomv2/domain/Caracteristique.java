@@ -27,6 +27,7 @@ public class Caracteristique implements Serializable {
     @Column(name = "quantite")
     private Integer quantite;
 
+    @Version
     @Column(name = "version")
     private Integer version;
 
