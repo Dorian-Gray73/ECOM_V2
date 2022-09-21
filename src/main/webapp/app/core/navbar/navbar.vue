@@ -12,7 +12,7 @@
       <!-- A propos -->
       <b-nav-item to="/apropos" class="navbar-nav">
         <font-awesome-icon :icon="['fa', 'fa-lightbulb']" class="icon alt" />
-        A propos
+        À propos
       </b-nav-item>
       <!-- Recherche -->
       <b-nav-item to="/recherche" class="navbar-nav">
