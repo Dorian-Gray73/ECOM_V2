@@ -28,4 +28,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
         @Param("newDate") LocalDate newDate,
         @Param("newEtat") EtatProduit newEtat
     );
+
+    @Query("select t from Transaction t where t.etat='Encours'")
+    Transaction getTransactionEnCours();
 }

@@ -210,4 +210,9 @@ public class TransactionResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
     }
+
+    @GetMapping("/transactions/encours")
+    public Transaction getTransactionEnCours() {
+        return transactionRepository.getTransactionEnCours();
+    }
 }
