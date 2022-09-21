@@ -5,10 +5,13 @@
     <div id="divPagination">
       <div id="affichageSearch">
         <!--Affiche catalogue -->
-        <div v-if="produits.length == 0" id="catalogueVide"><div id="videTexte">Le catalogue est vide</div></div>
+        <div v-if="produits.length == 0" id="catalogueVide">
+          <div id="videTexte">Le catalogue est vide</div>
+        </div>
         <div v-else v-for="produit in produitList" :key="produit.id" class="cardPhoto">
           <router-link :to="`/produitDetails/${produit.id}`">
-            <img :src="`/content/images/${produit.images[0].lienImage}`" class="photo" alt="" />
+            <div v-if="produit.images == null || produit.images.length == 0" class="photoVide" />
+            <img v-else :src="`/content/images/${produit.images[0].lienImage}`" class="photo" alt="" />
             <div class="caracteristique">
               <div class="nomMonture">{{ produit.nom }}</div>
               <div class="prixMonture">{{ produit.prix }}€</div>
@@ -86,6 +89,12 @@
   height: 256px;
   background-color: #f7f7f7;
   object-fit: cover;
+}
+
+.photoVide {
+  width: 256px;
+  height: 256px;
+  background-color: #f7f7f7;
 }
 
 .caracteristique {
