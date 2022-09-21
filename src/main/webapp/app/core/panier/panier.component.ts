@@ -9,9 +9,9 @@ export default class Panier extends Vue {
 
   quantite = computed(() => this.$store.getters.quantite);
 
-  /*created() {
-    console.log(this.$store.getters.panier);
-  }*/
+  created() {
+    console.log(this.$store.getters.quantite);
+  }
 
   //Forcer l'affichage des produits à se mettre à jour
   public forceRerender() {
@@ -28,7 +28,7 @@ export default class Panier extends Vue {
   public getPrixTotal() {
     let prixTotal = 0;
     this.$store.getters.panier.forEach(cara => {
-      prixTotal = cara.produit.prix * this.quantite[cara.id];
+      prixTotal += cara.produit.prix * this.quantite[cara.id];
     });
 
     return prixTotal;

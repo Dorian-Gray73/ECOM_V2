@@ -1,14 +1,17 @@
 import { Module } from 'vuex';
+import { Transaction } from '@/shared/model/transaction.model';
 
 export interface PanierStateStorable {
   panier: Array<any>;
   quantite: Array<number>;
+  transaction: Transaction;
   nbProduit: number;
 }
 
 export const defaultPanierState: PanierStateStorable = {
   panier: [],
   quantite: [],
+  transaction: new Transaction(),
   nbProduit: 0,
 };
 
@@ -17,6 +20,7 @@ export const panierStore: Module<PanierStateStorable, any> = {
   getters: {
     panier: state => state.panier,
     quantite: state => state.quantite,
+    // transaction: state => state.transaction,
     nbProduit: state => state.nbProduit,
   },
 
@@ -27,13 +31,16 @@ export const panierStore: Module<PanierStateStorable, any> = {
     setQuantite(state, quantite) {
       this.state.quantite = quantite;
     },
+    /* setTransaction(state, transaction) {
+      this.state.transaction = transaction;
+    },*/
     addProduit(state, produit) {
       let indexProduit = 0;
       let produitExist = false;
 
       // Vérif si le produit est déjà dans le panier une fois
       state.panier.forEach(produitPanier => {
-        if (produitPanier != produit && produitExist == false) {
+        if (produitPanier.id != produit.id && produitExist == false) {
           indexProduit++;
         } else {
           produitExist = true;
@@ -57,7 +64,7 @@ export const panierStore: Module<PanierStateStorable, any> = {
 
       // Vérif si le produit est déjà dans le panier une fois
       state.panier.forEach(produitPanier => {
-        if (produitPanier != produit && produitExist == false) {
+        if (produitPanier.id != produit.id && produitExist == false) {
           indexProduit++;
         } else {
           produitExist = true;

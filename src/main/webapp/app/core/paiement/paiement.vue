@@ -39,7 +39,7 @@
     </div>
   </div>
 </template>
-<script lang="ts" src="./paiment.component.ts"></script>
+<script lang="ts" src="./paiement.component.ts"></script>
 <style scoped>
 #contenuPanier {
   display: flex;
