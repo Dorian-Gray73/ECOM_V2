@@ -22,10 +22,10 @@ export default class Paiement extends Vue {
   }
 
   public formatCardNumber(value) {
-    let v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-    let matches = v.match(/\d{4,16}/g);
-    let match = (matches && matches[0]) || '';
-    let parts = [];
+    const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+    const matches = v.match(/\d{4,16}/g);
+    const match = (matches && matches[0]) || '';
+    const parts = [];
 
     for (let i = 0; i < match.length; i += 4) {
       parts.push(match.substring(i, i + 4));
