@@ -38,7 +38,7 @@
       </b-nav-item>
     </div>
     <!-- Admin -->
-    <b-nav-item v-if="hasAnyAuthority('ROLE_ADMIN') && authenticated" to="/home" class="navbar-nav">
+    <b-nav-item v-if="hasAnyAuthority('ROLE_ADMIN') && authenticated" to="/admin" class="navbar-nav">
       <font-awesome-icon icon="fa-solid fa-hammer" />
       Admin
     </b-nav-item>

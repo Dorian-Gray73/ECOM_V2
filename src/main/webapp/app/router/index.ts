@@ -24,6 +24,7 @@ import Paiement from '@/core/paiement/paiement.vue';
 import aPropos from '@/core/aPropos/aPropos.vue';
 import LoginApp from '@/core/login-app/login-app.vue';
 import HistoriqueTransactions from '@/core/historiqueTransactions/historiqueTransactions.vue';
+import { Authority } from '@/shared/security/authority';
 
 Vue.use(Router);
 
@@ -34,7 +35,7 @@ const router = new Router({
     {
       path: '/',
       name: 'Catalogue',
-      component: Catalogue
+      component: Catalogue,
     },
     {
       path: '/apropos',
@@ -42,9 +43,10 @@ const router = new Router({
       component: aPropos
     },
     {
-      path: '/home',
+      path: '/admin',
       name: 'Home',
-      component: Home
+      component: Home,
+      meta: {authorities: [Authority.ADMIN]},
     },
     {
       path: '/recherche',
@@ -54,7 +56,8 @@ const router = new Router({
     {
       path: '/historiqueTransactions',
       name: 'HistoriqueTransactions',
-      component: HistoriqueTransactions
+      component: HistoriqueTransactions,
+      meta: {authorities: [Authority.ADMIN, Authority.USER]},
     },
     {
       path: '/produitDetails/:id',
@@ -79,12 +82,14 @@ const router = new Router({
     {
       path: '/confirmation',
       name: 'Confirmation',
-      component: Confirmation
+      component: Confirmation,
+      meta: {authorities: [Authority.ADMIN, Authority.USER]},
     },
     {
       path: '/paiement',
       name: 'Paiement',
-      component: Paiement
+      component: Paiement,
+      meta: {authorities: [Authority.ADMIN, Authority.USER]},
     },
     {
       path: '/forbidden',
