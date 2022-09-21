@@ -129,6 +129,9 @@ public class CaracteristiqueResource {
                 if (caracteristique.getQuantite() != null) {
                     existingCaracteristique.setQuantite(caracteristique.getQuantite());
                 }
+                if (caracteristique.getVersion() != null) {
+                    existingCaracteristique.setVersion(caracteristique.getVersion());
+                }
 
                 return existingCaracteristique;
             })

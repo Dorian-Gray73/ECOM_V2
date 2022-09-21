@@ -20,6 +20,7 @@
       "id": "ID",
       "couleur": "Couleur",
       "quantite": "Quantite",
+      "version": "Version",
       "image": "Image",
       "ligneTransaction": "Ligne Transaction",
       "produit": "Produit"

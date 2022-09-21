@@ -41,6 +41,18 @@
             />
           </div>
           <div class="form-group">
+            <label class="form-control-label" v-text="$t('ecomV2App.caracteristique.version')" for="caracteristique-version">Version</label>
+            <input
+              type="number"
+              class="form-control"
+              name="version"
+              id="caracteristique-version"
+              data-cy="version"
+              :class="{ valid: !$v.caracteristique.version.$invalid, invalid: $v.caracteristique.version.$invalid }"
+              v-model.number="$v.caracteristique.version.$model"
+            />
+          </div>
+          <div class="form-group">
             <label class="form-control-label" v-text="$t('ecomV2App.caracteristique.produit')" for="caracteristique-produit">Produit</label>
             <select class="form-control" id="caracteristique-produit" data-cy="produit" name="produit" v-model="caracteristique.produit">
               <option v-bind:value="null"></option>

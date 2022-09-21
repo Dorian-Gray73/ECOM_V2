@@ -27,16 +27,19 @@ public class Caracteristique implements Serializable {
     @Column(name = "quantite")
     private Integer quantite;
 
-    @OneToMany(mappedBy = "caracteristique", fetch = FetchType.EAGER)
+    @Column(name = "version")
+    private Integer version;
+
+    @OneToMany(mappedBy = "caracteristique")
     @JsonIgnoreProperties(value = { "caracteristique", "produit" }, allowSetters = true)
     private Set<Image> images = new HashSet<>();
 
-    @OneToMany(mappedBy = "caracteristique")
+    @OneToMany(mappedBy = "caracteristique", fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = { "transaction", "caracteristique" }, allowSetters = true)
     private Set<LigneTransaction> ligneTransactions = new HashSet<>();
 
-    @ManyToOne
     @JoinColumn(name = "produit_id")
+    @ManyToOne
     @JsonIgnoreProperties(value = { "caracteristiques", "images", "modeles" }, allowSetters = true)
     private Produit produit;
 
@@ -79,6 +82,19 @@ public class Caracteristique implements Serializable {
 
     public void setQuantite(Integer quantite) {
         this.quantite = quantite;
+    }
+
+    public Integer getVersion() {
+        return this.version;
+    }
+
+    public Caracteristique version(Integer version) {
+        this.setVersion(version);
+        return this;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     public Set<Image> getImages() {
@@ -182,6 +198,7 @@ public class Caracteristique implements Serializable {
             "id=" + getId() +
             ", couleur='" + getCouleur() + "'" +
             ", quantite=" + getQuantite() +
+            ", version=" + getVersion() +
             "}";
     }
 }

@@ -2,6 +2,7 @@ package com.org.ecomv2.repository;
 
 import com.org.ecomv2.domain.Caracteristique;
 import java.util.List;
+import javax.persistence.LockModeType;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Repository
 public interface CaracteristiqueRepository extends JpaRepository<Caracteristique, Long> {
+
     @Query(value = "SELECT * FROM Caracteristique c JOIN Produit p ON c.produit_id = p.id WHERE p.id = :produitId", nativeQuery = true)
     List<Caracteristique> getCaracteristiquesBy(@Param("produitId") long produitId);
 
