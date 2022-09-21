@@ -52,7 +52,7 @@
   background: #ffffff;
   height: 128px;
   text-align: center;
-  width: 256px;
+  width: 100%;
   align-items: center;
   margin: auto;
 }

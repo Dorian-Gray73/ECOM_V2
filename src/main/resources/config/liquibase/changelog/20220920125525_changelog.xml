@@ -1,0 +1,162 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.12.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="barbara (generated)" id="1663678536223-1">
+        <createSequence incrementBy="50" sequenceName="sequence_generator" startValue="1"/>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-2">
+        <createTable tableName="caracteristique">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="caracteristiquePK"/>
+            </column>
+            <column name="couleur" type="VARCHAR(255)"/>
+            <column name="quantite" type="INTEGER"/>
+            <column name="produit_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-3">
+        <createTable tableName="image">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="imagePK"/>
+            </column>
+            <column name="lien_image" type="VARCHAR(255)"/>
+            <column name="caracteristique_id" type="BIGINT"/>
+            <column name="produit_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-4">
+        <createTable tableName="jhi_authority">
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="jhi_authorityPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-5">
+        <createTable tableName="jhi_user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="jhi_userPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="activated" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_key" type="VARCHAR(20)"/>
+            <column name="email" type="VARCHAR(254)"/>
+            <column name="first_name" type="VARCHAR(50)"/>
+            <column name="image_url" type="VARCHAR(256)"/>
+            <column name="lang_key" type="VARCHAR(10)"/>
+            <column name="last_name" type="VARCHAR(50)"/>
+            <column name="login" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_hash" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reset_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="reset_key" type="VARCHAR(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-6">
+        <createTable tableName="jhi_user_authority">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="jhi_user_authorityPK"/>
+            </column>
+            <column name="authority_name" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="jhi_user_authorityPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-7">
+        <createTable tableName="ligne_transaction">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ligne_transactionPK"/>
+            </column>
+            <column name="prix_unitaire" type="FLOAT4"/>
+            <column name="quantite" type="INTEGER"/>
+            <column name="caracteristique_id" type="BIGINT"/>
+            <column name="transaction_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-8">
+        <createTable tableName="modele">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="modelePK"/>
+            </column>
+            <column name="modele" type="VARCHAR(255)"/>
+            <column name="produit_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-9">
+        <createTable tableName="produit">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="produitPK"/>
+            </column>
+            <column name="marque" type="VARCHAR(255)"/>
+            <column name="nom" type="VARCHAR(255)"/>
+            <column name="prix" type="FLOAT4"/>
+            <column name="progressif" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-10">
+        <createTable tableName="transaction">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="transactionPK"/>
+            </column>
+            <column name="date" type="date"/>
+            <column name="etat" type="VARCHAR(255)"/>
+            <column name="utilisateur_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-11">
+        <createTable tableName="utilisateur">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="utilisateurPK"/>
+            </column>
+            <column name="adresse" type="VARCHAR(255)"/>
+            <column name="courriel" type="VARCHAR(255)"/>
+            <column name="nom" type="VARCHAR(255)"/>
+            <column name="prenom" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-12">
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-13">
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-14">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_user_authority" constraintName="FK290okww5jujghp4el5i7mgwu0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-15">
+        <addForeignKeyConstraint baseColumnNames="authority_name" baseTableName="jhi_user_authority" constraintName="FK4psxl0jtx6nr7rhqbynr6itoc" deferrable="false" initiallyDeferred="false" referencedColumnNames="name" referencedTableName="jhi_authority" validate="true"/>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-16">
+        <addForeignKeyConstraint baseColumnNames="id" baseTableName="utilisateur" constraintName="FKf6a95qjo9o81nh5n4doghoqs0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-17">
+        <addForeignKeyConstraint baseColumnNames="produit_id" baseTableName="caracteristique" constraintName="FKlhfiuk39rcgvkpwkblhatt2k3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="produit" validate="true"/>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-18">
+        <addForeignKeyConstraint baseColumnNames="produit_id" baseTableName="image" constraintName="FKo2q7dxt4wq2rehdmfudfjbdkm" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="produit" validate="true"/>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-19">
+        <addForeignKeyConstraint baseColumnNames="transaction_id" baseTableName="ligne_transaction" constraintName="FKpf8esq17okw37ahxborgk6a02" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="transaction" validate="true"/>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-20">
+        <addForeignKeyConstraint baseColumnNames="caracteristique_id" baseTableName="image" constraintName="FKsbf5ufyq1ttxvss1s2x5lwqcp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="caracteristique" validate="true"/>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-21">
+        <addForeignKeyConstraint baseColumnNames="produit_id" baseTableName="modele" constraintName="FKsrcpskmyfhkqw1t2su79rj6tk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="produit" validate="true"/>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-22">
+        <addForeignKeyConstraint baseColumnNames="utilisateur_id" baseTableName="transaction" constraintName="FKt6jmb1wxet63dqytsbjkq1yyg" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="utilisateur" validate="true"/>
+    </changeSet>
+    <changeSet author="barbara (generated)" id="1663678536223-23">
+        <addForeignKeyConstraint baseColumnNames="caracteristique_id" baseTableName="ligne_transaction" constraintName="FKtah16b6opnw6hqco9ebie7yic" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="caracteristique" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

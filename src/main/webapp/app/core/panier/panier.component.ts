@@ -10,9 +10,9 @@ export default class Panier extends Vue {
     this.componentKey += 1;
   }
 
-  created() {
+  /*created() {
     console.log(this.$store.getters.panier);
-  }
+  }*/
 
   panier = computed(() => this.$store.getters.panier);
 
