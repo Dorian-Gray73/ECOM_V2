@@ -1,7 +1,8 @@
 <template>
   <div id="containerProduit">
     <div id="produit">
-      <img :src="`/content/images/${caracteristique.images[0].lienImage}`" id="photo" alt="" />
+      <div v-if="caracteristique.images == null || caracteristique.images.length == 0" id="photoVide" />
+      <img v-else :src="`/content/images/${caracteristique.images[0].lienImage}`" id="photo" alt="" />
       <div id="textMonture">
         <div id="nomMonture">{{ caracteristique.produit.nom }}</div>
         <div id="marqueMonture">{{ caracteristique.produit.marque }}</div>
@@ -72,6 +73,12 @@
   height: 512px;
   background-color: #f7f7f7;
   object-fit: cover;
+}
+
+#photoVide {
+  width: 512px;
+  height: 512px;
+  background-color: #f7f7f7;
 }
 
 #marqueMonture {
