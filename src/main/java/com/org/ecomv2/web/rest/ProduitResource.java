@@ -161,7 +161,7 @@ public class ProduitResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of produits in body.
      */
     @GetMapping("/produits/caracteristiques/images/{produitId}")
-    public List<String> getProduitCaracteristiquesImages(@PathVariable Long produitId) {
+    public List<Produit> getProduitCaracteristiquesImages(@PathVariable Long produitId) {
         return produitRepository.getProduitCaracteristiquesImages(produitId);
     }
 
