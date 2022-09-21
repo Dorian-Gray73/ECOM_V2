@@ -26,6 +26,7 @@ public class LigneTransaction implements Serializable {
     private Float prixUnitaire;
 
     @ManyToOne
+    @JoinColumn(name = "transaction_id")
     @JsonIgnoreProperties(value = { "ligneTransactions", "utilisateur" }, allowSetters = true)
     private Transaction transaction;
 
