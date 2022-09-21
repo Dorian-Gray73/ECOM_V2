@@ -19,7 +19,7 @@
   </div>
 </template>
 
-<script lang="ts" src="./apropos.component.ts"></script>
+<script lang="ts" src="./aPropos.component.ts"></script>
 
 <style scoped>
 #aproposDiv {
