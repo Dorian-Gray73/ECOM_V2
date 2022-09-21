@@ -69,7 +69,6 @@ export default class Paiement extends Vue {
 
             // Sauvegarde des lignes
             this.$store.getters.panier.forEach(p => {
-              console.log('test');
               const lt = {
                 transaction: null,
                 quantite: null,

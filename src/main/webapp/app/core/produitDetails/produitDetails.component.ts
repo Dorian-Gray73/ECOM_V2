@@ -49,6 +49,13 @@ export default class ProduitDetails extends Vue {
 
   public addProduit(produit): void {
     this.$store.commit('addProduit', produit);
+    const message = 'Produit ajouté au panier';
+    (this.$root as any).$bvToast.toast(message.toString(), {
+      toaster: 'b-toaster-top-center',
+      variant: 'success',
+      solid: true,
+      autoHideDelay: 5000,
+    });
   }
 
   public changeCaracteristique(idCaracteristique): void {
