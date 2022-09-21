@@ -35,7 +35,7 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
         value = "SELECT p.id, p.nom, p.prix, p.marque, p.progressif, c.couleur, c.quantite, i.lien_image FROM produit p JOIN caracteristique c ON c.produit_id = p.id  JOIN image i on i.caracteristique_id = c.id WHERE p.id = :produitId",
         nativeQuery = true
     )
-    List<String> getProduitCaracteristiquesImages(@Param("produitId") Long produitId);
+    List<Produit> getProduitCaracteristiquesImages(@Param("produitId") Long produitId);
 
     /**
      * Function which returns tous les produits, on récupère toutes les images pour chaque produit
