@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Repository
 public interface CaracteristiqueRepository extends JpaRepository<Caracteristique, Long> {
-    //Test
     @Query(value = "SELECT * FROM Caracteristique c JOIN Produit p ON c.produit_id = p.id WHERE p.id = :produitId", nativeQuery = true)
     List<Caracteristique> getCaracteristiquesBy(@Param("produitId") long produitId);
 

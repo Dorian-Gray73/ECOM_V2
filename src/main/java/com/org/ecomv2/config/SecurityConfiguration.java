@@ -91,7 +91,6 @@ public class SecurityConfiguration {
             .antMatchers("/api/produits/{id}").permitAll()
             .antMatchers("/api/produits/images").permitAll()
             .antMatchers("/api/produits/caracteristiques/images/{produitId}").permitAll()
-            //Test
             .antMatchers("/api/caracteristiques").permitAll()
             .antMatchers("/api/caracteristiques/produit/**").permitAll()
             .antMatchers("/api/caracteristiques/{id}").permitAll()
