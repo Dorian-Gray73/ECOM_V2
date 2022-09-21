@@ -3,9 +3,9 @@ import { computed } from 'vue';
 
 @Component
 export default class Confirmation extends Vue {
-  created() {
+  /* created() {
     console.log(this.$store.getters.panier);
-  }
+  }*/
 
   panier = computed(() => this.$store.getters.panier);
 

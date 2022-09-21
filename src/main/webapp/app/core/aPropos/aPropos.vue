@@ -21,4 +21,9 @@
 
 <script lang="ts" src="./apropos.component.ts"></script>
 
-<style scoped></style>
+<style scoped>
+#aproposDiv {
+  display: flex;
+  flex-direction: row;
+}
+</style>

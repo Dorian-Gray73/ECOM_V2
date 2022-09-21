@@ -54,4 +54,8 @@ export default class ProduitDetails extends Vue {
       }
     });
   }
+
+  public previousState() {
+    this.$router.go(-1);
+  }
 }

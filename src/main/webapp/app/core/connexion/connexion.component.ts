@@ -18,7 +18,6 @@ export default class Connexion extends Vue {
   public rememberMe: boolean = null;
 
   public doLogin(): void {
-    console.log('test');
     const data = { username: this.login, password: this.password, rememberMe: this.rememberMe };
     axios
       .post('api/authenticate', data)
@@ -36,7 +35,6 @@ export default class Connexion extends Vue {
         }
         this.authenticationError = false;
         this.accountService().retrieveAccount();
-        console.log(this.$store.getters.activeProfiles);
         this.$router.push({ name: 'Paiement' });
       })
       .catch(() => {

@@ -10,25 +10,33 @@
         <div v-else id="quantiteMontureNonDispo">Non disponible</div>
       </div>
     </div>
-    <div id="caracteristiques">
-      <div id="divPrix">
-        <div id="textPrix">Prix</div>
-        <div>{{ caracteristique.produit.prix }}€</div>
-      </div>
-      <div>Couleur</div>
-      <div id="couleurs">
-        <div
-          v-for="cara in caracteristiques"
-          v-on:click="changeCaracteristique(cara.id)"
-          :key="cara.id"
-          class="couleur"
-          :style="{ background: cara.couleur }"
-        >
-          <div class="cercle" />
-          <div>{{ cara.couleur }}</div>
+    <div>
+      <div id="caracteristiques">
+        <div id="divPrix">
+          <div id="textPrix">Prix</div>
+          <div>{{ caracteristique.produit.prix }}€</div>
         </div>
+        <div>Couleur</div>
+        <div id="couleurs">
+          <div
+            v-for="cara in caracteristiques"
+            v-on:click="changeCaracteristique(cara.id)"
+            :key="cara.id"
+            class="couleur"
+            :style="{ background: cara.couleur }"
+          >
+            <div class="cercle" />
+            <div>{{ cara.couleur }}</div>
+          </div>
+        </div>
+        <b-button v-if="caracteristique.quantite > 0" id="btnCommander" v-on:click="addProduit(caracteristique)"
+          >Ajouter au panier
+        </b-button>
       </div>
-      <b-button v-if="caracteristique.quantite > 0" id="btnCommander" v-on:click="addProduit(caracteristique)">Ajouter au panier</b-button>
+      <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <font-awesome-icon icon="arrow-left" />
+        <span>Retour</span>
+      </button>
     </div>
   </div>
 </template>
