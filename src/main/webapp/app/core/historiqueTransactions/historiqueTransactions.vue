@@ -1,14 +1,18 @@
 <template>
   <div id="pagePanier">
-    <!-- Progression Panier -->
-    <div id="contenuPanier">
-      <div id="produitPanier">
-        <div v-for="transaction in historique" :key="transaction.id" class="produit">
-          <div class="numeroCommande">N° Commande : {{ transaction.id }}</div>
-          <div class="dateCommande">Date : {{ transaction.date }}</div>
-          <div class="etatCommande">État : {{ transaction.etat }}</div>
-          <div class="ligneTransaction" v-fort="ligne in transaction.ligneTransactions">
-            <div></div>
+    <span class="title">Historique des transactions</span>
+    <hr class="separate" />
+    <div id="pagePanier">
+      <!-- Progression Panier -->
+      <div id="contenuPanier">
+        <div id="produitPanier">
+          <div v-for="transaction in historique" :key="transaction.id" class="produit">
+            <div class="numeroCommande">N° Commande : {{ transaction.id }}</div>
+            <div class="dateCommande">Date : {{ transaction.date }}</div>
+            <div class="etatCommande">État : {{ transaction.etat }}</div>
+            <div class="ligneTransaction" v-fort="ligne in transaction.ligneTransactions">
+              <div></div>
+            </div>
           </div>
         </div>
       </div>

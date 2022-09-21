@@ -1,7 +1,12 @@
 import { Component, Inject, Vue } from 'vue-property-decorator';
 import { computed } from 'vue';
 
-@Component
+@Component({
+  beforeRouteLeave(to, from, next) {
+    this.$store.commit('resetPanier');
+    next();
+  },
+})
 export default class Confirmation extends Vue {
   /* created() {
     console.log(this.$store.getters.panier);

@@ -34,6 +34,11 @@ export const panierStore: Module<PanierStateStorable, any> = {
     /* setTransaction(state, transaction) {
       this.state.transaction = transaction;
     },*/
+    resetPanier(state) {
+      state.panier = [];
+      state.nbProduit = 0;
+      state.quantite = [];
+    },
     addProduit(state, produit) {
       let indexProduit = 0;
       let produitExist = false;
