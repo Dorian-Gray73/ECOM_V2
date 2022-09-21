@@ -34,6 +34,7 @@ public class Transaction implements Serializable {
     @JsonIgnoreProperties(value = { "transaction", "caracteristique" }, allowSetters = true)
     private Set<LigneTransaction> ligneTransactions = new HashSet<>();
 
+    @JoinColumn(name = "utilisateur_id")
     @ManyToOne
     @JsonIgnoreProperties(value = { "transactions", "internal_user" }, allowSetters = true)
     private Utilisateur utilisateur;

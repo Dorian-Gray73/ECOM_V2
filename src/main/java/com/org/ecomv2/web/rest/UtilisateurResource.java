@@ -204,4 +204,9 @@ public class UtilisateurResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
     }
+
+    @GetMapping("/utilisateurs/user/{userId}")
+    public Optional<Utilisateur> getAllPrix(@PathVariable Long userId) {
+        return utilisateurRepository.getUtilisateurByIdUser(userId);
+    }
 }

@@ -36,7 +36,7 @@ public class Utilisateur implements Serializable {
     @Column(name = "type")
     private Type type;
 
-    @OneToMany(mappedBy = "utilisateur")
+    @OneToMany(mappedBy = "utilisateur", fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = { "ligneTransactions", "utilisateur" }, allowSetters = true)
     private Set<Transaction> transactions = new HashSet<>();
 
