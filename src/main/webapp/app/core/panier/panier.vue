@@ -12,7 +12,8 @@
       <div id="produitPanier" :key="componentKey">
         <div v-for="cara in panier" :key="cara.id">
           <div class="produit">
-            <img :src="`/content/images/${cara.images[0].lienImage}`" class="photoProduit" alt="" />
+            <div v-if="cara.images == null || cara.images.length == 0" class="photoVide" />
+            <img v-else :src="`/content/images/${cara.images[0].lienImage}`" class="photoProduit" alt="" />
             <div class="nomPrix">{{ cara.produit.nom }} <br />Couleur : {{ cara.couleur }}<br />Prix : {{ cara.produit.prix }}€</div>
             <div class="quantite">Quantité : {{ quantite[cara.id] }}</div>
             <div class="prixTotal">Prix total : {{ quantite[cara.id] * cara.produit.prix }}€</div>
@@ -79,6 +80,12 @@
   height: 128px;
   background-color: #f7f7f7;
   object-fit: cover;
+}
+
+.photoVide {
+  width: 128px;
+  height: 128px;
+  background-color: #f7f7f7;
 }
 
 .progressionPanier {

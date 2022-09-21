@@ -34,7 +34,7 @@
           </select>
         </div>
         <b-form-input id="input-3" class="formu" v-model="cardCvv" maxlength="4" placeholder="CVV" required />
-        <b-button class="formu" variant="primary">Valider</b-button>
+        <b-button v-on:click="validerPaiement()" class="formu" variant="primary">Valider</b-button>
       </div>
     </div>
   </div>
