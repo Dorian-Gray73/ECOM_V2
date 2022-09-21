@@ -5,6 +5,10 @@ import ProduitService from '@/entities/produit/produit.service';
 import CaracteristiqueService from '@/entities/caracteristique/caracteristique.service';
 import { Caracteristique, ICaracteristique } from '@/shared/model/caracteristique.model';
 import { computed } from 'vue';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faVolumeUp } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faVolumeUp);
 
 @Component
 export default class ProduitDetails extends Vue {
