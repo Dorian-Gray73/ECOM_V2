@@ -1,6 +1,7 @@
 package com.org.ecomv2.web.rest;
 
 import com.org.ecomv2.domain.Transaction;
+import com.org.ecomv2.domain.Utilisateur;
 import com.org.ecomv2.domain.enumeration.EtatProduit;
 import com.org.ecomv2.repository.TransactionRepository;
 import com.org.ecomv2.web.rest.errors.BadRequestAlertException;
@@ -214,5 +215,10 @@ public class TransactionResource {
     @GetMapping("/transactions/encours")
     public Transaction getTransactionEnCours() {
         return transactionRepository.getTransactionEnCours();
+    }
+
+    @GetMapping("/transactions/user/{idUtilisateur}")
+    public List<Transaction> getAllPrix(@PathVariable Long idUtilisateur) {
+        return transactionRepository.getTransactionByUtilisateur(idUtilisateur);
     }
 }
