@@ -90,8 +90,19 @@ export default class Register extends Vue {
     this.registerUtilisateur.langKey = this.$store.getters.currentLanguage;
     this.registerService()
       .processRegistration(this.registerAccount)
-      .then(() => {
+      .then(res => {
         this.success = true;
+        this.registerUtilisateur.courriel = this.registerAccount.email;
+        this.registerUtilisateur.internal_user = res.data;
+        this.utilisateurService()
+          .create(this.registerUtilisateur)
+          .then(() => {
+            this.success = true;
+          })
+          .catch(error => {
+            this.success = null;
+            this.error = 'ERROR';
+          });
       })
       .catch(error => {
         this.success = null;
@@ -102,17 +113,6 @@ export default class Register extends Vue {
         } else {
           this.error = 'ERROR';
         }
-      });
-    this.registerUtilisateur.courriel = this.registerAccount.email;
-    this.registerUtilisateur.internal_user = this.registerAccount.login;
-    this.utilisateurService()
-      .create(this.registerUtilisateur)
-      .then(() => {
-        this.success = true;
-      })
-      .catch(error => {
-        this.success = null;
-        this.error = 'ERROR';
       });
   }
 
