@@ -9,9 +9,9 @@ export default class Panier extends Vue {
 
   quantite = computed(() => this.$store.getters.quantite);
 
-  created() {
+  /*created() {
     console.log(this.$store.getters.quantite);
-  }
+  }*/
 
   //Forcer l'affichage des produits à se mettre à jour
   public forceRerender() {

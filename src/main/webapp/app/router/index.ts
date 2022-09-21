@@ -23,6 +23,7 @@ import Confirmation from '@/core/confirmation/confirmation.vue';
 import Paiement from '@/core/paiement/paiement.vue';
 import aPropos from '@/core/aPropos/aPropos.vue';
 import LoginApp from '@/core/login-app/login-app.vue';
+import HistoriqueTransactions from '@/core/historiqueTransactions/historiqueTransactions.vue';
 
 Vue.use(Router);
 
@@ -49,6 +50,11 @@ const router = new Router({
       path: '/recherche',
       name: 'Recherche',
       component: Recherche
+    },
+    {
+      path: '/historiqueTransactions',
+      name: 'HistoriqueTransactions',
+      component: HistoriqueTransactions
     },
     {
       path: '/produitDetails/:id',

@@ -30,6 +30,7 @@ public class LigneTransaction implements Serializable {
     @JsonIgnoreProperties(value = { "ligneTransactions", "utilisateur" }, allowSetters = true)
     private Transaction transaction;
 
+    @JoinColumn(name = "caracteristique_id")
     @ManyToOne
     @JsonIgnoreProperties(value = { "images", "ligneTransactions", "produit" }, allowSetters = true)
     private Caracteristique caracteristique;

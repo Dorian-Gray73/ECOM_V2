@@ -68,6 +68,8 @@ export default class Paiement extends Vue {
             });
 
             // Sauvegarde des lignes
+
+            console.log(this.$store.getters.panier);
             this.$store.getters.panier.forEach(p => {
               const lt = {
                 transaction: null,
@@ -75,6 +77,7 @@ export default class Paiement extends Vue {
                 prixUnitaire: null,
                 caracteristique: null,
               };
+              console.log(p);
               lt.transaction = this.transaction;
               lt.quantite = this.$store.getters.quantite[p.id];
               lt.prixUnitaire = p.produit.prix;

@@ -1,12 +1,7 @@
 <template>
   <div id="pagePanier">
-    <!-- Progression Panier -->
-    <div class="progressionPanier">
-      <div class="step done">Panier</div>
-      <div class="step done">Connexion</div>
-      <div class="step done">Paiement</div>
-      <div class="step active">Confirmation</div>
-    </div>
+    <span class="title">Historique des transactions</span>
+    <hr class="separate" />
     <div id="contenuPanier">
       <div id="produitPanier">
         <div v-for="cara in panier" :key="cara.id" class="produit">

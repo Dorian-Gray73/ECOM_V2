@@ -27,6 +27,7 @@
       </b-nav-item>
       <!-- Connecté -->
       <b-nav-item-dropdown v-if="authenticated" class="navbar-nav" text="Connecté">
+        <b-dropdown-item v-if="authenticated" to="/historiqueTransactions">Historique transactions</b-dropdown-item>
         <b-dropdown-item v-if="authenticated" v-on:click="logout()">Déconnexion</b-dropdown-item>
       </b-nav-item-dropdown>
       <!-- Panier -->

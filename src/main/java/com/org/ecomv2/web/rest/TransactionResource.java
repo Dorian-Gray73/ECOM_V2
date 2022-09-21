@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import org.hibernate.annotations.Any;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -217,7 +218,7 @@ public class TransactionResource {
         return transactionRepository.getTransactionEnCours();
     }
 
-    @GetMapping("/transactions/user/{idUtilisateur}")
+    @GetMapping("/transactions/utilisateur/{idUtilisateur}")
     public List<Transaction> getAllPrix(@PathVariable Long idUtilisateur) {
         return transactionRepository.getTransactionByUtilisateur(idUtilisateur);
     }
