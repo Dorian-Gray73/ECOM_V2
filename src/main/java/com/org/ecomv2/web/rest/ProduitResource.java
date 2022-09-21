@@ -182,7 +182,6 @@ public class ProduitResource {
      */
     @GetMapping("/produits/nom")
     public List<String> getName() {
-        log.debug("Coucou");
         return produitRepository.getNomProduits();
     }
 

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * Spring Data JPA repository for the Utilisateur entity.
@@ -37,4 +38,7 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> 
 
     @Query("select utilisateur from Utilisateur utilisateur left join fetch utilisateur.internal_user where utilisateur.id =:id")
     Optional<Utilisateur> findOneWithToOneRelationships(@Param("id") Long id);
+
+    @Query("select utilisateur from Utilisateur utilisateur JOIN User u ON utilisateur.internal_user.id = u.id WHERE u.id = :id")
+    Optional<Utilisateur> getUtilisateurByIdUser(@Param("id") Long id);
 }

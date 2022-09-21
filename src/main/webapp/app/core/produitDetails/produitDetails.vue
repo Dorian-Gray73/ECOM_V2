@@ -9,6 +9,15 @@
         <div id="couleurMonture">{{ caracteristique.couleur }}</div>
         <div v-if="caracteristique.quantite > 0" id="quantiteMonture">Disponible</div>
         <div v-else id="quantiteMontureNonDispo">Non disponible</div>
+        <div id="divBtnRetour">
+          <button id="btnRetour" type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+            <font-awesome-icon icon="arrow-left" />
+            <span>Retour</span>
+          </button>
+          <button id="btnTextToSpeech" type="submit" class="btn btn-info" data-cy="entityDetailsBackButton">
+            <font-awesome-icon :icon="['fas', 'volume-up']" />
+          </button>
+        </div>
       </div>
     </div>
     <div>
@@ -34,10 +43,6 @@
           >Ajouter au panier
         </b-button>
       </div>
-      <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-        <font-awesome-icon icon="arrow-left" />
-        <span>Retour</span>
-      </button>
     </div>
   </div>
 </template>
@@ -131,6 +136,14 @@
 
   background: #5b85aa;
   margin: auto;
+}
+
+#divBtnRetour {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+}
+#btnRetour {
 }
 
 .cercle {

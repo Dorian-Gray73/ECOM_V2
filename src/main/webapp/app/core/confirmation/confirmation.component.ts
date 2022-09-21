@@ -15,7 +15,7 @@ export default class Confirmation extends Vue {
   public getPrixTotal() {
     let prixTotal = 0;
     this.$store.getters.panier.forEach(cara => {
-      prixTotal = cara.produit.prix * this.quantite[cara.id];
+      prixTotal += cara.produit.prix * this.quantite[cara.id];
     });
 
     return prixTotal;
