@@ -18,6 +18,19 @@ export default class TransactionService {
     });
   }
 
+  public retrieveTransactionsByIdUtilisateur(id: number): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .get(`${baseApiUrl}/utilisateur/${id}`)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
   public retrieve(): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios

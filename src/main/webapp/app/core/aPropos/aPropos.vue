@@ -3,6 +3,7 @@
     <span class="title">À propos de nous</span>
     <hr class="separate" />
     <div id="aproposDiv">
+      <!-- Texte à propos -->
       <div id="textApropos">
         Lu Net, petite, mais dynamique start-up spécialisée dans les lunettes.<br /><br />
         La passion du bon plan et de l’efficacité du service client, nous a motivé à proposer notre service. C’est pourquoi nous nous
@@ -12,8 +13,9 @@
         donnons la priorité aux envies de nos clients. Présents partout dans le monde, ils sont ainsi heureux de pouvoir s’offrir la mode à
         prix raisonnables. Nous espérons que vous aimerez nos produits autant que nous aimons les trouver pour vous.
       </div>
+      <!-- Image à propos -->
       <div id="imgApropos">
-        <img src="content/images/imageApropos.png" />
+        <img src="content/images/imageApropos.png" alt="" />
       </div>
     </div>
   </div>

@@ -4,16 +4,15 @@ import AccountService from '@/account/account.service';
 
 @Component
 export default class Navbar extends Vue {
+  // Appel Service
+  @Inject('accountService')
+  private accountService: () => AccountService;
+  @Inject('loginService')
+  private loginService: () => LoginService;
+
   // Data
   public nbPanier = null;
   private hasAnyAuthorityValues = {};
-
-  // Service
-  @Inject('accountService') private accountService: () => AccountService;
-
-  // Appel du service
-  @Inject('loginService')
-  private loginService: () => LoginService;
 
   public openLogin(): void {
     this.loginService().openLogin((<any>this).$root);

@@ -2,13 +2,11 @@ import { Component, Inject, Provide, Vue } from 'vue-property-decorator';
 import { IProduit } from '@/shared/model/produit.model';
 import AlertService from '@/shared/alert/alert.service';
 import ProduitService from '@/entities/produit/produit.service';
-import AccountService from '@/account/account.service';
-import PanierService from '@/panier/panier.service';
 import CaracteristiqueService from '@/entities/caracteristique/caracteristique.service';
 
 @Component
 export default class Recherche extends Vue {
-  // Call Service
+  // Appel Service
   @Provide('produitService') private produitService = () => new ProduitService();
   @Provide('caracteristiqueService') private caracteristiqueService = () => new CaracteristiqueService();
   @Inject('alertService') private alertService: () => AlertService;
@@ -28,6 +26,7 @@ export default class Recherche extends Vue {
   public rows = 0;
   public currentPage = 1;
   public perPage = 9;
+  public isLoading = false;
 
   public mounted(): void {
     this.retrieveAllProduits();
@@ -46,12 +45,14 @@ export default class Recherche extends Vue {
   //Récupération des produits
   public retrieveAllProduits(): void {
     this.isFetching = true;
+    this.isLoading = true;
     this.produitService()
       .retrieve()
       .then(
         res => {
           this.produits = res.data;
           this.isFetching = false;
+          this.isLoading = false;
         },
         err => {
           this.isFetching = false;

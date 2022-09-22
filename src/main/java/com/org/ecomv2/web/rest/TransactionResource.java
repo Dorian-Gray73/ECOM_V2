@@ -1,6 +1,7 @@
 package com.org.ecomv2.web.rest;
 
 import com.org.ecomv2.domain.Transaction;
+import com.org.ecomv2.domain.Utilisateur;
 import com.org.ecomv2.domain.enumeration.EtatProduit;
 import com.org.ecomv2.repository.TransactionRepository;
 import com.org.ecomv2.web.rest.errors.BadRequestAlertException;
@@ -11,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import org.hibernate.annotations.Any;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -214,5 +216,10 @@ public class TransactionResource {
     @GetMapping("/transactions/encours")
     public Transaction getTransactionEnCours() {
         return transactionRepository.getTransactionEnCours();
+    }
+
+    @GetMapping("/transactions/utilisateur/{idUtilisateur}")
+    public List<Transaction> getAllPrix(@PathVariable Long idUtilisateur) {
+        return transactionRepository.getTransactionsByUtilisateur(idUtilisateur);
     }
 }

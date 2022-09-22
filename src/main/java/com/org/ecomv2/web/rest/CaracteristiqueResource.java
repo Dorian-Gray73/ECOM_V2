@@ -61,7 +61,7 @@ public class CaracteristiqueResource {
     /**
      * {@code PUT  /caracteristiques/:id} : Updates an existing caracteristique.
      *
-     * @param id the id of the caracteristique to save.
+     * @param id              the id of the caracteristique to save.
      * @param caracteristique the caracteristique to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated caracteristique,
      * or with status {@code 400 (Bad Request)} if the caracteristique is not valid,
@@ -95,7 +95,7 @@ public class CaracteristiqueResource {
     /**
      * {@code PATCH  /caracteristiques/:id} : Partial updates given fields of an existing caracteristique, field will ignore if it is null
      *
-     * @param id the id of the caracteristique to save.
+     * @param id              the id of the caracteristique to save.
      * @param caracteristique the caracteristique to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated caracteristique,
      * or with status {@code 400 (Bad Request)} if the caracteristique is not valid,
@@ -141,6 +141,32 @@ public class CaracteristiqueResource {
             result,
             HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, caracteristique.getId().toString())
         );
+    }
+
+    @PatchMapping(value = "/caracteristiques/quantite/{id}/{quantite}", consumes = { "application/json", "application/merge-patch+json" })
+    public ResponseEntity<Caracteristique> partialUpdateCaracteristiqueQuantite(
+        @PathVariable(value = "id") final Long id,
+        @PathVariable(value = "quantite") final int quantite,
+        @RequestBody Caracteristique caracteristique
+    ) throws URISyntaxException {
+        log.debug("REST request to partial update Caracteristique partially : {}, {}", id);
+
+        if (!caracteristiqueRepository.existsById(id)) {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        Optional<Caracteristique> result = caracteristiqueRepository
+            .findById(id)
+            .map(existingCaracteristique -> {
+                if (existingCaracteristique.getQuantite() != null && existingCaracteristique.getQuantite() >= quantite) {
+                    existingCaracteristique.setQuantite(existingCaracteristique.getQuantite() - quantite);
+                } else {
+                    throw new BadRequestAlertException("Quantité plus petite que la quantité d'achat", ENTITY_NAME, "quantiteerreur");
+                }
+
+                return existingCaracteristique;
+            });
+        return ResponseUtil.wrapOrNotFound(result, HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, id.toString()));
     }
 
     /**

@@ -16,6 +16,7 @@ import AlertService from '@/shared/alert/alert.service';
   },
 })
 export default class App extends Vue {
+  //Préparation pour récupérer le panier en cours
   /*public isFetching = false;
 
   @Provide('transactionService')

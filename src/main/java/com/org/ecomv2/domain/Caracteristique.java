@@ -34,7 +34,7 @@ public class Caracteristique implements Serializable {
     @JsonIgnoreProperties(value = { "caracteristique", "produit" }, allowSetters = true)
     private Set<Image> images = new HashSet<>();
 
-    @OneToMany(mappedBy = "caracteristique", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "caracteristique")
     @JsonIgnoreProperties(value = { "transaction", "caracteristique" }, allowSetters = true)
     private Set<LigneTransaction> ligneTransactions = new HashSet<>();
 

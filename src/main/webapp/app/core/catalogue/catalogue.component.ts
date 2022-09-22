@@ -5,7 +5,7 @@ import { IProduit } from '@/shared/model/produit.model';
 
 @Component
 export default class Catalogue extends Vue {
-  // Call Service
+  // Appel Service
   @Provide('produitService')
   private produitService = () => new ProduitService();
   @Inject('alertService')
@@ -17,9 +17,14 @@ export default class Catalogue extends Vue {
   public rows = 0;
   public currentPage = 1;
   public perPage = 12;
+  public isLoading = false;
 
   public mounted(): void {
     this.retrieveAllProduits();
+  }
+
+  public handleSyncList(): void {
+    this.clear();
   }
 
   public clear(): void {
@@ -29,6 +34,7 @@ export default class Catalogue extends Vue {
   // Récupération de tous les produits
   public retrieveAllProduits(): void {
     this.isFetching = true;
+    this.isLoading = true;
     this.produitService()
       .retrieve()
       .then(
@@ -36,16 +42,13 @@ export default class Catalogue extends Vue {
           this.produits = res.data;
           this.rows = this.produits.length;
           this.isFetching = false;
+          this.isLoading = false;
         },
         err => {
           this.isFetching = false;
           this.alertService().showHttpError(this, err.response);
         }
       );
-  }
-
-  public handleSyncList(): void {
-    this.clear();
   }
 
   // Pagination

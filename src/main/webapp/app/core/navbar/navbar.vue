@@ -27,6 +27,7 @@
       </b-nav-item>
       <!-- Connecté -->
       <b-nav-item-dropdown v-if="authenticated" class="navbar-nav" text="Connecté">
+        <b-dropdown-item v-if="authenticated" to="/historiqueTransactions">Historique transactions</b-dropdown-item>
         <b-dropdown-item v-if="authenticated" v-on:click="logout()">Déconnexion</b-dropdown-item>
       </b-nav-item-dropdown>
       <!-- Panier -->
@@ -37,7 +38,7 @@
       </b-nav-item>
     </div>
     <!-- Admin -->
-    <b-nav-item v-if="hasAnyAuthority('ROLE_ADMIN') && authenticated" to="/home" class="navbar-nav">
+    <b-nav-item v-if="hasAnyAuthority('ROLE_ADMIN') && authenticated" to="/admin" class="navbar-nav">
       <font-awesome-icon icon="fa-solid fa-hammer" />
       Admin
     </b-nav-item>

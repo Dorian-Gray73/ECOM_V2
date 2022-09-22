@@ -12,10 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Repository
 public interface LigneTransactionRepository extends JpaRepository<LigneTransaction, Long> {
+    /*
+     * Modifier la quantite d'une ligne de transaction
+     */
     @Modifying(clearAutomatically = true, flushAutomatically = true)
     @Query("UPDATE LigneTransaction SET quantite = :newQuantite WHERE id = :ligneTransactionId")
-    public void updateLigneTransactionQuantite(
-        @Param("ligneTransactionId") Long ligneTransactionId,
-        @Param("newQuantite") Integer newQuantite
-    );
+    void updateLigneTransactionQuantite(@Param("ligneTransactionId") Long ligneTransactionId, @Param("newQuantite") Integer newQuantite);
 }

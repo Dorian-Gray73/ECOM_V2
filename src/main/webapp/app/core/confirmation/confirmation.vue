@@ -8,9 +8,9 @@
       <div class="step active">Confirmation</div>
     </div>
     <div id="contenuPanier">
-      <div id="produitPanier" :key="componentKey">
+      <div id="produitPanier">
         <div v-for="cara in panier" :key="cara.id" class="produit">
-          <div v-if="cara.images == null || cara.images.length == 0" class="photoVide" />
+          <div v-if="cara.images == null || cara.images.length === 0" class="photoVide" />
           <img v-else :src="`/content/images/${cara.images[0].lienImage}`" class="photoProduit" alt="" />
           <div class="nomPrix">{{ cara.produit.nom }} <br />{{ cara.couleur }}<br />{{ cara.produit.prix }}€</div>
           <div class="quantite">Quantité : {{ quantite[cara.id] }}</div>

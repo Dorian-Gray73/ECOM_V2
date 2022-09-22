@@ -13,10 +13,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Repository
 public interface ImageRepository extends JpaRepository<Image, Long> {
+    /*
+     * Récupération de tous les produits et de leurs images
+     */
     @Query(value = "SELECT * FROM Image i JOIN Produit p on i.Produit_id = p.id", nativeQuery = true)
-
     public List<Image> getAllProduitsImages();
 
+    /*
+     * Récupération des produits de leurs caractéristiques et images
+     */
     @Query(
         value = "SELECT * FROM Image i JOIN Produit p ON produit_id = p.id JOIN caracteristique c ON caracteristique_id = c.id WHERE p.id = :produitId",
         nativeQuery = true
