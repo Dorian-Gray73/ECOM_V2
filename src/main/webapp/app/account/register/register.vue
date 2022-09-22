@@ -3,22 +3,18 @@
   <div>
     <div class="row justify-content-center">
       <div class="col-md-8 toastify-container">
-        <h1 v-text="$t('register.title')" id="register-title" data-cy="registerTitle">Registration</h1>
+        <h1 id="register-title" data-cy="registerTitle">Création de compte</h1>
 
-        <div class="alert alert-success" role="alert" v-if="success" v-html="$t('register.messages.success')">
-          <strong>Registration saved!</strong> Please check your email for confirmation.
+        <div class="alert alert-success" role="alert" v-if="success"><strong>Compte créé </strong> Veuillez vous connecter.</div>
+
+        <div class="alert alert-danger" role="alert" v-if="error"><strong>Echec de la création du compte.</strong> Réssayez plus tard.</div>
+
+        <div class="alert alert-danger" role="alert" v-if="errorUserExists">
+          <strong>Nom de compte déjà utilisé.</strong>Choisissez en un autre.
         </div>
 
-        <div class="alert alert-danger" role="alert" v-if="error" v-html="$t('register.messages.error.fail')">
-          <strong>Registration failed!</strong> Please try again later.
-        </div>
-
-        <div class="alert alert-danger" role="alert" v-if="errorUserExists" v-html="$t('register.messages.error.userexists')">
-          <strong>Login name already registered!</strong> Please choose another one.
-        </div>
-
-        <div class="alert alert-danger" role="alert" v-if="errorEmailExists" v-html="$t('register.messages.error.emailexists')">
-          <strong>Email is already in use!</strong> Please choose another one.
+        <div class="alert alert-danger" role="alert" v-if="errorEmailExists">
+          <strong>Courriel déjà utilisé.</strong> Veuillez en entrer un autre.
         </div>
       </div>
     </div>
@@ -26,7 +22,7 @@
       <div class="col-md-8">
         <form id="register-form" name="registerForm" role="form" v-on:submit.prevent="register()" v-if="!success" no-validate>
           <div class="form-group">
-            <label class="form-control-label" for="username" v-text="$t('global.form[\'username.label\']')">Username</label>
+            <label class="form-control-label" for="username">Nom de compte</label>
             <input
               type="text"
               class="form-control"
@@ -42,39 +38,21 @@
               data-cy="username"
             />
             <div v-if="$v.registerAccount.login.$anyDirty && $v.registerAccount.login.$invalid">
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.login.required"
-                v-text="$t('register.messages.validate.login.required')"
-              >
-                Your username is required.
+              <small class="form-text text-danger" v-if="!$v.registerAccount.login.required"> Nom de compte requis. </small>
+              <small class="form-text text-danger" v-if="!$v.registerAccount.login.minLength">
+                Le nom de compte doit faire au moins un caractère.
               </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.login.minLength"
-                v-text="$t('register.messages.validate.login.minlength')"
-              >
-                Your username is required to be at least 1 character.
+              <small class="form-text text-danger" v-if="!$v.registerAccount.login.maxLength">
+                Le nom de compte doit faire moins de 50 caractères.
               </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.login.maxLength"
-                v-text="$t('register.messages.validate.login.maxlength')"
-              >
-                Your username cannot be longer than 50 characters.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.login.pattern"
-                v-text="$t('register.messages.validate.login.pattern')"
-              >
-                Your username can only contain letters and digits.
+              <small class="form-text text-danger" v-if="!$v.registerAccount.login.pattern">
+                Le nom de compte ne doit contenir que des lettres et des chiffres.
               </small>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-control-label" for="nom" v-text="$t('global.form[\'nom.label\']')">Nom</label>
+            <label class="form-control-label" for="nom">Nom</label>
             <input
               type="texte"
               class="form-control"
@@ -89,32 +67,18 @@
               data-cy="nom"
             />
             <div v-if="$v.registerUtilisateur.nom.$anyDirty && $v.registerUtilisateur.nom.$invalid">
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerUtilisateur.nom.required"
-                v-text="$t('register.messages.validate.nom.required')"
-              >
-                Your last name is required.
+              <small class="form-text text-danger" v-if="!$v.registerUtilisateur.nom.required"> Le nom de famille est requis. </small>
+              <small class="form-text text-danger" v-if="!$v.registerUtilisateur.nom.minLength">
+                Le nom de famille doit faire au moins un caractère.
               </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerUtilisateur.nom.minLength"
-                v-text="$t('register.messages.validate.nom.minlength')"
-              >
-                Your last name is required to be at least 1 character.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerUtilisateur.nom.maxLength"
-                v-text="$t('register.messages.validate.nom.maxlength')"
-              >
-                Your last name cannot be longer than 30 characters.
+              <small class="form-text text-danger" v-if="!$v.registerUtilisateur.nom.maxLength">
+                Le nom de famille doit faire moins de 30 caractères.
               </small>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-control-label" for="prenom" v-text="$t('global.form[\'prenom.label\']')">Prenom</label>
+            <label class="form-control-label" for="prenom">Prenom</label>
             <input
               type="texte"
               class="form-control"
@@ -129,32 +93,18 @@
               data-cy="prenom"
             />
             <div v-if="$v.registerUtilisateur.prenom.$anyDirty && $v.registerUtilisateur.prenom.$invalid">
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerUtilisateur.prenom.required"
-                v-text="$t('register.messages.validate.prenom.required')"
-              >
-                Your prenom is required.
+              <small class="form-text text-danger" v-if="!$v.registerUtilisateur.prenom.required"> Votre prénom est requis. </small>
+              <small class="form-text text-danger" v-if="!$v.registerUtilisateur.prenom.minLength">
+                Votre prénom doit faire au moins un caractère.
               </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerUtilisateur.prenom.minLength"
-                v-text="$t('register.messages.validate.prenom.minlength')"
-              >
-                Your prenom is required to be at least 1 character.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerUtilisateur.prenom.maxLength"
-                v-text="$t('register.messages.validate.prenom.maxlength')"
-              >
-                Your prenom cannot be longer than 30 characters.
+              <small class="form-text text-danger" v-if="!$v.registerUtilisateur.prenom.maxLength">
+                Votre prénom doit faire moins de 30 caractères.
               </small>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-control-label" for="email" v-text="$t('global.form[\'email.label\']')">Email</label>
+            <label class="form-control-label" for="email">Email</label>
             <input
               type="email"
               class="form-control"
@@ -170,39 +120,19 @@
               data-cy="email"
             />
             <div v-if="$v.registerAccount.email.$anyDirty && $v.registerAccount.email.$invalid">
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.email.required"
-                v-text="$t('global.messages.validate.email.required')"
-              >
-                Your email is required.
+              <small class="form-text text-danger" v-if="!$v.registerAccount.email.required"> Email requis. </small>
+              <small class="form-text text-danger" v-if="!$v.registerAccount.email.email"> Email invalide. </small>
+              <small class="form-text text-danger" v-if="!$v.registerAccount.email.minLength">
+                Votre email doit faire au moins 5 caractères.
               </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.email.email"
-                v-text="$t('global.messages.validate.email.invalid')"
-              >
-                Your email is invalid.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.email.minLength"
-                v-text="$t('global.messages.validate.email.minlength')"
-              >
-                Your email is required to be at least 5 characters.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.email.maxLength"
-                v-text="$t('global.messages.validate.email.maxlength')"
-              >
-                Your email cannot be longer than 100 characters.
+              <small class="form-text text-danger" v-if="!$v.registerAccount.email.maxLength">
+                Votre email doit faire moins de 100 caractères.
               </small>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-control-label" for="adresse" v-text="$t('global.form[\'adresse.label\']')">Adresse</label>
+            <label class="form-control-label" for="adresse">Adresse</label>
             <input
               type="texte"
               class="form-control"
@@ -217,32 +147,18 @@
               data-cy="adresse"
             />
             <div v-if="$v.registerUtilisateur.adresse.$anyDirty && $v.registerUtilisateur.adresse.$invalid">
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerUtilisateur.adresse.required"
-                v-text="$t('register.messages.validate.adresse.required')"
-              >
-                Your adresse is required.
+              <small class="form-text text-danger" v-if="!$v.registerUtilisateur.adresse.required"> Votre adresse est requis. </small>
+              <small class="form-text text-danger" v-if="!$v.registerUtilisateur.adresse.minLength">
+                Votre adresse doit faire au moins 10 caractères.
               </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerUtilisateur.adresse.minLength"
-                v-text="$t('register.messages.validate.adresse.minlength')"
-              >
-                Your adresse is required to be at least 10 characters.
-              </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerUtilisateur.adresse.maxLength"
-                v-text="$t('register.messages.validate.adresse.maxlength')"
-              >
-                Your adresse cannot be longer than 100 characters.
+              <small class="form-text text-danger" v-if="!$v.registerUtilisateur.adresse.maxLength">
+                Votre adresse doit faire moins de 100 caractères.
               </small>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-control-label" for="firstPassword" v-text="$t('global.form[\'newpassword.label\']')">New password</label>
+            <label class="form-control-label" for="firstPassword">Nouveau mot de passe</label>
             <input
               type="password"
               class="form-control"
@@ -257,33 +173,19 @@
               data-cy="firstPassword"
             />
             <div v-if="$v.registerAccount.password.$anyDirty && $v.registerAccount.password.$invalid">
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.password.required"
-                v-text="$t('global.messages.validate.newpassword.required')"
-              >
-                Your password is required.
+              <small class="form-text text-danger" v-if="!$v.registerAccount.password.required">
+                Le nouveau mot de passe est requis.
               </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.password.minLength"
-                v-text="$t('global.messages.validate.newpassword.minlength')"
-              >
-                Your password is required to be at least 4 characters.
+              <small class="form-text text-danger" v-if="!$v.registerAccount.password.minLength">
+                Le mot de passe doit faire au moins 4 caractères.
               </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.registerAccount.password.maxLength"
-                v-text="$t('global.messages.validate.newpassword.maxlength')"
-              >
-                Your password cannot be longer than 50 characters.
+              <small class="form-text text-danger" v-if="!$v.registerAccount.password.maxLength">
+                Le mot de passe ne doit pas faire plus de 50 caractères.
               </small>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="secondPassword" v-text="$t('global.form[\'confirmpassword.label\']')"
-              >New password confirmation</label
-            >
+            <label class="form-control-label" for="secondPassword">Confirmation du mot de passe</label>
             <input
               type="password"
               class="form-control"
@@ -298,46 +200,22 @@
               data-cy="secondPassword"
             />
             <div v-if="$v.confirmPassword.$dirty && $v.confirmPassword.$invalid">
-              <small
-                class="form-text text-danger"
-                v-if="!$v.confirmPassword.required"
-                v-text="$t('global.messages.validate.confirmpassword.required')"
-              >
-                Your confirmation password is required.
+              <small class="form-text text-danger" v-if="!$v.confirmPassword.required">
+                La confirmation du mot de passe est requise.
               </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.confirmPassword.minLength"
-                v-text="$t('global.messages.validate.confirmpassword.minlength')"
-              >
-                Your confirmation password is required to be at least 4 characters.
+              <small class="form-text text-danger" v-if="!$v.confirmPassword.minLength">
+                La confirmation du mot de passe doit faire au moins 4 caractères.
               </small>
-              <small
-                class="form-text text-danger"
-                v-if="!$v.confirmPassword.maxLength"
-                v-text="$t('global.messages.validate.confirmpassword.maxlength')"
-              >
-                Your confirmation password cannot be longer than 50 characters.
+              <small class="form-text text-danger" v-if="!$v.confirmPassword.maxLength">
+                La confirmation du mot de passe doit faire au plus 50 caractères.
               </small>
-              <small class="form-text text-danger" v-if="!$v.confirmPassword.sameAsPassword" v-text="$t('global.messages.error.dontmatch')">
-                The password and its confirmation do not match!
-              </small>
+              <small class="form-text text-danger" v-if="!$v.confirmPassword.sameAsPassword"> Les mots de passe sont différents ! </small>
             </div>
           </div>
 
-          <button type="submit" :disabled="$v.$invalid" class="btn btn-primary" v-text="$t('register.form.button')" data-cy="submit">
-            Register
-          </button>
+          <button type="submit" :disabled="$v.$invalid" class="btn btn-primary" data-cy="submit">Création de compte.</button>
         </form>
         <p></p>
-        <div class="alert alert-warning">
-          <span v-text="$t('global.messages.info.authenticated.prefix')">If you want to </span>
-          <a class="alert-link" v-on:click="openLogin()" v-text="$t('global.messages.info.authenticated.link')">sign in</a
-          ><span v-html="$t('global.messages.info.authenticated.suffix')"
-            >, you can try the default accounts:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and
-            password="user").</span
-          >
-        </div>
       </div>
     </div>
   </div>
