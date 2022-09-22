@@ -29,11 +29,11 @@ export default class Paiement extends Vue {
   private caracteristiqueService = () => new CaracteristiqueService();
 
   // Data
-  public cardNumber = '';
-  public cardName = '';
-  public cardMonth = '';
-  public cardYear = '';
-  public cardCvv = '';
+  public cardNumber = '1234 4353 6367 7288';
+  public cardName = 'Test';
+  public cardMonth = '09';
+  public cardYear = '2024';
+  public cardCvv = '0000';
   public minCardMonth = new Date().getMonth();
   public minCardYear = new Date().getFullYear();
   public transaction: ITransaction = new Transaction();

@@ -154,7 +154,7 @@ export default class Recherche extends Vue {
 
   public filtreProduitPrix(produitsListe) {
     return produitsListe.filter(produit => {
-      if (produit.prix > this.sliderMin && produit.prix < this.sliderMax) {
+      if (produit.prix >= this.sliderMin && produit.prix <= this.sliderMax) {
         return true;
       }
     });
