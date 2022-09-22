@@ -1,6 +1,7 @@
 <template>
   <div id="loginApp">
-    <span class="title">À propos de nous</span>
+    <span class="title">Connexion</span>
+    <hr class="separate" />
     <div id="divBtnConnexion">
       <!-- <b-button v-on:click="seConnecter()" class="btnConnexion">S'enregistrer</b-button>
       <b-button v-on:click="openLogin()" class="btnConnexion">Se connecter</b-button>-->
