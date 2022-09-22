@@ -1,10 +1,8 @@
 import { Component, Inject, Provide, Vue } from 'vue-property-decorator';
-import { IProduit } from '@/shared/model/produit.model';
 import AlertService from '@/shared/alert/alert.service';
 import ProduitService from '@/entities/produit/produit.service';
 import CaracteristiqueService from '@/entities/caracteristique/caracteristique.service';
-import { Caracteristique, ICaracteristique } from '@/shared/model/caracteristique.model';
-import { computed } from 'vue';
+import { Caracteristique } from '@/shared/model/caracteristique.model';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 

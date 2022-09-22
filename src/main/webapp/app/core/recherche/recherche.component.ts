@@ -2,8 +2,6 @@ import { Component, Inject, Provide, Vue } from 'vue-property-decorator';
 import { IProduit } from '@/shared/model/produit.model';
 import AlertService from '@/shared/alert/alert.service';
 import ProduitService from '@/entities/produit/produit.service';
-import AccountService from '@/account/account.service';
-import PanierService from '@/panier/panier.service';
 import CaracteristiqueService from '@/entities/caracteristique/caracteristique.service';
 
 @Component

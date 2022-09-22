@@ -1,7 +1,6 @@
 import { Component, Inject, Provide, Vue } from 'vue-property-decorator';
 import { ITransaction, Transaction } from '@/shared/model/transaction.model';
 import LigneTransactionService from '@/entities/ligne-transaction/ligne-transaction.service';
-import { ILigneTransaction } from '@/shared/model/ligne-transaction.model';
 import UtilisateurService from '@/entities/utilisateur/utilisateur.service';
 import { IUtilisateur } from '@/shared/model/utilisateur.model';
 import { EtatProduit } from '@/shared/model/enumerations/etat-produit.model';
@@ -40,7 +39,6 @@ export default class Paiement extends Vue {
   public transaction: ITransaction = new Transaction();
   public utilisateur = null;
   public utilisateurs: IUtilisateur[] = [];
-  public etatProduitValues: string[] = Object.keys(EtatProduit);
   public isSaving = false;
 
   public validerPaiement() {

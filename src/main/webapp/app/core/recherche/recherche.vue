@@ -31,7 +31,7 @@
         <div id="divPagination">
           <!-- Affichage Search -->
           <div id="affichageSearch">
-            <div v-if="produitList.length == 0" id="catalogueVide">
+            <div v-if="produitList.length === 0" id="catalogueVide">
               <div id="videTexte">Pas de lunette disponible</div>
             </div>
             <div v-else v-for="produit in produitList" :key="produit.id" class="cardPhoto">
@@ -99,7 +99,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  padding: 0px;
+  padding: 0;
   gap: 32px;
   height: 1186px;
   margin: 32px 0;
@@ -128,7 +128,7 @@
   flex: 6;
   display: flex;
   flex-wrap: wrap;
-  padding: 0px;
+  padding: 0;
   gap: 32px;
   height: 1186px;
 }
@@ -145,7 +145,6 @@
   height: 128px;
   text-align: center;
   width: 100%;
-  align-items: center;
   margin: auto;
 }
 
@@ -182,7 +181,7 @@ a:hover {
 }
 
 .caracteristique {
-  padding: 0px;
+  padding: 0;
   gap: 8px;
   margin-top: 10px;
 }

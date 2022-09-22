@@ -12,7 +12,7 @@
       <div id="produitPanier" :key="componentKey">
         <div v-for="cara in panier" :key="cara.id">
           <div class="produit">
-            <div v-if="cara.images == null || cara.images.length == 0" class="photoVide" />
+            <div v-if="cara.images == null || cara.images.length === 0" class="photoVide" />
             <img v-else :src="`/content/images/${cara.images[0].lienImage}`" class="photoProduit" alt="" />
             <div class="nomPrix">{{ cara.produit.nom }} <br />Couleur : {{ cara.couleur }}<br />Prix : {{ cara.produit.prix }}€</div>
             <div class="quantite">Quantité : {{ quantite[cara.id] }}</div>
@@ -47,7 +47,7 @@
   height: 864px;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px;
+  padding: 0;
   gap: 32px;
   overflow: auto;
 }

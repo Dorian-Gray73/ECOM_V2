@@ -1,11 +1,7 @@
 import { Component, Inject, Provide, Vue } from 'vue-property-decorator';
-import LoginService from '@/account/login.service';
-import AccountService from '@/account/account.service';
-import ProduitService from '@/entities/produit/produit.service';
 import AlertService from '@/shared/alert/alert.service';
 import TransactionService from '@/entities/transaction/transaction.service';
 import UtilisateurService from '@/entities/utilisateur/utilisateur.service';
-import { ITransaction } from '@/shared/model/transaction.model';
 
 @Component
 export default class HistoriqueTransactions extends Vue {

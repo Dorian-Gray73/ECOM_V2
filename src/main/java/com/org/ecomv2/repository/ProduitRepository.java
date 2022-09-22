@@ -1,12 +1,7 @@
 package com.org.ecomv2.repository;
 
-import com.org.ecomv2.domain.Caracteristique;
-import com.org.ecomv2.domain.Image;
 import com.org.ecomv2.domain.Produit;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
-import javax.persistence.Tuple;
 import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;

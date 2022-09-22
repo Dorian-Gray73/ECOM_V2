@@ -78,10 +78,6 @@
   margin: auto;
 }
 
-.btnConnexion {
-  background-color: #5b85aa;
-}
-
 .progressionPanier {
   display: flex;
   margin: 0 128px;

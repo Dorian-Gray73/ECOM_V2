@@ -1,5 +1,4 @@
 import { Component, Inject, Vue } from 'vue-property-decorator';
-import LoginService from '@/account/login.service';
 import LoginForm from '@/account/login-form/login-form.vue';
 import AccountService from '@/account/account.service';
 import axios from 'axios';

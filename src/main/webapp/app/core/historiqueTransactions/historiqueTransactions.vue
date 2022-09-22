@@ -10,9 +10,7 @@
           <div class="numeroCommande">N° Commande : {{ transaction.id }}</div>
           <div class="dateCommande">Date : {{ transaction.date }}</div>
           <div class="etatCommande">État : {{ transaction.etat }}</div>
-          <div class="ligneTransaction" v-fort="ligne in transaction.ligneTransactions">
-            <div></div>
-          </div>
+          <!--<div class="ligneTransaction" v-for="ligne in transaction.ligneTransactions"/>-->
         </div>
       </div>
     </div>
@@ -25,6 +23,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 #contenuPanier {
   display: flex;
   flex-direction: column;
@@ -38,7 +37,7 @@
   height: 864px;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px;
+  padding: 0;
   gap: 32px;
   overflow: auto;
 }
@@ -56,37 +55,9 @@
   background: #ffffff;
 }
 
-.photoProduit {
-  width: 128px;
-  height: 128px;
-  background-color: #f7f7f7;
-  object-fit: cover;
-}
-
-.photoVide {
-  width: 128px;
-  height: 128px;
-  background-color: #f7f7f7;
-}
-
 #contenuPanier {
   display: flex;
   margin: 20px 128px;
   gap: 32px;
-}
-
-.nomPrix {
-  width: 100px;
-}
-
-#validerCommande {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background: #ffffff;
-  width: 100%;
-  height: 128px;
-  gap: 64px;
-  padding: 32px;
 }
 </style>

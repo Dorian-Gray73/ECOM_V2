@@ -17,8 +17,5 @@ public interface LigneTransactionRepository extends JpaRepository<LigneTransacti
      */
     @Modifying(clearAutomatically = true, flushAutomatically = true)
     @Query("UPDATE LigneTransaction SET quantite = :newQuantite WHERE id = :ligneTransactionId")
-    public void updateLigneTransactionQuantite(
-        @Param("ligneTransactionId") Long ligneTransactionId,
-        @Param("newQuantite") Integer newQuantite
-    );
+    void updateLigneTransactionQuantite(@Param("ligneTransactionId") Long ligneTransactionId, @Param("newQuantite") Integer newQuantite);
 }

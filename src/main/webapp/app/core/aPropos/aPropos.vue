@@ -15,7 +15,7 @@
       </div>
       <!-- Image à propos -->
       <div id="imgApropos">
-        <img src="content/images/imageApropos.png" />
+        <img src="content/images/imageApropos.png" alt="" />
       </div>
     </div>
   </div>

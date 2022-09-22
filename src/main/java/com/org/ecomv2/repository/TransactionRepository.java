@@ -2,12 +2,8 @@ package com.org.ecomv2.repository;
 
 import com.org.ecomv2.domain.Transaction;
 import com.org.ecomv2.domain.enumeration.EtatProduit;
-import java.text.DateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
-import org.hibernate.annotations.Any;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;

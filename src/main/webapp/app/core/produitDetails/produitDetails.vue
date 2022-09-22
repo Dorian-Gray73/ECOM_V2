@@ -1,16 +1,16 @@
 <template>
   <div id="containerProduit">
     <div id="produit">
-      <div v-if="caracteristique.images == null || caracteristique.images.length == 0" id="photoVide" />
+      <div v-if="caracteristique.images == null || caracteristique.images.length === 0" id="photoVide" />
       <img v-else :src="`/content/images/${caracteristique.images[0].lienImage}`" id="photo" alt="" />
       <div id="textMonture">
-        <div v-if="caracteristique.produit != null && caracteristique.produit != undefined" id="nomMonture">
+        <div v-if="caracteristique.produit != null && caracteristique.produit !== undefined" id="nomMonture">
           {{ caracteristique.produit.nom }}
         </div>
-        <div v-if="caracteristique.produit != null && caracteristique.produit != undefined" id="marqueMonture">
+        <div v-if="caracteristique.produit != null && caracteristique.produit !== undefined" id="marqueMonture">
           {{ caracteristique.produit.marque }}
         </div>
-        <div v-if="caracteristique != null && caracteristique != undefined" id="couleurMonture">{{ caracteristique.couleur }}</div>
+        <div v-if="caracteristique != null && caracteristique !== undefined" id="couleurMonture">{{ caracteristique.couleur }}</div>
         <div v-if="caracteristique.quantite > 0" id="quantiteMonture">Disponible</div>
         <div v-else id="quantiteMontureNonDispo">Non disponible</div>
         <div id="divBtnRetour">
@@ -28,7 +28,7 @@
       <div id="caracteristiques">
         <div id="divPrix">
           <div id="textPrix">Prix</div>
-          <div v-if="caracteristique.produit != null && caracteristique.produit != undefined">{{ caracteristique.produit.prix }}€</div>
+          <div v-if="caracteristique.produit != null && caracteristique.produit !== undefined">{{ caracteristique.produit.prix }}€</div>
         </div>
         <div>Couleur</div>
         <div id="couleurs">
@@ -54,7 +54,7 @@
           >Ajouter au panier
         </b-button>
         <b-button
-          v-if="caracteristique.quantite > 0 && caracteristique.quantite == $store.getters.quantite[caracteristique.id]"
+          v-if="caracteristique.quantite > 0 && caracteristique.quantite === $store.getters.quantite[caracteristique.id]"
           id="btnCommanderDisabled"
           disabled
           :key="componentKey2"
