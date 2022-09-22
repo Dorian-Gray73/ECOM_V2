@@ -101,6 +101,7 @@ public class SecurityConfiguration {
             .antMatchers("/api/images/produits").permitAll()
             .antMatchers("/api/images/produits/caracteristiques/{produitId}").permitAll()
             .antMatchers("/api/caracteristiques/{id}").permitAll()
+            .antMatchers("/api/caracteristiques/quantite/{id}/{quantite").permitAll()
             .antMatchers("/api/admin/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/api/**").authenticated()
             .antMatchers("/management/health").permitAll()

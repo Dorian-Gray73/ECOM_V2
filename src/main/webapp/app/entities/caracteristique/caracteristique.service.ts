@@ -108,4 +108,23 @@ export default class CaracteristiqueService {
         });
     });
   }
+
+  public updateCaracteristiqueQuantite(id: number, quantite: number): Promise<ICaracteristique> {
+    return new Promise<ICaracteristique>((resolve, reject) => {
+      let entity = {
+        id: 0,
+        couleur: 'string',
+        quantite: 0,
+        version: 0,
+      };
+      axios
+        .patch(`${baseApiUrl}/quantite/${id}/${quantite}`, entity)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
 }

@@ -7,6 +7,7 @@ import { IUtilisateur } from '@/shared/model/utilisateur.model';
 import { EtatProduit } from '@/shared/model/enumerations/etat-produit.model';
 import AlertService from '@/shared/alert/alert.service';
 import TransactionService from '@/entities/transaction/transaction.service';
+import CaracteristiqueService from '@/entities/caracteristique/caracteristique.service';
 
 @Component({
   filters: {
@@ -25,6 +26,8 @@ export default class Paiement extends Vue {
   private alertService: () => AlertService;
   @Provide('utilisateurService')
   private utilisateurService = () => new UtilisateurService();
+  @Provide('caracteristiqueService')
+  private caracteristiqueService = () => new CaracteristiqueService();
 
   // Data
   public cardNumber = '';
@@ -69,20 +72,30 @@ export default class Paiement extends Vue {
 
             // Sauvegarde des lignes
             this.$store.getters.panier.forEach(p => {
-              const lt = {
-                transaction: null,
-                quantite: null,
-                prixUnitaire: null,
-                caracteristique: null,
-              };
-              lt.transaction = this.transaction;
-              lt.quantite = this.$store.getters.quantite[p.id];
-              lt.prixUnitaire = p.produit.prix;
-              lt.caracteristique = p;
-              this.ligneTransactionService()
-                .create(lt)
+              // Mise à jour des quantites en bdd
+              this.caracteristiqueService()
+                .updateCaracteristiqueQuantite(p.id, this.$store.getters.quantite[p.id])
                 .then(() => {
                   this.isSaving = false;
+                  const lt = {
+                    transaction: null,
+                    quantite: null,
+                    prixUnitaire: null,
+                    caracteristique: null,
+                  };
+                  lt.transaction = this.transaction;
+                  lt.quantite = this.$store.getters.quantite[p.id];
+                  lt.prixUnitaire = p.produit.prix;
+                  lt.caracteristique = p;
+                  this.ligneTransactionService()
+                    .create(lt)
+                    .then(() => {
+                      this.isSaving = false;
+                    })
+                    .catch(error => {
+                      this.isSaving = false;
+                      this.alertService().showHttpError(this, error.response);
+                    });
                 })
                 .catch(error => {
                   this.isSaving = false;
@@ -104,7 +117,9 @@ export default class Paiement extends Vue {
   }
 
   // Format de la carte code de https://stackoverflow.com/a/69599562
-  public formatCardNumber(value) {
+  public;
+
+  formatCardNumber(value) {
     const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
     const matches = v.match(/\d{4,16}/g);
     const match = (matches && matches[0]) || '';
