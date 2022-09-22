@@ -23,7 +23,6 @@
       <!-- Pagination -->
       <b-pagination
         v-if="isLoading == false && produits.length > 0"
-        v-for="produit in produitList"
         v-model="currentPage"
         :total-rows="rows"
         :per-page="perPage"
