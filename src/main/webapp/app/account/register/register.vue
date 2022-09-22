@@ -10,11 +10,11 @@
         <div class="alert alert-danger" role="alert" v-if="error"><strong>Echec de la création du compte.</strong> Réssayez plus tard.</div>
 
         <div class="alert alert-danger" role="alert" v-if="errorUserExists">
-          <strong>Nom de compte déjà utilisé.</strong>Choississez en un autre.
+          <strong>Nom de compte déjà utilisé.</strong>Choisissez en un autre.
         </div>
 
         <div class="alert alert-danger" role="alert" v-if="errorEmailExists">
-          <strong>Courriel déjà utilisé.</strong> Veuillez entrer un autre.
+          <strong>Courriel déjà utilisé.</strong> Veuillez en entrer un autre.
         </div>
       </div>
     </div>
