@@ -11,11 +11,13 @@ import EntitiesMenu from '@/entities/entities-menu.vue';
   },
 })
 export default class JhiNavbar extends Vue {
+  // Appel Service
   @Inject('loginService')
   private loginService: () => LoginService;
   @Inject('translationService') private translationService: () => TranslationService;
-
   @Inject('accountService') private accountService: () => AccountService;
+
+  // Data
   public version = 'v' + VERSION;
   private currentLanguage = this.$store.getters.currentLanguage;
   private languages: any = this.$store.getters.languages;

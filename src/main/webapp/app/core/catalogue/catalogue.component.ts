@@ -5,7 +5,7 @@ import { IProduit } from '@/shared/model/produit.model';
 
 @Component
 export default class Catalogue extends Vue {
-  // Call Service
+  // Appel Service
   @Provide('produitService')
   private produitService = () => new ProduitService();
   @Inject('alertService')
@@ -20,6 +20,10 @@ export default class Catalogue extends Vue {
 
   public mounted(): void {
     this.retrieveAllProduits();
+  }
+
+  public handleSyncList(): void {
+    this.clear();
   }
 
   public clear(): void {
@@ -42,10 +46,6 @@ export default class Catalogue extends Vue {
           this.alertService().showHttpError(this, err.response);
         }
       );
-  }
-
-  public handleSyncList(): void {
-    this.clear();
   }
 
   // Pagination

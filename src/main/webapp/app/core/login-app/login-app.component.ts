@@ -10,8 +10,11 @@ import axios from 'axios';
   },
 })
 export default class LoginApp extends Vue {
+  // Call Service
   @Inject('accountService')
   private accountService: () => AccountService;
+
+  // Data
   public authenticationError = null;
   public login = null;
   public password = null;

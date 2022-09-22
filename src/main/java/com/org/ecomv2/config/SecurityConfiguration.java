@@ -87,7 +87,7 @@ public class SecurityConfiguration {
             .antMatchers("/api/account/reset-password/finish").permitAll()
             .antMatchers("/api/transactions").permitAll()
             .antMatchers("/api/transactions/encours").permitAll()
-            .antMatchers("/api/transactions/user/{idUtilisateur}").permitAll()
+            .antMatchers("/api/transactions/user/{idUtilisateur}").authenticated()
             .antMatchers("/api/produits").permitAll()
             .antMatchers("/api/produits/prix").permitAll()
             .antMatchers("/api/produits/marques").permitAll()

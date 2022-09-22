@@ -2,6 +2,7 @@ import { Component, Inject, Vue } from 'vue-property-decorator';
 import { computed } from 'vue';
 
 @Component({
+  // Vider le panier
   beforeRouteLeave(to, from, next) {
     this.$store.commit('resetPanier');
     next();
@@ -12,8 +13,8 @@ export default class Confirmation extends Vue {
     console.log(this.$store.getters.panier);
   }*/
 
+  // Data
   panier = computed(() => this.$store.getters.panier);
-
   quantite = computed(() => this.$store.getters.quantite);
   public livraison = 4.99;
 

@@ -56,6 +56,9 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
     // comme ça on est case-insensitive (i.e. 'a' = 'A')
     List<String> getAllMarques();
 
+    /*
+     * Récupération du prix maximum et minimum des lunettes
+     */
     @Query("SELECT min(p.prix), max(p.prix) FROM Produit p")
     String getAllPrix();
 }

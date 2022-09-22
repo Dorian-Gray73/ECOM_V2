@@ -8,9 +8,8 @@
       <div class="step">Confirmation</div>
     </div>
     <div id="contenuPanier">
+      <!-- Div Connexion -->
       <div id="divBtnConnexion">
-        <!-- <b-button v-on:click="seConnecter()" class="btnConnexion">S'enregistrer</b-button>
-        <b-button v-on:click="openLogin()" class="btnConnexion">Se connecter</b-button>-->
         <div class="modal-body">
           <div class="row justify-content-center">
             <div class="col-md-8">

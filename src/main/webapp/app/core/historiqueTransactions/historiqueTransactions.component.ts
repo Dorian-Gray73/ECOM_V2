@@ -9,10 +9,7 @@ import { ITransaction } from '@/shared/model/transaction.model';
 
 @Component
 export default class HistoriqueTransactions extends Vue {
-  public historique = [];
-  public utilisateur = null;
-  public isFetching = false;
-
+  // Appel Service
   @Provide('utilisateurService')
   private utilisateurService = () => new UtilisateurService();
   @Provide('transactionService')
@@ -20,8 +17,17 @@ export default class HistoriqueTransactions extends Vue {
   @Inject('alertService')
   private alertService: () => AlertService;
 
+  // Data
+  public historique = [];
+  public utilisateur = null;
+  public isFetching = false;
+
   public mounted(): void {
     this.retriveAllHistoriqueTransactions();
+  }
+
+  public handleSyncList(): void {
+    this.clear();
   }
 
   public clear(): void {

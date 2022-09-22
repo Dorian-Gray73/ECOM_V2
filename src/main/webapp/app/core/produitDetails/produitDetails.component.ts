@@ -12,20 +12,22 @@ library.add(faVolumeUp);
 
 @Component
 export default class ProduitDetails extends Vue {
+  // Appel Service
   @Provide('produitService') private produitService = () => new ProduitService();
   @Provide('caracteristiqueService') private caracteristiqueService = () => new CaracteristiqueService();
   @Inject('alertService') private alertService: () => AlertService;
 
+  // Data
   public caracteristique: Caracteristique = {};
   public caracteristiques = [];
 
-  beforeRouteEnter(to, from, next) {
+  /*beforeRouteEnter(to, from, next) {
     next(vm => {
       if (to.params.id) {
         vm.retrieveProduit(to.params.id);
       }
     });
-  }
+  }*/
 
   public mounted(): void {
     this.retrieveCaracteristiques(this.$route.params.id);
@@ -66,6 +68,7 @@ export default class ProduitDetails extends Vue {
     });
   }
 
+  // Bouton retour
   public previousState() {
     this.$router.go(-1);
   }

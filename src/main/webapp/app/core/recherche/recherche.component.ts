@@ -8,7 +8,7 @@ import CaracteristiqueService from '@/entities/caracteristique/caracteristique.s
 
 @Component
 export default class Recherche extends Vue {
-  // Call Service
+  // Appel Service
   @Provide('produitService') private produitService = () => new ProduitService();
   @Provide('caracteristiqueService') private caracteristiqueService = () => new CaracteristiqueService();
   @Inject('alertService') private alertService: () => AlertService;

@@ -220,6 +220,6 @@ public class TransactionResource {
 
     @GetMapping("/transactions/utilisateur/{idUtilisateur}")
     public List<Transaction> getAllPrix(@PathVariable Long idUtilisateur) {
-        return transactionRepository.getTransactionByUtilisateur(idUtilisateur);
+        return transactionRepository.getTransactionsByUtilisateur(idUtilisateur);
     }
 }

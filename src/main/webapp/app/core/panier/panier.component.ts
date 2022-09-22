@@ -3,10 +3,10 @@ import { computed } from 'vue';
 
 @Component
 export default class Panier extends Vue {
+  // Data
   public livraison = 4.99;
   public componentKey = 0;
   panier = computed(() => this.$store.getters.panier);
-
   quantite = computed(() => this.$store.getters.quantite);
 
   /*created() {

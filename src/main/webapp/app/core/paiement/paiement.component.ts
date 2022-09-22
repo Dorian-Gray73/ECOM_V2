@@ -16,15 +16,7 @@ import TransactionService from '@/entities/transaction/transaction.service';
   },
 })
 export default class Paiement extends Vue {
-  public cardNumber = '';
-  public cardName = '';
-  public cardMonth = '';
-  public cardYear = '';
-  public cardCvv = '';
-
-  public minCardMonth = new Date().getMonth();
-  public minCardYear = new Date().getFullYear();
-
+  // Appel Service
   @Provide('ligneTransactionService')
   private ligneTransactionService = () => new LigneTransactionService();
   @Provide('transactionService')
@@ -34,6 +26,14 @@ export default class Paiement extends Vue {
   @Provide('utilisateurService')
   private utilisateurService = () => new UtilisateurService();
 
+  // Data
+  public cardNumber = '';
+  public cardName = '';
+  public cardMonth = '';
+  public cardYear = '';
+  public cardCvv = '';
+  public minCardMonth = new Date().getMonth();
+  public minCardYear = new Date().getFullYear();
   public transaction: ITransaction = new Transaction();
   public utilisateur = null;
   public utilisateurs: IUtilisateur[] = [];
@@ -68,8 +68,6 @@ export default class Paiement extends Vue {
             });
 
             // Sauvegarde des lignes
-
-            console.log(this.$store.getters.panier);
             this.$store.getters.panier.forEach(p => {
               const lt = {
                 transaction: null,
@@ -77,7 +75,6 @@ export default class Paiement extends Vue {
                 prixUnitaire: null,
                 caracteristique: null,
               };
-              console.log(p);
               lt.transaction = this.transaction;
               lt.quantite = this.$store.getters.quantite[p.id];
               lt.prixUnitaire = p.produit.prix;
@@ -102,10 +99,11 @@ export default class Paiement extends Vue {
         this.isSaving = false;
         this.alertService().showHttpError(this, error.response);
       });
-
+    // Prochaine fenêtre
     this.$router.push({ name: 'Confirmation' });
   }
 
+  // Format de la carte code de https://stackoverflow.com/a/69599562
   public formatCardNumber(value) {
     const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
     const matches = v.match(/\d{4,16}/g);
