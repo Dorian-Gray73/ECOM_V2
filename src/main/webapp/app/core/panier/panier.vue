@@ -9,7 +9,7 @@
     </div>
     <div id="contenuPanier">
       <!-- Produits du panier -->
-      <div id="produitPanier" :key="componentKey">
+      <div v-if="$store.getters.panier.length > 0" id="produitPanier" :key="componentKey">
         <div v-for="cara in panier" :key="cara.id">
           <div class="produit">
             <div v-if="cara.images == null || cara.images.length === 0" class="photoVide" />
@@ -24,11 +24,15 @@
         </div>
       </div>
       <!-- Récap du panier -->
-      <div id="validerPanier">
+      <div v-if="$store.getters.panier.length > 0" id="validerPanier">
         <div>Articles : {{ getPrixTotal() }}€</div>
         <div>Livraison : {{ livraison }}€</div>
         <div>Total : {{ getPrixTotalLivraison() }}€</div>
         <b-button v-on:click="commander()">Commander</b-button>
+      </div>
+
+      <div v-else id="panierVide">
+        <div id="videTexte">Le panier est vide</div>
       </div>
     </div>
   </div>
@@ -50,6 +54,18 @@
   padding: 0;
   gap: 32px;
   overflow: auto;
+}
+
+#panierVide {
+  display: flex;
+  align-content: center;
+  width: 100%;
+  background: #ffffff;
+  height: 192px;
+}
+
+#videTexte {
+  margin: auto;
 }
 
 #validerPanier {
