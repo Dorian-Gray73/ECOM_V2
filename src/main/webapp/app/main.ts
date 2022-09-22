@@ -30,6 +30,7 @@ import { LayoutPlugin } from 'bootstrap-vue';
 import { FormCheckboxPlugin } from 'bootstrap-vue';
 import { BFormCheckboxGroup } from 'bootstrap-vue';
 import { BFormCheckbox } from 'bootstrap-vue';
+import { BSpinner } from 'bootstrap-vue';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -51,6 +52,7 @@ Vue.use(Vue2Filters);
 Vue.use(ToastPlugin);
 Vue.use(LayoutPlugin);
 Vue.use(FormCheckboxPlugin);
+Vue.component('b-spinner', BSpinner);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('jhi-item-count', JhiItemCountComponent);
 Vue.component('jhi-sort-indicator', JhiSortIndicatorComponent);
@@ -59,6 +61,7 @@ Vue.component('b-form-checkbox', BFormCheckbox);
 Vue.component('b-carousel', BCarousel);
 Vue.component('b-carousel-slide', BCarouselSlide);
 Vue.component('infinite-loading', InfiniteLoading);
+
 const i18n = config.initI18N(Vue);
 const store = config.initVueXStore(Vue);
 

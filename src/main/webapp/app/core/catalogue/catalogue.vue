@@ -5,10 +5,11 @@
     <div id="divPagination">
       <div id="affichageSearch">
         <!--Affiche catalogue -->
-        <div v-if="produits.length == 0" id="catalogueVide">
+        <b-spinner v-if="isLoading" style="width: 3rem; height: 3rem; margin: 32px auto" />
+        <div v-if="isLoading == false && produits.length == 0" id="catalogueVide">
           <div id="videTexte">Le catalogue est vide</div>
         </div>
-        <div v-else v-for="produit in produitList" :key="produit.id" class="cardPhoto">
+        <div v-else-if="isLoading == false && produits.length > 0" v-for="produit in produitList" :key="produit.id" class="cardPhoto">
           <router-link :to="`/produitDetails/${produit.id}`">
             <div v-if="produit.images == null || produit.images.length == 0" class="photoVide" />
             <img v-else :src="`/content/images/${produit.images[0].lienImage}`" class="photo" alt="" />
@@ -21,6 +22,8 @@
       </div>
       <!-- Pagination -->
       <b-pagination
+        v-if="isLoading == false && produits.length > 0"
+        v-for="produit in produitList"
         v-model="currentPage"
         :total-rows="rows"
         :per-page="perPage"

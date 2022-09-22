@@ -21,6 +21,7 @@ export default class HistoriqueTransactions extends Vue {
   public historique = [];
   public utilisateur = null;
   public isFetching = false;
+  public isLoading = false;
 
   public mounted(): void {
     this.retriveAllHistoriqueTransactions();
@@ -35,21 +36,20 @@ export default class HistoriqueTransactions extends Vue {
   }
 
   public retriveAllHistoriqueTransactions() {
-    console.log(this.$store.getters.account);
+    this.isLoading = true;
     // Récupération de l'utilisateur courant
     this.utilisateurService()
       .retrieveUtilisateurByUserId(this.$store.getters.account.id)
       .then(res => {
         this.utilisateur = res.data;
-        console.log(this.utilisateur);
         this.isFetching = true;
         this.transactionService()
           .retrieveTransactionsByIdUtilisateur(this.utilisateur.id)
           .then(
             res => {
               this.historique = res;
-              console.log(this.historique);
               this.isFetching = false;
+              this.isLoading = false;
             },
             err => {
               this.isFetching = false;

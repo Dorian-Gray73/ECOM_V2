@@ -28,6 +28,7 @@ export default class Recherche extends Vue {
   public rows = 0;
   public currentPage = 1;
   public perPage = 9;
+  public isLoading = false;
 
   public mounted(): void {
     this.retrieveAllProduits();
@@ -46,12 +47,14 @@ export default class Recherche extends Vue {
   //Récupération des produits
   public retrieveAllProduits(): void {
     this.isFetching = true;
+    this.isLoading = true;
     this.produitService()
       .retrieve()
       .then(
         res => {
           this.produits = res.data;
           this.isFetching = false;
+          this.isLoading = false;
         },
         err => {
           this.isFetching = false;

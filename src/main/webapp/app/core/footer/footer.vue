@@ -18,16 +18,14 @@
       <div class="colFooter">
         <div class="firstRow">Shopping</div>
         <br />
-        <div>Solaires</div>
-        <div>Vues</div>
-        <div>Toutes les lunettes</div>
+        <a to="/">Catalogue</a><br />
+        <a to="/recherche">Recherche</a>
       </div>
       <!-- 3 -->
       <div>
         <div class="firstRow">Corporate</div>
         <br />
-        <div>À propos</div>
-        <div>Carrières</div>
+        <a to="/apropos">À propos</a>
       </div>
       <!-- 4
       <div class="lastColFooter">

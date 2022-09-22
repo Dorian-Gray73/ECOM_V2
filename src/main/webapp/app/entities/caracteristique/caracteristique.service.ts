@@ -111,7 +111,7 @@ export default class CaracteristiqueService {
 
   public updateCaracteristiqueQuantite(id: number, quantite: number): Promise<ICaracteristique> {
     return new Promise<ICaracteristique>((resolve, reject) => {
-      let entity = {
+      const entity = {
         id: 0,
         couleur: 'string',
         quantite: 0,

@@ -1,18 +1,17 @@
 <template>
-  <div id="pagePanier">
+  <div id="pageHistorique">
     <span class="title">Historique des transactions</span>
     <hr class="separate" />
-    <div id="pagePanier">
-      <!-- Progression Panier -->
-      <div id="contenuPanier">
-        <div id="produitPanier">
-          <div v-for="transaction in historique" :key="transaction.id" class="produit">
-            <div class="numeroCommande">N° Commande : {{ transaction.id }}</div>
-            <div class="dateCommande">Date : {{ transaction.date }}</div>
-            <div class="etatCommande">État : {{ transaction.etat }}</div>
-            <div class="ligneTransaction" v-fort="ligne in transaction.ligneTransactions">
-              <div></div>
-            </div>
+    <b-spinner v-if="isLoading" style="width: 3rem; height: 3rem; margin: 32px auto" />
+    <!-- Progression Panier -->
+    <div id="contenuPanier" v-else>
+      <div id="produitPanier">
+        <div v-for="transaction in historique" :key="transaction.id" class="produit">
+          <div class="numeroCommande">N° Commande : {{ transaction.id }}</div>
+          <div class="dateCommande">Date : {{ transaction.date }}</div>
+          <div class="etatCommande">État : {{ transaction.etat }}</div>
+          <div class="ligneTransaction" v-fort="ligne in transaction.ligneTransactions">
+            <div></div>
           </div>
         </div>
       </div>
@@ -21,6 +20,11 @@
 </template>
 <script lang="ts" src="./historiqueTransactions.component.ts"></script>
 <style scoped>
+#pageHistorique {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 #contenuPanier {
   display: flex;
   flex-direction: column;

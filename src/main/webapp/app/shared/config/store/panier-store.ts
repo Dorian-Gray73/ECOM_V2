@@ -76,8 +76,6 @@ export const panierStore: Module<PanierStateStorable, any> = {
         }
       });
 
-      console.log(produitExist);
-      console.log(produit);
       if (state.quantite[produit.id] > 1) {
         state.quantite[produit.id]--;
       } else {
@@ -85,8 +83,6 @@ export const panierStore: Module<PanierStateStorable, any> = {
         state.panier.splice(state.panier[indexProduit], 1);
       }
 
-      console.log(state.quantite);
-      console.log(state.panier);
       state.nbProduit--;
     },
   },

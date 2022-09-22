@@ -20,6 +20,8 @@ export default class ProduitDetails extends Vue {
   // Data
   public caracteristique: Caracteristique = {};
   public caracteristiques = [];
+  public componentKey = 0;
+  public componentKey2 = 1;
 
   /*beforeRouteEnter(to, from, next) {
     next(vm => {
@@ -37,6 +39,12 @@ export default class ProduitDetails extends Vue {
     this.retrieveCaracteristiques(this.$route.params.id);
   }
 
+  //Forcer l'affichage des produits à se mettre à jour
+  public forceRerender() {
+    this.componentKey += 1;
+    this.componentKey2 += 1;
+  }
+
   public retrieveCaracteristiques(produitId) {
     this.caracteristiqueService()
       .retrieveCaracteristiquesParProduit(produitId)
@@ -51,6 +59,7 @@ export default class ProduitDetails extends Vue {
 
   public addProduit(produit): void {
     this.$store.commit('addProduit', produit);
+    this.forceRerender();
     const message = 'Produit ajouté au panier';
     (this.$root as any).$bvToast.toast(message.toString(), {
       toaster: 'b-toaster-top-center',

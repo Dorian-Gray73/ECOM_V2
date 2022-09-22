@@ -2,7 +2,8 @@
   <div id="pageRecherche">
     <span class="title">Résultats de la recherche</span>
     <hr class="separate" />
-    <div id="resultat">
+    <b-spinner v-if="isLoading" style="width: 3rem; height: 3rem; margin: 32px auto" />
+    <div id="resultat" v-else>
       <!-- SearchBar -->
       <b-input-group id="searchBar">
         <font-awesome-icon icon="fa-solid fa-magnifying-glass" id="iconSearchBar" />
