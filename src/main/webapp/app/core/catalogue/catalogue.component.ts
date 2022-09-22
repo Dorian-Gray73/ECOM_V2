@@ -23,13 +23,13 @@ export default class Catalogue extends Vue {
     this.retrieveAllProduits();
   }
 
-  /* public handleSyncList(): void {
+  public handleSyncList(): void {
     this.clear();
   }
 
   public clear(): void {
     this.retrieveAllProduits();
-  }*/
+  }
 
   // Récupération de tous les produits
   public retrieveAllProduits(): void {
