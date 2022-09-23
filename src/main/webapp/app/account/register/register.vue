@@ -10,11 +10,11 @@
         <div class="alert alert-danger" role="alert" v-if="error"><strong>Echec de la création du compte.</strong> Réssayez plus tard.</div>
 
         <div class="alert alert-danger" role="alert" v-if="errorUserExists">
-          <strong>Nom de compte déjà utilisé.</strong>Choississez en un autre.
+          <strong>Nom de compte déjà utilisé.</strong>Choisissez en un autre.
         </div>
 
         <div class="alert alert-danger" role="alert" v-if="errorEmailExists">
-          <strong>Courriel déjà utilisé.</strong> Veuillez entrer un autre.
+          <strong>Courriel déjà utilisé.</strong> Veuillez en entrer un autre.
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
               minlength="1"
               maxlength="50"
               pattern="^[a-zA-Z0-9!#$&'*+=?^_`{|}~.-]+@?[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
-              v-bind:placeholder="$t('global.form[\'username.placeholder\']')"
+              placeholder="Votre nom de compte"
               data-cy="username"
             />
             <div v-if="$v.registerAccount.login.$anyDirty && $v.registerAccount.login.$invalid">
@@ -63,7 +63,7 @@
               required
               minlength="1"
               maxlength="30"
-              v-bind:placeholder="$t('global.form[\'nom.placeholder\']')"
+              placeholder="Votre nom"
               data-cy="nom"
             />
             <div v-if="$v.registerUtilisateur.nom.$anyDirty && $v.registerUtilisateur.nom.$invalid">
@@ -89,7 +89,7 @@
               required
               minlength="1"
               maxlength="30"
-              v-bind:placeholder="$t('global.form[\'prenom.placeholder\']')"
+              placeholder="Votre prénom"
               data-cy="prenom"
             />
             <div v-if="$v.registerUtilisateur.prenom.$anyDirty && $v.registerUtilisateur.prenom.$invalid">
@@ -116,7 +116,7 @@
               maxlength="254"
               email
               required
-              v-bind:placeholder="$t('global.form[\'email.placeholder\']')"
+              placeholder="Votre email"
               data-cy="email"
             />
             <div v-if="$v.registerAccount.email.$anyDirty && $v.registerAccount.email.$invalid">
@@ -143,7 +143,7 @@
               required
               minlength="10"
               maxlength="100"
-              v-bind:placeholder="$t('global.form[\'adresse.placeholder\']')"
+              placeholder="Votre adresse"
               data-cy="adresse"
             />
             <div v-if="$v.registerUtilisateur.adresse.$anyDirty && $v.registerUtilisateur.adresse.$invalid">
@@ -169,7 +169,7 @@
               minlength="4"
               maxlength="50"
               required
-              v-bind:placeholder="$t('global.form[\'newpassword.placeholder\']')"
+              placeholder="Votre mot de passe"
               data-cy="firstPassword"
             />
             <div v-if="$v.registerAccount.password.$anyDirty && $v.registerAccount.password.$invalid">
@@ -196,7 +196,7 @@
               minlength="4"
               maxlength="50"
               required
-              v-bind:placeholder="$t('global.form[\'confirmpassword.placeholder\']')"
+              placeholder="Confirmation du mot de passe"
               data-cy="secondPassword"
             />
             <div v-if="$v.confirmPassword.$dirty && $v.confirmPassword.$invalid">
@@ -213,7 +213,7 @@
             </div>
           </div>
 
-          <button type="submit" :disabled="$v.$invalid" class="btn btn-primary" data-cy="submit">Création de compte.</button>
+          <button type="submit" :disabled="$v.$invalid" class="btn btn-primary" data-cy="submit">Création de compte</button>
         </form>
         <p></p>
       </div>
